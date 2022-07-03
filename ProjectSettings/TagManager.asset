@@ -4,8 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - Bomb
   - Wall
+=======
+  - Wall
+  - Bomb
+>>>>>>> a77fa6b9ed1c8d8e75a99e7bff6aedfa52d42ae4
   layers:
   - Default
   - TransparentFX
@@ -42,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3178922345
     locked: 0
