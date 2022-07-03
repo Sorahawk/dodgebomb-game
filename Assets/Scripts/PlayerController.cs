@@ -49,7 +49,9 @@ public class PlayerController : MonoBehaviour {
         // spin
         // rotate character according to spin input, by "looking at" corresponding world coordinates
         float lookX = transform.position.x + spinVal.x;
+        float lookY = transform.position.y; // character has to look at its own "height"
         float lookZ = transform.position.z + spinVal.y;
-        transform.LookAt(new Vector3(lookX, 0, lookZ));
+
+        transform.LookAt(new Vector3(lookX, lookY, lookZ));
     }
 }
