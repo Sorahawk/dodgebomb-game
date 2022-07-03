@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "6555b3a9-461d-4093-acb1-97c469312c70",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -18,7 +18,7 @@
                     "name": "Spin",
                     "type": "Value",
                     "id": "dbf18595-3265-4066-adf0-a3b4006b9339",
-                    "expectedControlType": "",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
@@ -36,6 +36,15 @@
                     "name": "Pick Up / Throw",
                     "type": "Button",
                     "id": "ca29576c-6143-4bdf-bb6d-0a09fb1c6843",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ultimate Skill",
+                    "type": "Button",
+                    "id": "89ef5ea6-0d94-4ebd-abaf-95a8d0dedbd9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -84,6 +93,17 @@
                     "processors": "",
                     "groups": "Xbox Controller",
                     "action": "Pick Up / Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7580afdb-77ed-42d0-9890-477935baf633",
+                    "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ultimate Skill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
