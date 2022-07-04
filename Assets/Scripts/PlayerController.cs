@@ -1,101 +1,122 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
-{
-    public float speed;
-    private Rigidbody playerBody;
-    private Rigidbody bombBody;
-    public GameObject bomb;
 
-    // throwing
-    public float rotationSpeed;
-    public float transformSpeed;
-    public float throwForce;
-    public float throwUpwardForce;
-    public bool isThrowable = true;
-    private Vector3 playerDirection;
+public class PlayerController : MonoBehaviour {
+    // move
+    private float moveSpeed = 10;
+    private Vector2 moveVal;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        // Set to be 30 FPS
-        Application.targetFrameRate =  30;
-        playerBody = GetComponent<Rigidbody>();
-        bombBody = bomb.GetComponent<Rigidbody>();
+    // spin
+    private Vector2 spinVal;
+    private Vector3 latestDir;
+
+    // dash
+    private bool dashActivated = false;
+    private float dashDistance = 2;
+
+    // bomb
+    public GameObject pickableBomb = null;
+    public GameObject carriedBomb = null;
+
+    void OnMove(InputValue value) {
+        moveVal = value.Get<Vector2>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // movement
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        playerBody.AddForce(movement * speed); // player move
-        if (isThrowable == true) 
-        {
-            bombBody.AddForce(movement * speed); // bomb move
+    void OnSpin(InputValue value) {
+        spinVal = value.Get<Vector2>();
+    }
+
+    void OnDash() {
+        dashActivated = true;
+    }
+
+    void OnPickUpDrop() {
+        // check that not carrying any bombs, and a bomb is pickable
+        if (!carriedBomb && pickableBomb) {
+            // attach bomb to player
+            pickableBomb.transform.SetParent(gameObject.transform);
+            carriedBomb = pickableBomb;
+            pickableBomb = null;
+
+            // turn off bomb's useGravity so it stays with the player
+            carriedBomb.GetComponent<Rigidbody>().useGravity = false;
         }
 
-        // if player release control, stop
-        if (Input.GetKeyUp("w") || Input.GetKeyUp("a") || Input.GetKeyUp("s") || Input.GetKeyUp("d")){
-          playerBody.velocity = Vector3.zero;
-          if (isThrowable == true)
-          {
-            bombBody.velocity = Vector3.zero;
-            movement = Vector3.zero;
-          }
-        }
+        // if already carrying a bomb, drop it
+        else if (carriedBomb) {
+            // turn the bomb's useGravity back on
+            carriedBomb.GetComponent<Rigidbody>().useGravity = true;
 
-        // if player is moving, change rotation
-        if (movement != Vector3.zero) 
-        {
-            // set direction for bomb throw
-            playerDirection = movement;
-            playerDirection.Normalize();
-
-            // change player rotation
-            Quaternion toRotation = Quaternion.LookRotation(movement, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-
-            // change bomb position
-            float horizontalBombOffset;
-            float verticalBombOffset;
-
-            if (moveHorizontal > 0) {
-                horizontalBombOffset = (float) 1;
-            } else if (moveHorizontal < 0) {
-                horizontalBombOffset = (float) -1;
-            } else {
-                horizontalBombOffset = 0;
-            }
-
-            if (moveVertical > 0) {
-                verticalBombOffset = (float) 1;
-            } else if (moveVertical < 0) {
-                verticalBombOffset = (float) -1;
-            } else {
-                verticalBombOffset = 0;
-            }
-
-            Vector3 targetPosition = transform.position + new Vector3(horizontalBombOffset, (float) -0.5, verticalBombOffset);
-            bomb.transform.position = Vector3.MoveTowards(bomb.transform.position, targetPosition, transformSpeed);
-            
-        }
-
-        // throw
-        if (Input.GetKeyDown(KeyCode.Space) && isThrowable) 
-        {
-            ThrowBomb();
+            // detach bomb
+            carriedBomb.transform.SetParent(null);
+            carriedBomb = null;
         }
     }
 
-    void ThrowBomb()
-    {
-        isThrowable = false;
-        Vector3 bombForce = playerDirection * throwForce + transform.up * throwUpwardForce; // playerBody.transform.right
-        bombBody.AddForce(bombForce, ForceMode.Impulse);
+    void OnThrow() {
+        // check if a bomb is carried
+        if (carriedBomb) {
+            // turn on bomb's useGravity
+            carriedBomb.GetComponent<Rigidbody>().useGravity = true;
+
+            // detach bomb from player
+            carriedBomb.transform.SetParent(null);
+            carriedBomb = null;
+
+            // TODO: throw bomb
+        }
+    }
+
+    void Update() {
+        // move
+        // apply translation to the world axes, so movement direction is constant and follows thumbsticks
+        Vector3 translation = new Vector3(moveVal.x, 0, moveVal.y);
+        transform.Translate(translation * moveSpeed * Time.deltaTime, Space.World);
+
+        // dash
+        if (dashActivated) {
+            dashActivated = false;
+
+            // if character is moving, apply dash in direction of movement
+            // otherwise if character is stationary, apply dash in direction that player is facing
+
+            if (translation != Vector3.zero) {
+                transform.Translate(translation * dashDistance, Space.World);
+            } else {
+                transform.Translate(Vector3.forward * dashDistance);
+            }
+        }
+
+        // spin
+        // rotate character according to spin input, by "looking at" corresponding world coordinates
+        float lookX = transform.position.x + spinVal.x;
+        float lookY = transform.position.y; // character has to look at its own "height"
+        float lookZ = transform.position.z + spinVal.y;
+
+        transform.LookAt(new Vector3(lookX, lookY, lookZ));
+    }
+
+    // use OnCollisionStay to reconfirm object collision every frame
+    void OnCollisionStay(Collision col) {
+        if (col.gameObject.CompareTag("Bomb")) {
+            System.String colliderName = col.GetContact(0).thisCollider.name;
+
+            // can only pick up if bomb is from the front
+            if (colliderName == "FrontCollider") {
+                pickableBomb = col.gameObject;
+
+                // TODO: check whether bomb is in-air or on the ground
+                // if in air, then pick up automatically if not already carrying a bomb
+            }
+        }
+    }
+
+    void OnCollisionExit(Collision col) {
+        if (col.gameObject.CompareTag("Bomb")) {
+            pickableBomb = null;
+        }
     }
 }
