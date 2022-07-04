@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pick Up / Throw",
+                    "name": "Pick Up / Drop",
                     "type": "Button",
                     "id": "ca29576c-6143-4bdf-bb6d-0a09fb1c6843",
                     "expectedControlType": "Button",
@@ -42,9 +42,18 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Throw",
+                    "type": "Button",
+                    "id": "c2a58ffd-4cbb-474f-84ba-eed9a44f240f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Ultimate Skill",
                     "type": "Button",
-                    "id": "89ef5ea6-0d94-4ebd-abaf-95a8d0dedbd9",
+                    "id": "789efd39-77d9-4ea0-89c8-a9f94391360d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -213,7 +222,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox Controller",
-                    "action": "Pick Up / Throw",
+                    "action": "Pick Up / Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -224,14 +233,36 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
-                    "action": "Pick Up / Throw",
+                    "action": "Pick Up / Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "7580afdb-77ed-42d0-9890-477935baf633",
+                    "id": "91926a97-3991-4a31-8137-c91dd589da65",
                     "path": "<XInputController>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Controller",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13b17c7e-294e-40b3-b8ee-0cee63cab7eb",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2af6510-679c-4438-94c8-e24649903da3",
+                    "path": "<XInputController>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox Controller",
@@ -241,8 +272,8 @@
                 },
                 {
                     "name": "",
-                    "id": "a4d83c9b-efa1-4574-9add-629e94bc870f",
-                    "path": "<Mouse>/rightButton",
+                    "id": "b9d9abb7-5b4d-4ab4-852d-5bf29a0d1aa5",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",

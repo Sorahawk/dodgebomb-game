@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 908372511460652621}
   - component: {fileID: 908372511460652620}
   m_Layer: 0
-  m_Name: CuboidPlayer (Colliders)
-  m_TagString: Untagged
+  m_Name: Cuboid w Colliders
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
