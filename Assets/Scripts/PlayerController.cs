@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour {
     private float dashDistance = 2;
 
     // bomb
-    public GameObject pickableBomb = null;
-    public GameObject carriedBomb = null;
+    private GameObject pickableBomb = null;
+    private GameObject carriedBomb = null;
 
     void OnMove(InputValue value) {
         moveVal = value.Get<Vector2>();
@@ -64,9 +64,11 @@ public class PlayerController : MonoBehaviour {
 
             // detach bomb from player
             carriedBomb.transform.SetParent(null);
-            carriedBomb = null;
 
-            // TODO: throw bomb
+            // TODO: throw bomb and activate bomb fuse
+            StartCoroutine(carriedBomb.GetComponent<BombController>().BombExplodeAfterThreeSeconds());
+
+            carriedBomb = null;
         }
     }
 
