@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     // bomb
     private GameObject pickableBomb = null;
     private GameObject carriedBomb = null;
+    private int bombThrowForce = 30;
 
     void OnMove(InputValue value) {
         moveVal = value.Get<Vector2>();
@@ -65,8 +66,11 @@ public class PlayerController : MonoBehaviour {
             // detach bomb from player
             carriedBomb.transform.SetParent(null);
 
-            // TODO: throw bomb and activate bomb fuse
-            StartCoroutine(carriedBomb.GetComponent<BombController>().BombExplodeAfterThreeSeconds());
+            // activate bomb fuse
+            StartCoroutine(carriedBomb.GetComponent<BombController>().StartFuse());
+
+            // throw bomb in direction player is facing
+            carriedBomb.GetComponent<Rigidbody>().AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
 
             carriedBomb = null;
         }
@@ -99,6 +103,10 @@ public class PlayerController : MonoBehaviour {
         float lookZ = transform.position.z + spinVal.y;
 
         transform.LookAt(new Vector3(lookX, lookY, lookZ));
+
+        if (spinVal != Vector2.zero) {
+            latestDir = new Vector3(spinVal.x, 0, spinVal.y);
+        }
     }
 
     // use OnCollisionStay to reconfirm object collision every frame

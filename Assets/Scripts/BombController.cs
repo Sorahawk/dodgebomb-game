@@ -7,12 +7,13 @@ public class BombController : MonoBehaviour {
     public GameObject explosionFX;
 
     void OnCollisionEnter(Collision col) {
-        if (col.gameObject.CompareTag("Wall")) {
+        // explode if contact wall or another bomb
+        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Bomb")) {
             StartCoroutine(ExplosionEffect());
         }
     }
 
-    public IEnumerator BombExplodeAfterThreeSeconds() {
+    public IEnumerator StartFuse() {
         yield return new WaitForSeconds(3.0f);
         StartCoroutine(ExplosionEffect());
     }
@@ -23,6 +24,7 @@ public class BombController : MonoBehaviour {
 
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
 
+        // destroy FX object after it finishes
         yield return new WaitForSeconds(3.0f);
         Destroy(explosion);
     }
