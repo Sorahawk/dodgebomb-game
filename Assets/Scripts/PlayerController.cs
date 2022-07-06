@@ -48,6 +48,8 @@ public class PlayerController : MonoBehaviour {
 
         // if already carrying a bomb, drop it
         else if (carriedBomb) {
+            // TODO: debug why bomb becomes so 'heavy' after dropping it
+
             // turn the bomb's useGravity back on
             carriedBomb.GetComponent<Rigidbody>().useGravity = true;
 

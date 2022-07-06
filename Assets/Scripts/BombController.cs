@@ -14,6 +14,8 @@ public class BombController : MonoBehaviour {
     }
 
     public IEnumerator StartFuse() {
+        // TODO: overhaul this script because throwing a bomb will start the fuse but when impact wall it will destroy the object
+        // so will have null reference warning error
         yield return new WaitForSeconds(3.0f);
         StartCoroutine(ExplosionEffect());
     }
@@ -25,6 +27,7 @@ public class BombController : MonoBehaviour {
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
 
         // destroy FX object after it finishes
+        // TODO: fix this cuz doesn't work
         yield return new WaitForSeconds(3.0f);
         Destroy(explosion);
     }
