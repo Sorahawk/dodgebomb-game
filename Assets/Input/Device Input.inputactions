@@ -130,7 +130,7 @@
                 {
                     "name": "",
                     "id": "1f2d75b8-40c9-42eb-aa81-f186d02d8291",
-                    "path": "<XInputController>/rightStick",
+                    "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox Controller",
@@ -217,6 +217,17 @@
                 },
                 {
                     "name": "",
+                    "id": "ec316e3e-6364-4712-8e09-3b8f1b4de451",
+                    "path": "<XInputController>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Controller",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "edf05cda-6624-4754-9b37-1cf3c8d70331",
                     "path": "<XInputController>/rightTrigger",
                     "interactions": "",
@@ -233,6 +244,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
+                    "action": "Pick Up / Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7e7b82e0-3360-4461-a08e-e4dc885a7907",
+                    "path": "<XInputController>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Controller",
                     "action": "Pick Up / Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -261,6 +283,17 @@
                 },
                 {
                     "name": "",
+                    "id": "677cf70a-ffa4-4912-84ac-66573b8d0705",
+                    "path": "<XInputController>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Controller",
+                    "action": "Throw",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "a2af6510-679c-4438-94c8-e24649903da3",
                     "path": "<XInputController>/leftShoulder",
                     "interactions": "",
@@ -277,6 +310,17 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
+                    "action": "Ultimate Skill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "665a1d17-3654-40bb-9ddf-69afefd3357a",
+                    "path": "<XInputController>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Xbox Controller",
                     "action": "Ultimate Skill",
                     "isComposite": false,
                     "isPartOfComposite": false
