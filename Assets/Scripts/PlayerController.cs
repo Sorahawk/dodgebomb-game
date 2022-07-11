@@ -15,15 +15,24 @@ public class PlayerController : MonoBehaviour {
 
     // dash
     private bool dashActivated = false;
-    private float dashDistance = 2;
+    private float dashDistance = 100;
 
     // bomb
     private GameObject pickableBomb = null;
     private GameObject carriedBomb = null;
     private int bombThrowForce = 30;
 
+    private Rigidbody playerBody;
+    private Vector2 faceDirection;
+
+    void Start(){
+        playerBody = GetComponent<Rigidbody>();
+    }
     void OnMove(InputValue value) {
         moveVal = value.Get<Vector2>();
+        if(moveVal.x != 0 || moveVal.y != 0){
+            faceDirection = moveVal;
+        }
     }
 
     void OnSpin(InputValue value) {
@@ -81,8 +90,14 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         // move
         // apply translation to the world axes, so movement direction is constant and follows thumbsticks
-        Vector3 translation = new Vector3(moveVal.x, 0, moveVal.y);
-        transform.Translate(translation * moveSpeed * Time.deltaTime, Space.World);
+        Vector3 translation = new Vector3(moveVal.x/2, 0, moveVal.y/2);
+
+        Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
+        transform.Translate(movementTranslation * moveSpeed * Time.deltaTime, Space.World);
+
+        // playerBody.AddForce(translation,ForceMode.Impulse);
+        // playerBody.velocity = new Vector3(moveVal.x *10, 0, moveVal.y*10);
+        // playerBody.velocity = translation;
 
         // dash
         if (dashActivated) {
@@ -92,9 +107,13 @@ public class PlayerController : MonoBehaviour {
             // otherwise if character is stationary, apply dash in direction that player is facing
 
             if (translation != Vector3.zero) {
-                transform.Translate(translation * dashDistance, Space.World);
+                // transform.Translate(translation * dashDistance, Space.World);
+                // Vector3 movementDirection = new Vector3(translation.x*2,0,translation.y*2);
+                playerBody.AddForce(translation * dashDistance,ForceMode.Impulse);
             } else {
-                transform.Translate(Vector3.forward * dashDistance);
+                // transform.Translate(Vector3.forward * dashDistance);
+                Vector3 stationaryDirection = new Vector3(faceDirection.x/(3/2),0,faceDirection.y/(3/2));
+                playerBody.AddForce(stationaryDirection * dashDistance,ForceMode.Impulse);
             }
         }
 
@@ -124,7 +143,11 @@ public class PlayerController : MonoBehaviour {
                 // if in air, then pick up automatically if not already carrying a bomb
             }
         }
+
+
+
     }
+
 
     void OnCollisionExit(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
