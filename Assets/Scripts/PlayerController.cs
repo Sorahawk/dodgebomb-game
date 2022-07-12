@@ -24,15 +24,34 @@ public class PlayerController : MonoBehaviour {
 
     private Rigidbody playerBody;
     private Vector2 faceDirection;
+    private DeviceInput playerControls;
+    private bool currentlyAiming = false;
 
     void Start(){
         playerBody = GetComponent<Rigidbody>();
+        // playerControls = new DeviceInput();
+        playerControls.Default.Throw.performed += OnThrowPerformed;
+        playerControls.Default.Throw.canceled += OnThrowCanceled;
+
+    }
+    void Awake(){
+        playerControls = new DeviceInput();
+    }
+    void OnEnable(){
+        playerControls.Enable();
+        // playerControls.Default.Throw.performed += OnThrowPerformed;
+    }
+    void OnDisable(){
+        playerControls.Disable();
     }
     void OnMove(InputValue value) {
-        moveVal = value.Get<Vector2>();
-        if(moveVal.x != 0 || moveVal.y != 0){
-            faceDirection = moveVal;
+        if (currentlyAiming == false){
+            moveVal = value.Get<Vector2>();
+            if(moveVal.x != 0 || moveVal.y != 0){
+                faceDirection = moveVal;
+            }
         }
+
     }
 
     void OnSpin(InputValue value) {
@@ -40,7 +59,35 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnDash() {
-        dashActivated = true;
+        if (!currentlyAiming){
+            dashActivated = true;
+        }
+        
+    }
+    void OnThrowPerformed(InputAction.CallbackContext context){
+        if (carriedBomb){
+            moveVal = new Vector2(0,0);
+            currentlyAiming = true;
+        }
+    }
+    void OnThrowCanceled(InputAction.CallbackContext context){
+        // check if a bomb is carried
+        if (carriedBomb) {
+            // turn on bomb's useGravity
+            carriedBomb.GetComponent<Rigidbody>().useGravity = true;
+
+            // detach bomb from player
+            carriedBomb.transform.SetParent(null);
+
+            // activate bomb fuse
+            StartCoroutine(carriedBomb.GetComponent<BombController>().StartFuse());
+
+            // throw bomb in direction player is facing
+            carriedBomb.GetComponent<Rigidbody>().AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
+
+            carriedBomb = null;
+        }
+        currentlyAiming = false;
     }
 
     void OnPickUpDrop() {
@@ -69,22 +116,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnThrow() {
-        // check if a bomb is carried
-        if (carriedBomb) {
-            // turn on bomb's useGravity
-            carriedBomb.GetComponent<Rigidbody>().useGravity = true;
 
-            // detach bomb from player
-            carriedBomb.transform.SetParent(null);
-
-            // activate bomb fuse
-            StartCoroutine(carriedBomb.GetComponent<BombController>().StartFuse());
-
-            // throw bomb in direction player is facing
-            carriedBomb.GetComponent<Rigidbody>().AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
-
-            carriedBomb = null;
-        }
     }
 
     void Update() {
