@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 
     // dash
     private bool dashActivated = false;
-    private float dashDistance = 100;
+    private float dashDistance = 150;
 
     // bomb
     private GameObject pickableBomb = null;
@@ -26,6 +26,9 @@ public class PlayerController : MonoBehaviour {
     private Vector2 faceDirection;
     private DeviceInput playerControls;
     private bool currentlyAiming = false;
+
+    //bomb pickup logic
+    public Transform bombContainer;
 
     void Start(){
         playerBody = GetComponent<Rigidbody>();
@@ -74,10 +77,12 @@ public class PlayerController : MonoBehaviour {
         // check if a bomb is carried
         if (carriedBomb) {
             // turn on bomb's useGravity
-            carriedBomb.GetComponent<Rigidbody>().useGravity = true;
+            // carriedBomb.GetComponent<Rigidbody>().useGravity = true;
+            carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
 
             // detach bomb from player
             carriedBomb.transform.SetParent(null);
+            carriedBomb.transform.localScale = Vector3.one;
 
             // activate bomb fuse
             StartCoroutine(carriedBomb.GetComponent<BombController>().StartFuse());
@@ -94,12 +99,18 @@ public class PlayerController : MonoBehaviour {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
             // attach bomb to player
-            pickableBomb.transform.SetParent(gameObject.transform);
+            // pickableBomb.transform.SetParent(gameObject.transform);
             carriedBomb = pickableBomb;
             pickableBomb = null;
+            carriedBomb.transform.SetParent(bombContainer);
+            carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
+            carriedBomb.transform.localPosition = Vector3.zero;
+            // carriedBomb.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            // carriedBomb.transform.localScale = Vector3.one;
 
             // turn off bomb's useGravity so it stays with the player
-            carriedBomb.GetComponent<Rigidbody>().useGravity = false;
+            // carriedBomb.GetComponent<Rigidbody>().useGravity = false;
+            
         }
 
         // if already carrying a bomb, drop it
@@ -125,9 +136,10 @@ public class PlayerController : MonoBehaviour {
         Vector3 translation = new Vector3(moveVal.x/2, 0, moveVal.y/2);
 
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
-        transform.Translate(movementTranslation * moveSpeed * Time.deltaTime, Space.World);
+        // Debug.Log("movement" + movementTranslation);
+        // transform.Translate(movementTranslation * moveSpeed * Time.deltaTime, Space.World);
 
-        // playerBody.AddForce(translation,ForceMode.Impulse);
+        playerBody.AddForce(movementTranslation,ForceMode.Impulse);
         // playerBody.velocity = new Vector3(moveVal.x *10, 0, moveVal.y*10);
         // playerBody.velocity = translation;
 
