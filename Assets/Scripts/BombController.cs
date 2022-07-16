@@ -5,17 +5,24 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour {
     public GameObject explosionFX;
+    private bool activated = false;
 
     void OnCollisionEnter(Collision col) {
-        // explode if contact wall or another bomb
-        if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Bomb")) {
-            StartCoroutine(ExplosionEffect());
+        // check if activated
+        if (activated) {
+            // explode if contact wall or another bomb
+            if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Bomb")) {
+                StartCoroutine(ExplosionEffect());
+            }
         }
     }
 
     public IEnumerator StartFuse() {
         // TODO: overhaul this script because throwing a bomb will start the fuse but when impact wall it will destroy the object
         // so will have null reference warning error
+
+        activated = true;
+
         yield return new WaitForSeconds(3.0f);
         StartCoroutine(ExplosionEffect());
     }

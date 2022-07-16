@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour {
     // move
-    private float moveSpeed = 10;
+    private float moveSpeed = 5;
     private Vector2 moveVal;
 
     // spin
@@ -37,16 +37,20 @@ public class PlayerController : MonoBehaviour {
         playerControls.Default.Throw.canceled += OnThrowCanceled;
 
     }
+
     void Awake(){
         playerControls = new DeviceInput();
     }
+
     void OnEnable(){
         playerControls.Enable();
         // playerControls.Default.Throw.performed += OnThrowPerformed;
     }
+
     void OnDisable(){
         playerControls.Disable();
     }
+
     void OnMove(InputValue value) {
         if (currentlyAiming == false){
             moveVal = value.Get<Vector2>();
@@ -73,6 +77,7 @@ public class PlayerController : MonoBehaviour {
             currentlyAiming = true;
         }
     }
+
     void OnThrowCanceled(InputAction.CallbackContext context){
         // check if a bomb is carried
         if (carriedBomb) {
@@ -92,6 +97,7 @@ public class PlayerController : MonoBehaviour {
 
             carriedBomb = null;
         }
+
         currentlyAiming = false;
     }
 
@@ -103,22 +109,20 @@ public class PlayerController : MonoBehaviour {
             carriedBomb = pickableBomb;
             pickableBomb = null;
             carriedBomb.transform.SetParent(bombContainer);
-            carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
             carriedBomb.transform.localPosition = Vector3.zero;
             // carriedBomb.transform.localRotation = Quaternion.Euler(Vector3.zero);
             // carriedBomb.transform.localScale = Vector3.one;
 
             // turn off bomb's useGravity so it stays with the player
+            carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
             // carriedBomb.GetComponent<Rigidbody>().useGravity = false;
-            
         }
 
         // if already carrying a bomb, drop it
         else if (carriedBomb) {
-            // TODO: debug why bomb becomes so 'heavy' after dropping it
-
             // turn the bomb's useGravity back on
-            carriedBomb.GetComponent<Rigidbody>().useGravity = true;
+            carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
+            //carriedBomb.GetComponent<Rigidbody>().useGravity = true;
 
             // detach bomb
             carriedBomb.transform.SetParent(null);
@@ -126,20 +130,16 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnThrow() {
-
-    }
-
     void Update() {
         // move
         // apply translation to the world axes, so movement direction is constant and follows thumbsticks
-        Vector3 translation = new Vector3(moveVal.x/2, 0, moveVal.y/2);
+        //Vector3 translation = new Vector3(moveVal.x / 2, 0, moveVal.y / 2);
 
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
         // Debug.Log("movement" + movementTranslation);
         // transform.Translate(movementTranslation * moveSpeed * Time.deltaTime, Space.World);
 
-        playerBody.AddForce(movementTranslation,ForceMode.Impulse);
+        playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
         // playerBody.velocity = new Vector3(moveVal.x *10, 0, moveVal.y*10);
         // playerBody.velocity = translation;
 
@@ -150,14 +150,14 @@ public class PlayerController : MonoBehaviour {
             // if character is moving, apply dash in direction of movement
             // otherwise if character is stationary, apply dash in direction that player is facing
 
-            if (translation != Vector3.zero) {
+            if (movementTranslation != Vector3.zero) {
                 // transform.Translate(translation * dashDistance, Space.World);
                 // Vector3 movementDirection = new Vector3(translation.x*2,0,translation.y*2);
-                playerBody.AddForce(translation * dashDistance,ForceMode.Impulse);
+                playerBody.AddForce(movementTranslation / 2 * dashDistance, ForceMode.Impulse);
             } else {
                 // transform.Translate(Vector3.forward * dashDistance);
-                Vector3 stationaryDirection = new Vector3(faceDirection.x/(3/2),0,faceDirection.y/(3/2));
-                playerBody.AddForce(stationaryDirection * dashDistance,ForceMode.Impulse);
+                Vector3 stationaryDirection = new Vector3(faceDirection.x / (3/2), 0, faceDirection.y / (3/2));
+                playerBody.AddForce(stationaryDirection * dashDistance, ForceMode.Impulse);
             }
         }
 
@@ -187,11 +187,7 @@ public class PlayerController : MonoBehaviour {
                 // if in air, then pick up automatically if not already carrying a bomb
             }
         }
-
-
-
     }
-
 
     void OnCollisionExit(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {

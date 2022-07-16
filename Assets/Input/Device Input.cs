@@ -228,17 +228,6 @@ public partial class @DeviceInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""3b8c69ff-3561-4021-9a2a-c8bcff75ba65"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""ec316e3e-6364-4712-8e09-3b8f1b4de451"",
                     ""path"": ""<XInputController>/buttonWest"",
                     ""interactions"": """",
@@ -255,17 +244,6 @@ public partial class @DeviceInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Xbox Controller"",
-                    ""action"": ""Pick Up / Drop"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c72309d4-830f-4bec-b3cd-ddd8d45f71aa"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
                     ""action"": ""Pick Up / Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -294,17 +272,6 @@ public partial class @DeviceInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""13b17c7e-294e-40b3-b8ee-0cee63cab7eb"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
-                    ""action"": ""Throw"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""677cf70a-ffa4-4912-84ac-66573b8d0705"",
                     ""path"": ""<XInputController>/buttonEast"",
                     ""interactions"": """",
@@ -327,22 +294,55 @@ public partial class @DeviceInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b9d9abb7-5b4d-4ab4-852d-5bf29a0d1aa5"",
-                    ""path"": ""<Mouse>/middleButton"",
+                    ""id"": ""665a1d17-3654-40bb-9ddf-69afefd3357a"",
+                    ""path"": ""<XInputController>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard + Mouse"",
+                    ""groups"": ""Xbox Controller"",
                     ""action"": ""Ultimate Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""665a1d17-3654-40bb-9ddf-69afefd3357a"",
-                    ""path"": ""<XInputController>/buttonNorth"",
+                    ""id"": ""c72309d4-830f-4bec-b3cd-ddd8d45f71aa"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Xbox Controller"",
+                    ""groups"": ""Keyboard + Mouse"",
+                    ""action"": ""Pick Up / Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b8c69ff-3561-4021-9a2a-c8bcff75ba65"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard + Mouse"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13b17c7e-294e-40b3-b8ee-0cee63cab7eb"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard + Mouse"",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b9d9abb7-5b4d-4ab4-852d-5bf29a0d1aa5"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard + Mouse"",
                     ""action"": ""Ultimate Skill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
