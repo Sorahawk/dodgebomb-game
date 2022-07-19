@@ -1158,6 +1158,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
+    - target: {fileID: 1578842151811385495, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
 --- !u!4 &407084282 stripped
@@ -7262,7 +7266,7 @@ GameObject:
   - component: {fileID: 2147055235}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

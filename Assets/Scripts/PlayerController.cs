@@ -33,18 +33,17 @@ public class PlayerController : MonoBehaviour {
     void Start(){
         playerBody = GetComponent<Rigidbody>();
         // playerControls = new DeviceInput();
-        playerControls.Default.Throw.performed += OnThrowPerformed;
-        playerControls.Default.Throw.canceled += OnThrowCanceled;
 
     }
 
     void Awake(){
         playerControls = new DeviceInput();
+        playerControls.Default.Throw.performed += OnThrowPerformed;
+        playerControls.Default.Throw.canceled += OnThrowCanceled;
     }
 
     void OnEnable(){
         playerControls.Enable();
-        // playerControls.Default.Throw.performed += OnThrowPerformed;
     }
 
     void OnDisable(){
@@ -52,8 +51,9 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnMove(InputValue value) {
-        if (currentlyAiming == false){
+        if (!currentlyAiming){
             moveVal = value.Get<Vector2>();
+
             if(moveVal.x != 0 || moveVal.y != 0){
                 faceDirection = moveVal;
             }
@@ -79,6 +79,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void OnThrowCanceled(InputAction.CallbackContext context){
+        currentlyAiming = false;
+
         // check if a bomb is carried
         if (carriedBomb) {
             // turn on bomb's useGravity
@@ -89,39 +91,28 @@ public class PlayerController : MonoBehaviour {
             carriedBomb.transform.SetParent(null);
             carriedBomb.transform.localScale = Vector3.one;
 
+            // set bomb inAir to true
+            carriedBomb.GetComponent<BombController>().inAir = true;
+
             // activate bomb fuse
             StartCoroutine(carriedBomb.GetComponent<BombController>().StartFuse());
 
             // throw bomb in direction player is facing
             carriedBomb.GetComponent<Rigidbody>().AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
-
             carriedBomb = null;
         }
-
-        currentlyAiming = false;
     }
 
     void OnPickUpDrop() {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
-            // attach bomb to player
-            // pickableBomb.transform.SetParent(gameObject.transform);
-            carriedBomb = pickableBomb;
-            pickableBomb = null;
-            carriedBomb.transform.SetParent(bombContainer);
-            carriedBomb.transform.localPosition = Vector3.zero;
-            // carriedBomb.transform.localRotation = Quaternion.Euler(Vector3.zero);
-            // carriedBomb.transform.localScale = Vector3.one;
-
-            // turn off bomb's useGravity so it stays with the player
-            carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
-            // carriedBomb.GetComponent<Rigidbody>().useGravity = false;
+            PickUpBomb(pickableBomb);
         }
 
         // if already carrying a bomb, drop it
         else if (carriedBomb) {
-            // turn the bomb's useGravity back on
             carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
+            // turn the bomb's useGravity back on
             //carriedBomb.GetComponent<Rigidbody>().useGravity = true;
 
             // detach bomb
@@ -130,11 +121,45 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    void PickUpBomb(GameObject bombObject) {
+        pickableBomb = null;
+
+        // attach bomb to player
+        // pickableBomb.transform.SetParent(gameObject.transform);
+        carriedBomb = bombObject;
+
+        carriedBomb.transform.SetParent(bombContainer);
+        carriedBomb.transform.localPosition = Vector3.zero;
+        // carriedBomb.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        // carriedBomb.transform.localScale = Vector3.one;
+
+        carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
+        // turn off bomb's useGravity so it stays with the player
+        // carriedBomb.GetComponent<Rigidbody>().useGravity = false;
+    }
+
+    public void KillPlayer() {
+        Debug.Log("player killed");
+
+        // disable controls
+        gameObject.GetComponent<PlayerInput>().DeactivateInput();
+
+        // TODO: check if carried bombs are detected within the explosion
+        // if yes, then they should be exploded from the bomb script
+        // if not, explode carried bomb here
+
+        // death animation
+
+        // setting player object to inactive makes a new one spawn when input is detected
+        // so just render the player invisible and uncollidable
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<Renderer>().enabled = false;
+    }
+
     void Update() {
         // move
         // apply translation to the world axes, so movement direction is constant and follows thumbsticks
         //Vector3 translation = new Vector3(moveVal.x / 2, 0, moveVal.y / 2);
-
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
         // Debug.Log("movement" + movementTranslation);
         // transform.Translate(movementTranslation * moveSpeed * Time.deltaTime, Space.World);
@@ -181,10 +206,15 @@ public class PlayerController : MonoBehaviour {
 
             // can only pick up if bomb is from the front
             if (colliderName == "FrontCollider") {
-                pickableBomb = col.gameObject;
+                if (col.gameObject.GetComponent<BombController>().inAir) {
+                    PickUpBomb(col.gameObject);
+                } else pickableBomb = col.gameObject;
+            }
 
-                // TODO: check whether bomb is in-air or on the ground
-                // if in air, then pick up automatically if not already carrying a bomb
+            else if (colliderName == "SideBackCollider") {
+                if (col.gameObject.GetComponent<BombController>().inAir) {
+                    // explode bomb immediately
+                } else pickableBomb = col.gameObject;
             }
         }
     }

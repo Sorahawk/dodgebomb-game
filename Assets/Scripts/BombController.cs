@@ -5,37 +5,64 @@ using UnityEngine;
 
 public class BombController : MonoBehaviour {
     public GameObject explosionFX;
-    private bool activated = false;
+    private float explosionRadius = 3;
 
-    void OnCollisionEnter(Collision col) {
-        // check if activated
-        if (activated) {
-            // explode if contact wall or another bomb
-            if (col.gameObject.CompareTag("Wall") || col.gameObject.CompareTag("Bomb")) {
-                StartCoroutine(ExplosionEffect());
+    public bool activated = false;
+    public bool inAir = false;
+    private bool destroyed = false;
+
+    public IEnumerator StartFuse() {
+        activated = true;
+        yield return new WaitForSeconds(3.0f);
+
+        if (!destroyed) StartCoroutine(ExplosionEffect());
+    }
+
+    IEnumerator ExplosionEffect() {
+        destroyed = true;
+
+        GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<Renderer>().enabled = false;
+
+        CheckExplosionDamage(gameObject.transform.position, explosionRadius);
+
+        // destroy FX object after it finishes
+        yield return new WaitForSeconds(3.0f);
+        Destroy(explosion);
+
+        // destroy bomb game object
+        Destroy(gameObject);
+    }
+
+    void CheckExplosionDamage(Vector3 position, float radius) {
+        Collider[] objectsInExplosion = Physics.OverlapSphere(position, radius);
+
+        foreach (Collider col in objectsInExplosion) {
+            if (col.tag == "Player") {
+                col.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
         }
     }
 
-    public IEnumerator StartFuse() {
-        // TODO: overhaul this script because throwing a bomb will start the fuse but when impact wall it will destroy the object
-        // so will have null reference warning error
+    void OnCollisionEnter(Collision col) {
+        // check if activated i.e. bomb fuse is lit
+        if (activated) {
+            // explode if contact wall or another bomb
+            if (col.gameObject.CompareTag("Wall")) {
+                StartCoroutine(ExplosionEffect());
+            }
 
-        activated = true;
-
-        yield return new WaitForSeconds(3.0f);
-        StartCoroutine(ExplosionEffect());
+            // explode if contact another activated bomb
+            else if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<BombController>().activated) {
+                StartCoroutine(ExplosionEffect());
+            }
+        }
     }
-
-    IEnumerator ExplosionEffect() {
-        // destroy bomb game object
-        Destroy(gameObject);
-
-        GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
-
-        // destroy FX object after it finishes
-        // TODO: fix this cuz doesn't work
-        yield return new WaitForSeconds(3.0f);
-        Destroy(explosion);
+    
+    void OnCollisionStay(Collision col) {
+        if (col.gameObject.CompareTag("Ground")) {
+            inAir = false;
+        }
     }
 }
