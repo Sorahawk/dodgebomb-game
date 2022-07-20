@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6343596213315037513}
   - component: {fileID: 908372511460652621}
   - component: {fileID: 908372511460652620}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cuboid w Colliders
   m_TagString: Player
   m_Icon: {fileID: 0}

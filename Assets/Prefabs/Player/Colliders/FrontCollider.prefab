@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5557779099465031882}
   - component: {fileID: 7693773159755207680}
   - component: {fileID: 9008413447280806138}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FrontCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

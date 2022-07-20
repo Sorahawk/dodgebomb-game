@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 479049469752971209}
   - component: {fileID: 2396226977589099267}
   - component: {fileID: 3927295127500187521}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SideBackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5,6 +5,11 @@ using UnityEngine.InputSystem;
 
 
 public class PlayerController : MonoBehaviour {
+    private Rigidbody playerBody;
+    private PlayerInput playerInput;
+    private Vector2 faceDirection;
+    private bool currentlyAiming = false;
+
     // move
     private float moveSpeed = 5;
     private Vector2 moveVal;
@@ -22,32 +27,14 @@ public class PlayerController : MonoBehaviour {
     private GameObject carriedBomb = null;
     private int bombThrowForce = 30;
 
-    private Rigidbody playerBody;
-    private Vector2 faceDirection;
-    private DeviceInput playerControls;
-    private bool currentlyAiming = false;
-
     //bomb pickup logic
     public Transform bombContainer;
+    private Rigidbody bombBody;
+    private BombController bombScript;
 
     void Start(){
         playerBody = GetComponent<Rigidbody>();
-        // playerControls = new DeviceInput();
-
-    }
-
-    void Awake(){
-        playerControls = new DeviceInput();
-        playerControls.Default.Throw.performed += OnThrowPerformed;
-        playerControls.Default.Throw.canceled += OnThrowCanceled;
-    }
-
-    void OnEnable(){
-        playerControls.Enable();
-    }
-
-    void OnDisable(){
-        playerControls.Disable();
+        playerInput = GetComponent<PlayerInput>();
     }
 
     void OnMove(InputValue value) {
@@ -58,7 +45,6 @@ public class PlayerController : MonoBehaviour {
                 faceDirection = moveVal;
             }
         }
-
     }
 
     void OnSpin(InputValue value) {
@@ -71,34 +57,44 @@ public class PlayerController : MonoBehaviour {
         }
         
     }
-    void OnThrowPerformed(InputAction.CallbackContext context){
-        if (carriedBomb){
-            moveVal = new Vector2(0,0);
+
+    void OnThrow(){
+        // return if no bomb carried
+        if (!carriedBomb) {
+            currentlyAiming = false;
+            return;
+        }
+
+        // this function is only called if the appropriate key is pressed or released
+        // if IsPressed() is true, button was pressed; if false, button was released
+        bool isPress = playerInput.actions["Throw"].IsPressed();
+
+        // button pressed; aiming bomb
+        if (isPress){
+            moveVal = new Vector2(0, 0);
             currentlyAiming = true;
         }
-    }
 
-    void OnThrowCanceled(InputAction.CallbackContext context){
-        currentlyAiming = false;
+        // button released; throw bomb
+        // need to check that currentlyAiming is true
+        // if players press and hold Throw before picking up bomb, it will be thrown straight away when released
+        else if (!isPress && currentlyAiming) {
+            currentlyAiming = false;
 
-        // check if a bomb is carried
-        if (carriedBomb) {
-            // turn on bomb's useGravity
-            // carriedBomb.GetComponent<Rigidbody>().useGravity = true;
-            carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
+            bombBody = carriedBomb.GetComponent<Rigidbody>();
+            bombScript = carriedBomb.GetComponent<BombController>();
 
             // detach bomb from player
-            carriedBomb.transform.SetParent(null);
-            carriedBomb.transform.localScale = Vector3.one;
+            DetachCarriedBomb();
 
             // set bomb inAir to true
-            carriedBomb.GetComponent<BombController>().inAir = true;
+            bombScript.inAir = true;
 
             // activate bomb fuse
-            StartCoroutine(carriedBomb.GetComponent<BombController>().StartFuse());
+            StartCoroutine(bombScript.StartFuse());
 
             // throw bomb in direction player is facing
-            carriedBomb.GetComponent<Rigidbody>().AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
+            bombBody.AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
             carriedBomb = null;
         }
     }
@@ -111,42 +107,40 @@ public class PlayerController : MonoBehaviour {
 
         // if already carrying a bomb, drop it
         else if (carriedBomb) {
-            carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
-            // turn the bomb's useGravity back on
-            //carriedBomb.GetComponent<Rigidbody>().useGravity = true;
-
-            // detach bomb
-            carriedBomb.transform.SetParent(null);
-            carriedBomb = null;
+            DetachCarriedBomb();
         }
     }
 
+    // function to bind the bomb to the character; also used for auto-catching
     void PickUpBomb(GameObject bombObject) {
         pickableBomb = null;
-
-        // attach bomb to player
-        // pickableBomb.transform.SetParent(gameObject.transform);
         carriedBomb = bombObject;
 
+        // attach bomb to player
         carriedBomb.transform.SetParent(bombContainer);
         carriedBomb.transform.localPosition = Vector3.zero;
-        // carriedBomb.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        // carriedBomb.transform.localScale = Vector3.one;
 
+        // turn on bomb kinematics so position is fixed
         carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
-        // turn off bomb's useGravity so it stays with the player
-        // carriedBomb.GetComponent<Rigidbody>().useGravity = false;
+    }
+
+    // function to detach the carried bomb from the player object
+    void DetachCarriedBomb() {
+        // turn off bomb kinematics
+        carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
+
+        // detach bomb
+        carriedBomb.transform.SetParent(null);
+        carriedBomb = null;
     }
 
     public void KillPlayer() {
-        Debug.Log("player killed");
-
         // disable controls
-        gameObject.GetComponent<PlayerInput>().DeactivateInput();
+        playerInput.DeactivateInput();
 
-        // TODO: check if carried bombs are detected within the explosion
-        // if yes, then they should be exploded from the bomb script
-        // if not, explode carried bomb here
+        // drop any carried bombs
+        // if they were within the explosion radius, just light the fuse within bomb explosion calculation
+        DetachCarriedBomb();
 
         // death animation
 
@@ -158,30 +152,21 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         // move
-        // apply translation to the world axes, so movement direction is constant and follows thumbsticks
-        //Vector3 translation = new Vector3(moveVal.x / 2, 0, moveVal.y / 2);
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
-        // Debug.Log("movement" + movementTranslation);
-        // transform.Translate(movementTranslation * moveSpeed * Time.deltaTime, Space.World);
-
         playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
-        // playerBody.velocity = new Vector3(moveVal.x *10, 0, moveVal.y*10);
-        // playerBody.velocity = translation;
 
         // dash
         if (dashActivated) {
             dashActivated = false;
 
             // if character is moving, apply dash in direction of movement
-            // otherwise if character is stationary, apply dash in direction that player is facing
-
             if (movementTranslation != Vector3.zero) {
-                // transform.Translate(translation * dashDistance, Space.World);
-                // Vector3 movementDirection = new Vector3(translation.x*2,0,translation.y*2);
                 playerBody.AddForce(movementTranslation / 2 * dashDistance, ForceMode.Impulse);
-            } else {
-                // transform.Translate(Vector3.forward * dashDistance);
-                Vector3 stationaryDirection = new Vector3(faceDirection.x / (3/2), 0, faceDirection.y / (3/2));
+            }
+
+            // if character is stationary, apply dash in direction that player is facing
+            else {
+                Vector3 stationaryDirection = new Vector3(faceDirection.x * 1.5f, 0, faceDirection.y * 1.5f);
                 playerBody.AddForce(stationaryDirection * dashDistance, ForceMode.Impulse);
             }
         }
@@ -203,16 +188,17 @@ public class PlayerController : MonoBehaviour {
     void OnCollisionStay(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             System.String colliderName = col.GetContact(0).thisCollider.name;
+            bombScript = col.gameObject.GetComponent<BombController>();
 
             // can only pick up if bomb is from the front
             if (colliderName == "FrontCollider") {
-                if (col.gameObject.GetComponent<BombController>().inAir) {
+                if (bombScript.inAir) {
                     PickUpBomb(col.gameObject);
                 } else pickableBomb = col.gameObject;
             }
 
             else if (colliderName == "SideBackCollider") {
-                if (col.gameObject.GetComponent<BombController>().inAir) {
+                if (bombScript.inAir) {
                     // explode bomb immediately
                 } else pickableBomb = col.gameObject;
             }

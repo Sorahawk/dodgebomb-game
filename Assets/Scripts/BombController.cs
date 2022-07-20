@@ -40,7 +40,15 @@ public class BombController : MonoBehaviour {
 
         foreach (Collider col in objectsInExplosion) {
             if (col.tag == "Player") {
-                col.gameObject.GetComponent<PlayerController>().KillPlayer();
+                // this raycast will detect if there any colliders between the bomb explosion and the player
+                // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
+                bool isBlocked = Physics.Linecast(transform.position, col.gameObject.transform.position);
+
+                if (!isBlocked) {
+                    col.gameObject.GetComponent<PlayerController>().KillPlayer();
+                }
+            } else if (col.tag == "Bomb") {
+                StartCoroutine(col.gameObject.GetComponent<BombController>().StartFuse());
             }
         }
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2793547802366403478}
   - component: {fileID: 984185824269566830}
   - component: {fileID: 984185824269566831}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CuboidPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
