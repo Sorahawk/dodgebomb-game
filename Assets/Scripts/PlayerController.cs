@@ -139,8 +139,8 @@ public class PlayerController : MonoBehaviour {
         playerInput.DeactivateInput();
 
         // drop any carried bombs
-        // if they were within the explosion radius, just light the fuse within bomb explosion calculation
-        DetachCarriedBomb();
+        // if the bomb itself was also within the explosion radius, the fuse is lit from within bomb script
+        if (carriedBomb) DetachCarriedBomb();
 
         // death animation
 

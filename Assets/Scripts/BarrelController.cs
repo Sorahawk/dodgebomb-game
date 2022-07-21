@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BombController : MonoBehaviour {
+public class BarrelController : MonoBehaviour {
     public GameObject explosionFX;
-    private float explosionRadius = 3;
+    private float explosionRadius = 5;
 
     public bool activated = false;
-    public bool inAir = false;
     private bool destroyed = false;
 
     public IEnumerator StartFuse() {
         activated = true;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.0f);
 
         if (!destroyed) StartCoroutine(ExplosionEffect());
     }
@@ -66,23 +65,5 @@ public class BombController : MonoBehaviour {
     }
 
     void OnCollisionEnter(Collision col) {
-        // check if activated i.e. bomb fuse is lit
-        if (activated) {
-            // explode if contact wall or another bomb
-            if (col.gameObject.CompareTag("Wall")) {
-                StartCoroutine(ExplosionEffect());
-            }
-
-            // explode if contact another activated bomb
-            else if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<BombController>().activated) {
-                StartCoroutine(ExplosionEffect());
-            }
-        }
-    }
-    
-    void OnCollisionStay(Collision col) {
-        if (col.gameObject.CompareTag("Ground")) {
-            inAir = false;
-        }
     }
 }
