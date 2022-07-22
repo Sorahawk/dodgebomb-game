@@ -904,7 +904,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb
+      value: Big Bomb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
@@ -1482,7 +1482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb (4)
+      value: Big Bomb (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
@@ -1676,7 +1676,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb (5)
+      value: Big Bomb (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
@@ -2043,7 +2043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb (6)
+      value: Big Bomb (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
@@ -3049,10 +3049,10 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 15
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3075,14 +3075,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.49625814, y: -0, z: -0, w: 0.86817497}
-  m_LocalPosition: {x: 0, y: 21.39, z: -8.88}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 15, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 59.505, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!1001 &965901583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4260,7 +4260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb (3)
+      value: Big Bomb (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
@@ -5854,7 +5854,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb (1)
+      value: Big Bomb (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
@@ -6280,7 +6280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5587053039629935786, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}
       propertyPath: m_Name
-      value: Coconut Bomb (2)
+      value: Big Bomb (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46b6ec95ec503fe46b2f3f8977222ed7, type: 3}

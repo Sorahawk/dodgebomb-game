@@ -7,19 +7,7 @@ public class BarrelController : MonoBehaviour {
     public GameObject explosionFX;
     private float explosionRadius = 5;
 
-    public bool activated = false;
-    private bool destroyed = false;
-
-    public IEnumerator StartFuse() {
-        activated = true;
-        yield return new WaitForSeconds(2.0f);
-
-        if (!destroyed) StartCoroutine(ExplosionEffect());
-    }
-
-    IEnumerator ExplosionEffect() {
-        destroyed = true;
-
+    public IEnumerator ExplosionEffect() {
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
 
         // make the object invisible for now
@@ -59,11 +47,8 @@ public class BarrelController : MonoBehaviour {
             } else if (col.tag == "Bomb") {
                 StartCoroutine(col.gameObject.GetComponent<BombController>().StartFuse());
             } else if (col.tag == "Barrel") {
-                StartCoroutine(col.gameObject.GetComponent<BarrelController>().StartFuse());
+                StartCoroutine(col.gameObject.GetComponent<BarrelController>().ExplosionEffect());
             }
         }
-    }
-
-    void OnCollisionEnter(Collision col) {
     }
 }

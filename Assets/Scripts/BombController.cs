@@ -60,7 +60,7 @@ public class BombController : MonoBehaviour {
             } else if (col.tag == "Bomb") {
                 StartCoroutine(col.gameObject.GetComponent<BombController>().StartFuse());
             } else if (col.tag == "Barrel") {
-                StartCoroutine(col.gameObject.GetComponent<BarrelController>().StartFuse());
+                StartCoroutine(col.gameObject.GetComponent<BarrelController>().ExplosionEffect());
             }
         }
     }
