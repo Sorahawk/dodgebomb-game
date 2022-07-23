@@ -56,10 +56,9 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnDash() {
-        if (!isAiming){
+        if (!isAiming && !carriedBomb){
             dashActivated = true;
         }
-        
     }
 
     // automatic callback when corresponding input is detected
@@ -182,13 +181,13 @@ public class PlayerController : CommonController {
 
             // can only pick up if bomb is from the front
             if (colliderName == "FrontCollider") {
-                if (bombScript.getInAir()) {
+                if (!carriedBomb && bombScript.getInAir()) {
                     PickUpBomb(col.gameObject);
                 } else pickableBomb = col.gameObject;
             }
 
             else if (colliderName == "SideBackCollider") {
-                if (bombScript.getInAir() && bombScript.getActive()) {
+                if (bombScript.getActive() && bombScript.getInAir()) {
                     // explode bomb immediately
                     StartCoroutine(bombScript.ExplodeNow());
                 } else pickableBomb = col.gameObject;
