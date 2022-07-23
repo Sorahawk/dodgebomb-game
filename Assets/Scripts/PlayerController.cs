@@ -76,7 +76,7 @@ public class PlayerController : CommonController {
 
         // button pressed; aiming bomb
         if (isPress){
-            moveVal = new Vector2(0, 0);
+            moveVal = Vector2.zero;
             isAiming = true;
         }
 
@@ -98,8 +98,8 @@ public class PlayerController : CommonController {
             // activate bomb
             bombScript.ActivateBomb();
 
-            // throw bomb in direction player is facing
-            bombBody.AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
+            // normalize direction vector and throw bomb
+            bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
             carriedBomb = null;
         }
     }
@@ -188,8 +188,9 @@ public class PlayerController : CommonController {
             }
 
             else if (colliderName == "SideBackCollider") {
-                if (bombScript.getInAir()) {
+                if (bombScript.getInAir() && bombScript.getActive()) {
                     // explode bomb immediately
+                    StartCoroutine(bombScript.ExplodeNow());
                 } else pickableBomb = col.gameObject;
             }
         }

@@ -25,6 +25,10 @@ public class ExplosiveController : CommonController {
         inAir = boolean;
     }
 
+    public bool getActive() {
+        return activated;
+    }
+
     public void ActivateBomb() {
         activated = true;
 
@@ -34,17 +38,19 @@ public class ExplosiveController : CommonController {
 
     private IEnumerator StartFuse() {
         if (fuseDelay > 0) {
-            GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
+            //GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
             //smokeObject.transform.SetParent(smokeTransform);
+            //smokeObject.transform.localPosition = Vector3.zero;
 
             yield return new WaitForSeconds(fuseDelay);
+
             //Destroy(smokeObject);
         }
 
-        if (!destroyed) StartCoroutine(ExplosionEffect());
+        if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
-    private IEnumerator ExplosionEffect() {
+    public IEnumerator ExplodeNow() {
         destroyed = true;
 
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
@@ -86,14 +92,14 @@ public class ExplosiveController : CommonController {
         if (activated) {
 
             // explode on contact with anything if fuseDelay is negative
-            if (fuseDelay < 0) StartCoroutine(ExplosionEffect());
+            if (fuseDelay < 0) StartCoroutine(ExplodeNow());
 
             // explode if contact wall
-            if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplosionEffect());
+            if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
 
             // explode if contact another activated bomb
-            if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().activated) {
-                StartCoroutine(ExplosionEffect());
+            if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().getActive()) {
+                StartCoroutine(ExplodeNow());
             }
         }
     }
