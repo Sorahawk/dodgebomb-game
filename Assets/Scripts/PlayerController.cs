@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PlayerController : MonoBehaviour {
-    private Rigidbody playerBody;
+public class PlayerController : CommonController {
+
     private PlayerInput playerInput;
-    private Vector2 faceDirection;
-    private bool currentlyAiming = false;
+    private Rigidbody playerBody;
+    private Vector2 lookDirection;
+    private bool isAiming = false;
 
     // move
     private float moveSpeed = 5;
@@ -23,45 +24,49 @@ public class PlayerController : MonoBehaviour {
     private float dashDistance = 150;
 
     // bomb
+    public Transform bombContainer;
+
+    private ExplosiveController bombScript;
+    private Rigidbody bombBody;
     private GameObject pickableBomb = null;
     private GameObject carriedBomb = null;
     private int bombThrowForce = 30;
 
-    //bomb pickup logic
-    public Transform bombContainer;
-    private Rigidbody bombBody;
-    private BombController bombScript;
 
-    void Start(){
-        playerBody = GetComponent<Rigidbody>();
+    private void Start() {
         playerInput = GetComponent<PlayerInput>();
+        playerBody = GetComponent<Rigidbody>();
     }
 
-    void OnMove(InputValue value) {
-        if (!currentlyAiming){
+    // automatic callback when corresponding input is detected
+    private void OnMove(InputValue value) {
+        if (!isAiming){
             moveVal = value.Get<Vector2>();
 
             if(moveVal.x != 0 || moveVal.y != 0){
-                faceDirection = moveVal;
+                lookDirection = moveVal;
             }
         }
     }
 
-    void OnSpin(InputValue value) {
+    // automatic callback when corresponding input is detected
+    private void OnSpin(InputValue value) {
         spinVal = value.Get<Vector2>();
     }
 
-    void OnDash() {
-        if (!currentlyAiming){
+    // automatic callback when corresponding input is detected
+    private void OnDash() {
+        if (!isAiming){
             dashActivated = true;
         }
         
     }
 
-    void OnThrow(){
+    // automatic callback when corresponding input is detected
+    private void OnThrow(){
         // return if no bomb carried
         if (!carriedBomb) {
-            currentlyAiming = false;
+            isAiming = false;
             return;
         }
 
@@ -72,17 +77,17 @@ public class PlayerController : MonoBehaviour {
         // button pressed; aiming bomb
         if (isPress){
             moveVal = new Vector2(0, 0);
-            currentlyAiming = true;
+            isAiming = true;
         }
 
         // button released; throw bomb
-        // need to check that currentlyAiming is true
+        // need to check that isAiming is true
         // if players press and hold Throw before picking up bomb, it will be thrown straight away when released
-        else if (!isPress && currentlyAiming) {
-            currentlyAiming = false;
+        else if (!isPress && isAiming) {
+            isAiming = false;
 
             bombBody = carriedBomb.GetComponent<Rigidbody>();
-            bombScript = carriedBomb.GetComponent<BombController>();
+            bombScript = carriedBomb.GetComponent<ExplosiveController>();
 
             // detach bomb from player
             DetachCarriedBomb();
@@ -99,7 +104,8 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnPickUpDrop() {
+    // automatic callback when corresponding input is detected
+    private void OnPickUpDrop() {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
             PickUpBomb(pickableBomb);
@@ -111,46 +117,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    // function to bind the bomb to the character; also used for auto-catching
-    void PickUpBomb(GameObject bombObject) {
-        pickableBomb = null;
-        carriedBomb = bombObject;
-
-        // attach bomb to player
-        carriedBomb.transform.SetParent(bombContainer);
-        carriedBomb.transform.localPosition = Vector3.zero;
-
-        // turn on bomb kinematics so position is fixed
-        carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
-    }
-
-    // function to detach the carried bomb from the player object
-    void DetachCarriedBomb() {
-        // turn off bomb kinematics
-        carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
-
-        // detach bomb
-        carriedBomb.transform.SetParent(null);
-        carriedBomb = null;
-    }
-
-    public void KillPlayer() {
-        // disable controls
-        playerInput.DeactivateInput();
-
-        // drop any carried bombs
-        // if the bomb itself was also within the explosion radius, the fuse is lit from within bomb script
-        if (carriedBomb) DetachCarriedBomb();
-
-        // death animation
-
-        // setting player object to inactive makes a new one spawn when input is detected
-        // so just render the player invisible and uncollidable
-        gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.GetComponent<Renderer>().enabled = false;
-    }
-
-    void Update() {
+    private void Update() {
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
         playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
@@ -166,7 +133,7 @@ public class PlayerController : MonoBehaviour {
 
             // if character is stationary, apply dash in direction that player is facing
             else {
-                Vector3 stationaryDirection = new Vector3(faceDirection.x * 1.5f, 0, faceDirection.y * 1.5f);
+                Vector3 stationaryDirection = new Vector3(lookDirection.x * 1.5f, 0, lookDirection.y * 1.5f);
                 playerBody.AddForce(stationaryDirection * dashDistance, ForceMode.Impulse);
             }
         }
@@ -184,11 +151,34 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+    // function to bind the bomb to the character; also used for auto-catching
+    private void PickUpBomb(GameObject bombObject) {
+        pickableBomb = null;
+        carriedBomb = bombObject;
+
+        // attach bomb to player
+        carriedBomb.transform.SetParent(bombContainer);
+        carriedBomb.transform.localPosition = Vector3.zero;
+
+        // turn on bomb kinematics so position is fixed
+        carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
+    }
+
+    // function to detach the carried bomb from the player object
+    private void DetachCarriedBomb() {
+        // turn off bomb kinematics
+        carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
+
+        // detach bomb
+        carriedBomb.transform.SetParent(null);
+        carriedBomb = null;
+    }
+
     // use OnCollisionStay to reconfirm object collision every frame
-    void OnCollisionStay(Collision col) {
+    private void OnCollisionStay(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             System.String colliderName = col.GetContact(0).thisCollider.name;
-            bombScript = col.gameObject.GetComponent<BombController>();
+            bombScript = col.gameObject.GetComponent<ExplosiveController>();
 
             // can only pick up if bomb is from the front
             if (colliderName == "FrontCollider") {
@@ -205,9 +195,29 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void OnCollisionExit(Collision col) {
+    private void OnCollisionExit(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             pickableBomb = null;
         }
+    }
+
+    public void KillPlayer() {
+        // disable controls
+        playerInput.DeactivateInput();
+
+        // drop any carried bombs
+        // no need to light the fuse because it will be handled from within bomb script
+        if (carriedBomb) DetachCarriedBomb();
+
+
+        // play death animation
+
+        // wait for animation to finish playing
+
+
+        // setting player object to inactive makes a new one spawn when input is detected
+        // so just render the player invisible and uncollidable
+        DisableAllColliders();
+        DisableAllRenderers();
     }
 }

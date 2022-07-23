@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7099059404345640170}
   - component: {fileID: 4999025975849906208}
   - component: {fileID: 3387395574208231206}
-  - component: {fileID: -4725368141448943459}
+  - component: {fileID: -7337605158039293492}
   m_Layer: 0
   m_Name: Oil Barrel
   m_TagString: Barrel
@@ -100,7 +100,7 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 8967326690461673748, guid: 5268200bc6db80845af09eb0823e211e, type: 3}
---- !u!114 &-4725368141448943459
+--- !u!114 &-7337605158039293492
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,8 +109,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6800690333703492085}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c32cfa8f4c69da8418ac2e106f8bf7e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 21a8ddb5995ee3f4489fc90698b5d266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-  activated: 0
+  inAir: 0
+  fuseDelay: 0
+  explosionRadius: 5

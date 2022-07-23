@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 5098887934725651984}
   - component: {fileID: 5676886610614376559}
   - component: {fileID: -1105857664423850764}
-  - component: {fileID: -3700654753089406108}
+  - component: {fileID: 1366807831971306202}
   m_Layer: 0
   m_Name: Coconut Bomb
   m_TagString: Bomb
@@ -315,7 +315,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3700654753089406108
+--- !u!114 &1366807831971306202
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -324,9 +324,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5587053039629935786}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d49e1bd76b464cde9b259de85025b2f, type: 3}
+  m_Script: {fileID: 11500000, guid: 21a8ddb5995ee3f4489fc90698b5d266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-  activated: 0
   inAir: 0
+  fuseDelay: 3
+  explosionRadius: 3
