@@ -21,7 +21,7 @@ public class PlayerController : CommonController {
 
     // dash
     private bool dashActivated = false;
-    private float dashDistance = 150;
+    private float dashDistance = 70;
 
     // bomb
     public Transform bombContainer;
@@ -42,10 +42,6 @@ public class PlayerController : CommonController {
     private void OnMove(InputValue value) {
         if (!isAiming){
             moveVal = value.Get<Vector2>();
-
-            if(moveVal.x != 0 || moveVal.y != 0){
-                lookDirection = moveVal;
-            }
         }
     }
 
@@ -127,14 +123,11 @@ public class PlayerController : CommonController {
 
             // if character is moving, apply dash in direction of movement
             if (movementTranslation != Vector3.zero) {
-                playerBody.AddForce(movementTranslation / 2 * dashDistance, ForceMode.Impulse);
+                playerBody.AddForce(movementTranslation / movementTranslation.magnitude * dashDistance, ForceMode.Impulse);
             }
 
             // if character is stationary, apply dash in direction that player is facing
-            else {
-                Vector3 stationaryDirection = new Vector3(lookDirection.x * 1.5f, 0, lookDirection.y * 1.5f);
-                playerBody.AddForce(stationaryDirection * dashDistance, ForceMode.Impulse);
-            }
+            else playerBody.AddForce(latestDir / latestDir.magnitude * dashDistance, ForceMode.Impulse);
         }
 
         // spin
