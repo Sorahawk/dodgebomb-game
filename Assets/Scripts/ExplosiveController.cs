@@ -5,23 +5,41 @@ using UnityEngine;
 
 public class ExplosiveController : CommonController {
 
+    public Transform smokeTransform;
+    public GameObject smokeFX;
     public GameObject explosionFX;
-    public bool inAir = false;
 
     public float fuseDelay;
     public float explosionRadius;
 
     private bool activated = false;
+    private bool inAir = false;
     private bool destroyed = false;
 
 
-    public bool isInAir() {
+    public bool getInAir() {
         return inAir;
     }
 
-   public IEnumerator StartFuse() {
+    public void setInAir(bool boolean) {
+        inAir = boolean;
+    }
+
+    public void ActivateBomb() {
         activated = true;
-        yield return new WaitForSeconds(fuseDelay);
+
+        // set fuseDelay to -1 in editor for it to explode ONLY on contact with any collider
+        if (fuseDelay >= 0) StartCoroutine(StartFuse());
+    }
+
+    private IEnumerator StartFuse() {
+        if (fuseDelay > 0) {
+            GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
+            //smokeObject.transform.SetParent(smokeTransform);
+
+            yield return new WaitForSeconds(fuseDelay);
+            //Destroy(smokeObject);
+        }
 
         if (!destroyed) StartCoroutine(ExplosionEffect());
     }
@@ -54,10 +72,10 @@ public class ExplosiveController : CommonController {
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, col.gameObject.transform.position);
 
-                if (!isBlocked) {
-                    col.gameObject.GetComponent<PlayerController>().KillPlayer();
-                }
-            } else if (col.tag == "Bomb" || col.tag == "Barrel") {
+                if (!isBlocked) col.gameObject.GetComponent<PlayerController>().KillPlayer();
+            }
+
+            else if (col.tag == "Bomb" || col.tag == "Barrel") {
                 StartCoroutine(col.gameObject.GetComponent<ExplosiveController>().StartFuse());
             }
         }
@@ -66,21 +84,21 @@ public class ExplosiveController : CommonController {
     private void OnCollisionEnter(Collision col) {
         // check if activated i.e. bomb fuse is lit
         if (activated) {
-            // explode if contact wall or another bomb
-            if (col.gameObject.CompareTag("Wall")) {
-                StartCoroutine(ExplosionEffect());
-            }
+
+            // explode on contact with anything if fuseDelay is negative
+            if (fuseDelay < 0) StartCoroutine(ExplosionEffect());
+
+            // explode if contact wall
+            if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplosionEffect());
 
             // explode if contact another activated bomb
-            else if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().activated) {
+            if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().activated) {
                 StartCoroutine(ExplosionEffect());
             }
         }
     }
     
     private void OnCollisionStay(Collision col) {
-        if (col.gameObject.CompareTag("Ground")) {
-            inAir = false;
-        }
+        if (col.gameObject.CompareTag("Ground")) inAir = false;
     }
 }

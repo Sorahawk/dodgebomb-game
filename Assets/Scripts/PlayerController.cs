@@ -93,10 +93,10 @@ public class PlayerController : CommonController {
             DetachCarriedBomb();
 
             // set bomb inAir to true
-            bombScript.inAir = true;
+            bombScript.setInAir(true);
 
-            // activate bomb fuse
-            StartCoroutine(bombScript.StartFuse());
+            // activate bomb
+            bombScript.ActivateBomb();
 
             // throw bomb in direction player is facing
             bombBody.AddForce(latestDir * bombThrowForce, ForceMode.Impulse);
@@ -182,13 +182,13 @@ public class PlayerController : CommonController {
 
             // can only pick up if bomb is from the front
             if (colliderName == "FrontCollider") {
-                if (bombScript.inAir) {
+                if (bombScript.getInAir()) {
                     PickUpBomb(col.gameObject);
                 } else pickableBomb = col.gameObject;
             }
 
             else if (colliderName == "SideBackCollider") {
-                if (bombScript.inAir) {
+                if (bombScript.getInAir()) {
                     // explode bomb immediately
                 } else pickableBomb = col.gameObject;
             }

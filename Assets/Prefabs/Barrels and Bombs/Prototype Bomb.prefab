@@ -128,6 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-  inAir: 0
-  fuseDelay: 2
+  fuseDelay: -1
   explosionRadius: 2
