@@ -156,7 +156,7 @@ public class ExplosiveController : CommonController {
             if (fuseDelay < 0) StartCoroutine(ExplodeNow());
 
             // explode if contact wall
-            if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
+            // if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
 
             // explode if contact another activated bomb
             if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().getActive()) {
