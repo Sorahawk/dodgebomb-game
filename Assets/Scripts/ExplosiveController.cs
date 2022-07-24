@@ -12,10 +12,19 @@ public class ExplosiveController : CommonController {
     public float fuseDelay;
     public float explosionRadius;
 
+    private Rigidbody bombBody;
+    private Collider bombCollider;
+    private GameObject playerHolding = null;
+
     private bool activated = false;
     private bool inAir = false;
     private bool destroyed = false;
 
+
+    private void Start() {
+        bombBody = GetComponent<Rigidbody>();
+        bombCollider = GetComponent<Collider>();
+    }
 
     public bool getInAir() {
         return inAir;
@@ -29,6 +38,39 @@ public class ExplosiveController : CommonController {
         return activated;
     }
 
+    // bind the bomb to the character
+    public void AttachToPlayer(GameObject playerObject) {
+        // if a player is already holding the bomb, detach it
+        if (playerHolding) DetachFromPlayer();
+
+        // attach bomb to new player
+        playerHolding = playerObject;
+        transform.SetParent(playerObject.GetComponent<PlayerController>().bombContainer);
+        transform.localPosition = Vector3.zero;
+
+        // turn on bomb kinematics so position is fixed
+        bombBody.isKinematic = true;
+
+        // turn off bomb collider so it doesn't affect the physics if it touches anything
+        bombCollider.enabled = false;
+    }
+
+    // detach bomb from current player object holding it
+    public void DetachFromPlayer() {
+        playerHolding.GetComponent<PlayerController>().SetCarryNull();
+        playerHolding = null;
+
+        // turn off bomb kinematics
+        bombBody.isKinematic = false;
+
+        // turn on collider
+        bombCollider.enabled = true;
+
+        // detach bomb
+        transform.SetParent(null);
+    }
+
+    // set bomb to active
     public void ActivateBomb() {
         activated = true;
 
@@ -36,7 +78,8 @@ public class ExplosiveController : CommonController {
         if (fuseDelay >= 0) StartCoroutine(StartFuse());
     }
 
-    private IEnumerator StartFuse() {
+    // start fuse timer
+    public IEnumerator StartFuse() {
         if (fuseDelay > 0) {
             //GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
             //smokeObject.transform.SetParent(smokeTransform);
@@ -50,14 +93,15 @@ public class ExplosiveController : CommonController {
         if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
-    public IEnumerator ExplodeNow() {
+    // explode immediately
+    private IEnumerator ExplodeNow() {
         destroyed = true;
 
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
 
         // make the object invisible for now
-        DisableAllColliders();
-        DisableAllRenderers();
+        EnableAllColliders(false);
+        EnableAllRenderers(false);
 
         CheckExplosionDamage(gameObject.transform.position, explosionRadius);
 
