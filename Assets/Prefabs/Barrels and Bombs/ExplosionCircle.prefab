@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 105835980178008294}
   - component: {fileID: 3993155286989572752}
+  - component: {fileID: 2559428155312309317}
   m_Layer: 0
   m_Name: ExplosionCircle
   m_TagString: Untagged
@@ -84,3 +85,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2559428155312309317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564128434191510518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086cb8f22e208044796185ecdf3a6343, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startColor: {r: 0.98039216, g: 0.22745098, b: 0.22745098, a: 0.6156863}
+  endColor: {r: 0.33962262, g: 0.014417935, b: 0.014417935, a: 1}
+  speed: 2
