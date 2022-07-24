@@ -68,7 +68,7 @@ public class PlayerController : CommonController {
         // if already carrying a bomb, drop it
         else if (carriedBomb) {
             // carriedBomb will be set to null as bomb.DetachFromPlayer() calls SetCarryNull()
-            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+            DropBomb();
         }
     }
 
@@ -116,6 +116,12 @@ public class PlayerController : CommonController {
 
     public void SetCarryBomb(GameObject bombObject) {
         carriedBomb = bombObject;
+    }
+
+    public void DropBomb() {
+        if (carriedBomb) {
+            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+        }
     }
 
     private void Update() {
@@ -168,13 +174,15 @@ public class PlayerController : CommonController {
     }
 
     private void OnTriggerStay(Collider other) {
-        if (other.gameObject.CompareTag("Bomb")) {
+        if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = other.gameObject;
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Bomb")) pickableBomb = null;
+        if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
+            pickableBomb = null;
+        }
     }
 
     public void KillPlayer() {

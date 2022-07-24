@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Ground
   - Barrel
+  - Rock
   layers:
   - Default
   - TransparentFX

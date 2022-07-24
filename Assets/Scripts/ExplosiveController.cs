@@ -12,18 +12,21 @@ public class ExplosiveController : CommonController {
     public float fuseDelay;
     public float explosionRadius;
 
-    private Rigidbody bombBody;
-    private Collider bombCollider;
-    private GameObject playerHolding = null;
+    public ExplosiveController finalScript;
 
-    private bool activated = false;
-    private bool inAir = false;
-    private bool destroyed = false;
+    protected Rigidbody bombBody;
+    protected Collider bombCollider;
+    protected GameObject playerHolding = null;
+
+    protected bool activated = false;
+    protected bool inAir = false;
+    protected bool destroyed = false;
 
 
-    private void Start() {
+    protected void Start() {
         bombBody = GetComponent<Rigidbody>();
         bombCollider = GetComponent<Collider>();
+        finalScript = this;
     }
 
     public bool getInAir() {
@@ -98,24 +101,28 @@ public class ExplosiveController : CommonController {
     public IEnumerator ExplodeNow() {
         destroyed = true;
 
-        GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
+        // if explosionFX not set in editor, don't play explosion FX
+        GameObject explosion = null;
+        if (explosionFX) explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
 
         // make the object invisible for now
         EnableAllColliders(false);
         EnableAllRenderers(false);
 
-        CheckExplosionDamage(gameObject.transform.position, explosionRadius);
+        CheckExplosionDamage();
 
-        // destroy FX object after it finishes
-        yield return new WaitForSeconds(3.0f);
-        Destroy(explosion);
+        if (explosion) {
+            // destroy FX object after it finishes
+            yield return new WaitForSeconds(3f);
+            Destroy(explosion);
+        }
 
         // destroy game object
         Destroy(gameObject);
     }
 
-    private void CheckExplosionDamage(Vector3 position, float radius) {
-        Collider[] objectsInExplosion = Physics.OverlapSphere(position, radius);
+    protected void CheckExplosionDamage() {
+        Collider[] objectsInExplosion = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider other in objectsInExplosion) {
             if (other.tag == "Player") {
@@ -128,11 +135,20 @@ public class ExplosiveController : CommonController {
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
                 StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
+
+                // additionally apply explosion force on bombs
+                if (other.tag == "Bomb") {
+                    other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionRadius * 3, transform.position, explosionRadius, 0, ForceMode.Impulse);
+                }
+            }
+
+            else if (other.tag == "Rock") {
+                other.gameObject.GetComponent<RockController>().ExplodeNow();
             }
         }
     }
 
-    private void OnCollisionEnter(Collision col) {
+    protected void OnCollisionEnter(Collision col) {
         // check if activated i.e. bomb fuse is lit
         if (activated) {
 
@@ -149,7 +165,7 @@ public class ExplosiveController : CommonController {
         }
     }
     
-    private void OnCollisionStay(Collision col) {
+    protected void OnCollisionStay(Collision col) {
         if (col.gameObject.CompareTag("Ground")) inAir = false;
     }
 }

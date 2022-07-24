@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1578842151811385495}
   - component: {fileID: 1578842151811385492}
   - component: {fileID: 1578842151811385488}
-  - component: {fileID: 5773773466222295388}
   - component: {fileID: 476386904443591967}
+  - component: {fileID: -1810480893466535813}
   m_Layer: 0
-  m_Name: Contact Bomb
-  m_TagString: Bomb
+  m_Name: Rock
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2b72f54e9445c2c4c9758f68df5ef9d3, type: 2}
+  - {fileID: 2100000, guid: e4e23eb8ec1b3c449bf23e4fafb02a1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -116,23 +116,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5773773466222295388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578842151811385493}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21a8ddb5995ee3f4489fc90698b5d266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  smokeTransform: {fileID: 0}
-  smokeFX: {fileID: 0}
-  explosionFX: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
-  fuseDelay: -1
-  explosionRadius: 2
 --- !u!135 &476386904443591967
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -146,3 +129,20 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1810480893466535813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578842151811385493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3314cb28f42d8164b856444d18390c77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokeTransform: {fileID: 0}
+  smokeFX: {fileID: 0}
+  explosionFX: {fileID: 0}
+  fuseDelay: -1
+  explosionRadius: 0
