@@ -26,8 +26,8 @@ public class PlayerController : CommonController {
     // bomb
     public Transform bombContainer;
 
-    private ExplosiveController bombScript;
     private Rigidbody bombBody;
+    private ExplosiveController bombScript;
     private GameObject pickableBomb = null;
     private GameObject carriedBomb = null;
     private int bombThrowForce = 30;
@@ -58,6 +58,21 @@ public class PlayerController : CommonController {
     }
 
     // automatic callback when corresponding input is detected
+    private void OnPickUpDrop() {
+        // check that not carrying any bombs, and a bomb is pickable
+        if (!carriedBomb && pickableBomb) {
+            pickableBomb.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
+            pickableBomb = null;
+        }
+
+        // if already carrying a bomb, drop it
+        else if (carriedBomb) {
+            // carriedBomb will be set to null as bomb.DetachFromPlayer() calls SetCarryNull()
+            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+        }
+    }
+
+    // automatic callback when corresponding input is detected
     private void OnThrow(){
         // return if no bomb carried
         if (!carriedBomb) {
@@ -81,11 +96,12 @@ public class PlayerController : CommonController {
         else if (!isPress && isAiming) {
             isAiming = false;
 
+            // declare bombBody here before carriedBomb is nullified by DetachFromPlayer()
             bombBody = carriedBomb.GetComponent<Rigidbody>();
             bombScript = carriedBomb.GetComponent<ExplosiveController>();
 
             // detach bomb from player
-            DetachCarriedBomb();
+            bombScript.DetachFromPlayer();
 
             // set bomb inAir to true
             bombScript.setInAir(true);
@@ -95,21 +111,11 @@ public class PlayerController : CommonController {
 
             // normalize direction vector and throw bomb
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
-            carriedBomb = null;
         }
     }
 
-    // automatic callback when corresponding input is detected
-    private void OnPickUpDrop() {
-        // check that not carrying any bombs, and a bomb is pickable
-        if (!carriedBomb && pickableBomb) {
-            PickUpBomb(pickableBomb);
-        }
-
-        // if already carrying a bomb, drop it
-        else if (carriedBomb) {
-            DetachCarriedBomb();
-        }
+    public void SetCarryBomb(GameObject bombObject) {
+        carriedBomb = bombObject;
     }
 
     private void Update() {
@@ -143,55 +149,32 @@ public class PlayerController : CommonController {
         }
     }
 
-    // function to bind the bomb to the character; also used for auto-catching
-    private void PickUpBomb(GameObject bombObject) {
-        pickableBomb = null;
-        carriedBomb = bombObject;
-
-        // attach bomb to player
-        carriedBomb.transform.SetParent(bombContainer);
-        carriedBomb.transform.localPosition = Vector3.zero;
-
-        // turn on bomb kinematics so position is fixed
-        carriedBomb.GetComponent<Rigidbody>().isKinematic = true;
-    }
-
-    // function to detach the carried bomb from the player object
-    private void DetachCarriedBomb() {
-        // turn off bomb kinematics
-        carriedBomb.GetComponent<Rigidbody>().isKinematic = false;
-
-        // detach bomb
-        carriedBomb.transform.SetParent(null);
-        carriedBomb = null;
-    }
-
-    // use OnCollisionStay to reconfirm object collision every frame
-    private void OnCollisionStay(Collision col) {
+    // use OnCollisionEnter to check bomb in-air hit
+    private void OnCollisionEnter(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             System.String colliderName = col.GetContact(0).thisCollider.name;
             bombScript = col.gameObject.GetComponent<ExplosiveController>();
 
-            // can only pick up if bomb is from the front
-            if (colliderName == "FrontCollider") {
-                if (!carriedBomb && bombScript.getInAir()) {
-                    PickUpBomb(col.gameObject);
-                } else pickableBomb = col.gameObject;
+            if (colliderName == "FrontCollider" && bombScript.getInAir() && !carriedBomb) {
+                // can only pick up if bomb comes from the front and empty hands
+                bombScript.AttachToPlayer(gameObject);
             }
 
-            else if (colliderName == "SideBackCollider") {
-                if (bombScript.getActive() && bombScript.getInAir()) {
-                    // explode bomb immediately
-                    StartCoroutine(bombScript.ExplodeNow());
-                } else pickableBomb = col.gameObject;
+            else if (colliderName == "SideBackCollider" && bombScript.getInAir() && bombScript.getActive()) {
+                // activate bomb effect immediately if hit side or back
+                StartCoroutine(bombScript.ExplodeNow());
             }
         }
     }
 
-    private void OnCollisionExit(Collision col) {
-        if (col.gameObject.CompareTag("Bomb")) {
-            pickableBomb = null;
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.CompareTag("Bomb")) {
+            pickableBomb = other.gameObject;
         }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Bomb")) pickableBomb = null;
     }
 
     public void KillPlayer() {
@@ -200,7 +183,7 @@ public class PlayerController : CommonController {
 
         // drop any carried bombs
         // no need to light the fuse because it will be handled from within bomb script
-        if (carriedBomb) DetachCarriedBomb();
+        if (carriedBomb) carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
 
 
         // play death animation
@@ -210,7 +193,7 @@ public class PlayerController : CommonController {
 
         // setting player object to inactive makes a new one spawn when input is detected
         // so just render the player invisible and uncollidable
-        DisableAllColliders();
-        DisableAllRenderers();
+        EnableAllColliders(false);
+        EnableAllRenderers(false);
     }
 }
