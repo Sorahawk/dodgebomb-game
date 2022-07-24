@@ -85,9 +85,9 @@ public class ExplosiveController : CommonController {
     // start fuse timer
     public IEnumerator StartFuse() {
         if (fuseDelay > 0) {
-            //GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
-            //smokeObject.transform.SetParent(smokeTransform);
-            //smokeObject.transform.localPosition = Vector3.zero;
+            GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
+            smokeObject.transform.SetParent(smokeTransform);
+            smokeObject.transform.localPosition = Vector3.zero;
 
             yield return new WaitForSeconds(fuseDelay);
 
