@@ -58,6 +58,22 @@ public class PlayerController : CommonController {
     }
 
     // automatic callback when corresponding input is detected
+    private void OnPickUpDrop() {
+        // check that not carrying any bombs, and a bomb is pickable
+        if (!carriedBomb && pickableBomb) {
+            pickableBomb.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
+            carriedBomb = pickableBomb;
+            pickableBomb = null;
+        }
+
+        // if already carrying a bomb, drop it
+        else if (carriedBomb) {
+            // carriedBomb will be set to null as bomb.DetachFromPlayer() calls SetCarryNull()
+            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+        }
+    }
+
+    // automatic callback when corresponding input is detected
     private void OnThrow(){
         // return if no bomb carried
         if (!carriedBomb) {
@@ -91,27 +107,17 @@ public class PlayerController : CommonController {
             // set bomb inAir to true
             bombScript.setInAir(true);
 
+            Debug.Log("in air");
+
             // activate bomb
             bombScript.ActivateBomb();
 
+            Debug.Log("throwing bomb");
+
             // normalize direction vector and throw bomb
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
-        }
-    }
 
-    // automatic callback when corresponding input is detected
-    private void OnPickUpDrop() {
-        // check that not carrying any bombs, and a bomb is pickable
-        if (!carriedBomb && pickableBomb) {
-            pickableBomb.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
-            carriedBomb = pickableBomb;
-            pickableBomb = null;
-        }
-
-        // if already carrying a bomb, drop it
-        else if (carriedBomb) {
-            // carriedBomb will be set to null as bomb.DetachFromPlayer() calls SetCarryNull()
-            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+            Debug.Log("throw end");
         }
     }
 
@@ -150,32 +156,32 @@ public class PlayerController : CommonController {
         }
     }
 
-    // use OnCollisionStay to reconfirm object collision every frame
-    private void OnCollisionStay(Collision col) {
+    // use OnCollisionEnter to check bomb in-air hit
+    private void OnCollisionEnter(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             System.String colliderName = col.GetContact(0).thisCollider.name;
             bombScript = col.gameObject.GetComponent<ExplosiveController>();
 
             // can only pick up if bomb comes from the front and empty hands
-            if (colliderName == "FrontCollider") {
-                if (!carriedBomb && bombScript.getInAir()) {
-                    col.gameObject.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
-                } else pickableBomb = col.gameObject;
+            if (colliderName == "FrontCollider" && bombScript.getInAir() && !carriedBomb) {
+                bombScript.AttachToPlayer(gameObject);
             }
 
             // activate bomb effect immediately if hit side or back
-            else if (colliderName == "SideBackCollider") {
-                if (bombScript.getActive() && bombScript.getInAir()) {
-                    StartCoroutine(bombScript.StartFuse());
-                }
+            else if (colliderName == "SideBackCollider" && bombScript.getInAir() && bombScript.getActive()) {
+                StartCoroutine(bombScript.StartFuse());
             }
         }
     }
 
-    private void OnCollisionExit(Collision col) {
-        if (col.gameObject.CompareTag("Bomb")) {
-            pickableBomb = null;
+    private void OnTriggerStay(Collider other) {
+        if (other.gameObject.CompareTag("Bomb")) {
+            pickableBomb = other.gameObject;
         }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.CompareTag("Bomb")) pickableBomb = null;
     }
 
     public void KillPlayer() {

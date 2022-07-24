@@ -57,6 +57,8 @@ public class ExplosiveController : CommonController {
 
     // detach bomb from current player object holding it
     public void DetachFromPlayer() {
+        Debug.Log("detach start");
+
         playerHolding.GetComponent<PlayerController>().SetCarryNull();
         playerHolding = null;
 
@@ -66,20 +68,30 @@ public class ExplosiveController : CommonController {
         // turn on collider
         bombCollider.enabled = true;
 
+        Debug.Log(transform.parent);
+
         // detach bomb
         transform.SetParent(null);
+
+        Debug.Log(transform.parent);
     }
 
     // set bomb to active
     public void ActivateBomb() {
+        Debug.Log("activate start");
         activated = true;
 
         // set fuseDelay to -1 in editor for it to explode ONLY on contact with any collider
         if (fuseDelay >= 0) StartCoroutine(StartFuse());
+
+
+        Debug.Log("activate end");
     }
 
     // start fuse timer
     public IEnumerator StartFuse() {
+        Debug.Log("fuse start");
+
         if (fuseDelay > 0) {
             //GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
             //smokeObject.transform.SetParent(smokeTransform);
@@ -91,10 +103,14 @@ public class ExplosiveController : CommonController {
         }
 
         if (!destroyed) StartCoroutine(ExplodeNow());
+
+        Debug.Log("fuse end");
     }
 
     // explode immediately
     private IEnumerator ExplodeNow() {
+        Debug.Log("explode start");
+
         destroyed = true;
 
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
@@ -109,6 +125,9 @@ public class ExplosiveController : CommonController {
         yield return new WaitForSeconds(3.0f);
         Destroy(explosion);
 
+
+        Debug.Log("explode end");
+
         // destroy game object
         Destroy(gameObject);
     }
@@ -116,17 +135,17 @@ public class ExplosiveController : CommonController {
     private void CheckExplosionDamage(Vector3 position, float radius) {
         Collider[] objectsInExplosion = Physics.OverlapSphere(position, radius);
 
-        foreach (Collider col in objectsInExplosion) {
-            if (col.tag == "Player") {
+        foreach (Collider other in objectsInExplosion) {
+            if (other.tag == "Player") {
                 // this raycast will detect if there any colliders between the explosion origin and the player
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
-                bool isBlocked = Physics.Linecast(transform.position, col.gameObject.transform.position);
+                bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
 
-                if (!isBlocked) col.gameObject.GetComponent<PlayerController>().KillPlayer();
+                if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
 
-            else if (col.tag == "Bomb" || col.tag == "Barrel") {
-                StartCoroutine(col.gameObject.GetComponent<ExplosiveController>().StartFuse());
+            else if (other.tag == "Bomb" || other.tag == "Barrel") {
+                StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
             }
         }
     }
