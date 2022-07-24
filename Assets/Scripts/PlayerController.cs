@@ -61,7 +61,8 @@ public class PlayerController : CommonController {
     private void OnPickUpDrop() {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
-            pickableBomb.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
+            bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
+            bombScript.AttachToPlayer(gameObject);
             pickableBomb = null;
         }
 
@@ -98,7 +99,6 @@ public class PlayerController : CommonController {
 
             // declare bombBody here before carriedBomb is nullified by DetachFromPlayer()
             bombBody = carriedBomb.GetComponent<Rigidbody>();
-            bombScript = carriedBomb.GetComponent<ExplosiveController>();
 
             // detach bomb from player
             bombScript.DetachFromPlayer();
@@ -120,7 +120,7 @@ public class PlayerController : CommonController {
 
     public void DropBomb() {
         if (carriedBomb) {
-            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+            bombScript.DetachFromPlayer();
         }
     }
 
@@ -163,16 +163,16 @@ public class PlayerController : CommonController {
     private void OnCollisionEnter(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             System.String colliderName = col.GetContact(0).thisCollider.name;
-            bombScript = col.gameObject.GetComponent<ExplosiveController>();
+            ExplosiveController colBombScript = col.gameObject.GetComponent<ExplosiveController>();
 
-            if (colliderName == "FrontCollider" && bombScript.getInAir() && !carriedBomb) {
+            if (colliderName == "FrontCollider" && colBombScript.getInAir() && !carriedBomb) {
                 // can only pick up if bomb comes from the front and empty hands
-                bombScript.AttachToPlayer(gameObject);
+                colBombScript.AttachToPlayer(gameObject);
             }
 
-            else if (colliderName == "SideBackCollider" && bombScript.getInAir() && bombScript.getActive()) {
+            else if (colliderName == "SideBackCollider" && colBombScript.getInAir() && colBombScript.getActive()) {
                 // activate bomb effect immediately if hit side or back
-                StartCoroutine(bombScript.ExplodeNow());
+                StartCoroutine(colBombScript.ExplodeNow());
             }
         }
     }
@@ -195,7 +195,7 @@ public class PlayerController : CommonController {
 
         // drop any carried bombs
         // no need to light the fuse because it will be handled from within bomb script
-        if (carriedBomb) carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+        if (carriedBomb) bombScript.DetachFromPlayer();
 
 
         // play death animation

@@ -12,10 +12,10 @@ public class ExplosiveController : CommonController {
     public float fuseDelay;
     public float explosionRadius;
 
-    public ExplosiveController finalScript;
-
     protected Rigidbody bombBody;
     protected Collider bombCollider;
+    protected ExplosiveController bombScript;
+    protected PlayerController playerScript;
     protected GameObject playerHolding = null;
 
     protected bool activated = false;
@@ -26,7 +26,7 @@ public class ExplosiveController : CommonController {
     protected void Start() {
         bombBody = GetComponent<Rigidbody>();
         bombCollider = GetComponent<Collider>();
-        finalScript = this;
+        bombScript = this;
     }
 
     public bool getInAir() {
@@ -41,6 +41,10 @@ public class ExplosiveController : CommonController {
         return activated;
     }
 
+    public ExplosiveController getScript() {
+        return bombScript;
+    }
+
     // bind the bomb to the character
     public void AttachToPlayer(GameObject playerObject) {
         // if a player is already holding the bomb, detach it
@@ -48,8 +52,10 @@ public class ExplosiveController : CommonController {
 
         // attach bomb to new player
         playerHolding = playerObject;
-        playerHolding.GetComponent<PlayerController>().SetCarryBomb(gameObject);
-        transform.SetParent(playerObject.GetComponent<PlayerController>().bombContainer);
+        playerScript = playerHolding.GetComponent<PlayerController>();
+
+        playerScript.SetCarryBomb(gameObject);
+        transform.SetParent(playerScript.bombContainer);
         transform.localPosition = Vector3.zero;
 
         // turn on bomb kinematics so position is fixed
@@ -61,7 +67,10 @@ public class ExplosiveController : CommonController {
 
     // detach bomb from current player object holding it
     public void DetachFromPlayer() {
-        playerHolding.GetComponent<PlayerController>().SetCarryBomb(null);
+        if (!playerHolding) return;
+
+        playerScript.SetCarryBomb(null);
+        playerScript = null;
         playerHolding = null;
 
         // turn off bomb kinematics
@@ -90,8 +99,6 @@ public class ExplosiveController : CommonController {
             smokeObject.transform.localPosition = Vector3.zero;
 
             yield return new WaitForSeconds(fuseDelay);
-
-            //Destroy(smokeObject);
         }
 
         if (!destroyed) StartCoroutine(ExplodeNow());
