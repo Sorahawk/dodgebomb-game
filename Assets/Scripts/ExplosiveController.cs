@@ -8,6 +8,10 @@ public class ExplosiveController : CommonController {
     public Transform smokeTransform;
     public GameObject smokeFX;
     public GameObject explosionFX;
+    public GameObject explosionCircle;
+    GameObject explosionVisualCircle;
+
+    private bool explosionCircleSpawned;
 
     public float fuseDelay;
     public float explosionRadius;
@@ -89,12 +93,29 @@ public class ExplosiveController : CommonController {
             smokeObject.transform.SetParent(smokeTransform);
             smokeObject.transform.localPosition = Vector3.zero;
 
+            explosionCircleSpawned = true;
+            explosionVisualCircle = Instantiate(explosionCircle, bombBody.position, Quaternion.identity);
+            explosionVisualCircle.transform.localScale = new Vector3(explosionRadius*2,explosionRadius*2,explosionRadius*2);
+            explosionVisualCircle.transform.localRotation = Quaternion.Euler(90, 0, 0);
+
             yield return new WaitForSeconds(fuseDelay);
 
             //Destroy(smokeObject);
+            explosionCircleSpawned = false;
         }
 
         if (!destroyed) StartCoroutine(ExplodeNow());
+    }
+
+    void Update(){
+        if (explosionCircleSpawned){
+            Vector3 circleFollowPos = new Vector3(bombBody.transform.position.x,bombBody.transform.position.y-0.4f,bombBody.transform.position.z); 
+            explosionVisualCircle.transform.position = circleFollowPos;
+        }
+        else{
+            Destroy(explosionVisualCircle);
+        }
+        
     }
 
     // explode immediately
@@ -129,6 +150,10 @@ public class ExplosiveController : CommonController {
                 // this raycast will detect if there any colliders between the explosion origin and the player
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
+                Debug.Log("transform position");
+                Debug.Log(transform.position);
+                Debug.Log("other gameobject position");
+                Debug.Log(other.gameObject.transform.position);
 
                 if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
