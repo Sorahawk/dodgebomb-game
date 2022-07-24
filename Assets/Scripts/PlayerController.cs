@@ -62,7 +62,6 @@ public class PlayerController : CommonController {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
             pickableBomb.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
-            carriedBomb = pickableBomb;
             pickableBomb = null;
         }
 
@@ -107,22 +106,16 @@ public class PlayerController : CommonController {
             // set bomb inAir to true
             bombScript.setInAir(true);
 
-            Debug.Log("in air");
-
             // activate bomb
             bombScript.ActivateBomb();
 
-            Debug.Log("throwing bomb");
-
             // normalize direction vector and throw bomb
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
-
-            Debug.Log("throw end");
         }
     }
 
-    public void SetCarryNull() {
-        carriedBomb = null;
+    public void SetCarryBomb(GameObject bombObject) {
+        carriedBomb = bombObject;
     }
 
     private void Update() {
@@ -162,14 +155,14 @@ public class PlayerController : CommonController {
             System.String colliderName = col.GetContact(0).thisCollider.name;
             bombScript = col.gameObject.GetComponent<ExplosiveController>();
 
-            // can only pick up if bomb comes from the front and empty hands
             if (colliderName == "FrontCollider" && bombScript.getInAir() && !carriedBomb) {
+                // can only pick up if bomb comes from the front and empty hands
                 bombScript.AttachToPlayer(gameObject);
             }
 
-            // activate bomb effect immediately if hit side or back
             else if (colliderName == "SideBackCollider" && bombScript.getInAir() && bombScript.getActive()) {
-                StartCoroutine(bombScript.StartFuse());
+                // activate bomb effect immediately if hit side or back
+                StartCoroutine(bombScript.ExplodeNow());
             }
         }
     }

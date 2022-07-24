@@ -45,6 +45,7 @@ public class ExplosiveController : CommonController {
 
         // attach bomb to new player
         playerHolding = playerObject;
+        playerHolding.GetComponent<PlayerController>().SetCarryBomb(gameObject);
         transform.SetParent(playerObject.GetComponent<PlayerController>().bombContainer);
         transform.localPosition = Vector3.zero;
 
@@ -57,9 +58,7 @@ public class ExplosiveController : CommonController {
 
     // detach bomb from current player object holding it
     public void DetachFromPlayer() {
-        Debug.Log("detach start");
-
-        playerHolding.GetComponent<PlayerController>().SetCarryNull();
+        playerHolding.GetComponent<PlayerController>().SetCarryBomb(null);
         playerHolding = null;
 
         // turn off bomb kinematics
@@ -68,30 +67,20 @@ public class ExplosiveController : CommonController {
         // turn on collider
         bombCollider.enabled = true;
 
-        Debug.Log(transform.parent);
-
         // detach bomb
         transform.SetParent(null);
-
-        Debug.Log(transform.parent);
     }
 
     // set bomb to active
     public void ActivateBomb() {
-        Debug.Log("activate start");
         activated = true;
 
         // set fuseDelay to -1 in editor for it to explode ONLY on contact with any collider
         if (fuseDelay >= 0) StartCoroutine(StartFuse());
-
-
-        Debug.Log("activate end");
     }
 
     // start fuse timer
     public IEnumerator StartFuse() {
-        Debug.Log("fuse start");
-
         if (fuseDelay > 0) {
             //GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
             //smokeObject.transform.SetParent(smokeTransform);
@@ -103,14 +92,10 @@ public class ExplosiveController : CommonController {
         }
 
         if (!destroyed) StartCoroutine(ExplodeNow());
-
-        Debug.Log("fuse end");
     }
 
     // explode immediately
-    private IEnumerator ExplodeNow() {
-        Debug.Log("explode start");
-
+    public IEnumerator ExplodeNow() {
         destroyed = true;
 
         GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
@@ -124,9 +109,6 @@ public class ExplosiveController : CommonController {
         // destroy FX object after it finishes
         yield return new WaitForSeconds(3.0f);
         Destroy(explosion);
-
-
-        Debug.Log("explode end");
 
         // destroy game object
         Destroy(gameObject);

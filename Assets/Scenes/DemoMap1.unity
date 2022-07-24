@@ -1223,7 +1223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578842151811385493, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
       propertyPath: m_Name
-      value: Prototype Bomb (2)
+      value: Contact Bomb (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
@@ -4329,7 +4329,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578842151811385493, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
       propertyPath: m_Name
-      value: Prototype Bomb (1)
+      value: Contact Bomb (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
@@ -6344,7 +6344,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578842151811385493, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
       propertyPath: m_Name
-      value: Prototype Bomb
+      value: Contact Bomb
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ac0700dc79d044785b1039c5792700, type: 3}

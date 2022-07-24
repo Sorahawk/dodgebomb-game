@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5773773466222295388}
   - component: {fileID: 476386904443591967}
   m_Layer: 0
-  m_Name: Prototype Bomb
+  m_Name: Contact Bomb
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
