@@ -125,23 +125,6 @@ public class PlayerController : CommonController {
     }
 
     private void Update() {
-        // move
-        Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
-        playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
-
-        // dash
-        if (dashActivated) {
-            dashActivated = false;
-
-            // if character is moving, apply dash in direction of movement
-            if (movementTranslation != Vector3.zero) {
-                playerBody.AddForce(movementTranslation / movementTranslation.magnitude * dashDistance, ForceMode.Impulse);
-            }
-
-            // if character is stationary, apply dash in direction that player is facing
-            else playerBody.AddForce(latestDir / latestDir.magnitude * dashDistance, ForceMode.Impulse);
-        }
-
         // spin
         // rotate character according to spin input, by "looking at" corresponding world coordinates
         float lookX = transform.position.x + spinVal.x;
@@ -152,6 +135,27 @@ public class PlayerController : CommonController {
 
         if (spinVal != Vector2.zero) {
             latestDir = new Vector3(spinVal.x, 0, spinVal.y);
+        }
+    }
+
+    private void FixedUpdate() {
+        // move
+        Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
+        playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
+
+        // dash
+        if (dashActivated) {
+            dashActivated = false;
+
+            Vector3 dashForce;
+
+            // if character is moving, apply dash in direction of movement
+            if (movementTranslation != Vector3.zero) dashForce = movementTranslation;
+
+            // if character is stationary, apply dash in direction that player is facing
+            else dashForce = latestDir;
+
+            playerBody.AddForce(dashForce / dashForce.magnitude * dashDistance, ForceMode.Impulse);
         }
     }
 

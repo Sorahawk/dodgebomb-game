@@ -146,3 +146,4 @@ MonoBehaviour:
   explosionFX: {fileID: 0}
   fuseDelay: -1
   explosionRadius: 0
+  finalScript: {fileID: 0}
