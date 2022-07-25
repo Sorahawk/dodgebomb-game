@@ -7,15 +7,20 @@ public class ExplosiveController : CommonController {
 
     public Transform smokeTransform;
     public GameObject smokeFX;
+
     public GameObject explosionFX;
+    public GameObject explosionCircle;
 
     public float fuseDelay;
     public float explosionRadius;
 
-    public ExplosiveController finalScript;
+    protected GameObject smokeObject;
+    protected GameObject explosionCircleObject;
 
     protected Rigidbody bombBody;
     protected Collider bombCollider;
+    protected ExplosiveController bombScript;
+    protected PlayerController playerScript;
     protected GameObject playerHolding = null;
 
     protected bool activated = false;
@@ -26,7 +31,7 @@ public class ExplosiveController : CommonController {
     protected void Start() {
         bombBody = GetComponent<Rigidbody>();
         bombCollider = GetComponent<Collider>();
-        finalScript = this;
+        bombScript = this;
     }
 
     public bool getInAir() {
@@ -41,6 +46,10 @@ public class ExplosiveController : CommonController {
         return activated;
     }
 
+    public ExplosiveController getScript() {
+        return bombScript;
+    }
+
     // bind the bomb to the character
     public void AttachToPlayer(GameObject playerObject) {
         // if a player is already holding the bomb, detach it
@@ -48,8 +57,10 @@ public class ExplosiveController : CommonController {
 
         // attach bomb to new player
         playerHolding = playerObject;
-        playerHolding.GetComponent<PlayerController>().SetCarryBomb(gameObject);
-        transform.SetParent(playerObject.GetComponent<PlayerController>().bombContainer);
+        playerScript = playerHolding.GetComponent<PlayerController>();
+
+        playerScript.SetCarryBomb(gameObject);
+        transform.SetParent(playerScript.bombContainer);
         transform.localPosition = Vector3.zero;
 
         // turn on bomb kinematics so position is fixed
@@ -61,7 +72,10 @@ public class ExplosiveController : CommonController {
 
     // detach bomb from current player object holding it
     public void DetachFromPlayer() {
-        playerHolding.GetComponent<PlayerController>().SetCarryBomb(null);
+        if (!playerHolding) return;
+
+        playerScript.SetCarryBomb(null);
+        playerScript = null;
         playerHolding = null;
 
         // turn off bomb kinematics
@@ -85,21 +99,39 @@ public class ExplosiveController : CommonController {
     // start fuse timer
     public IEnumerator StartFuse() {
         if (fuseDelay > 0) {
-            //GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
-            //smokeObject.transform.SetParent(smokeTransform);
-            //smokeObject.transform.localPosition = Vector3.zero;
+            // smoke VFX
+            if (!smokeObject) {
+                smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
+                smokeObject.transform.SetParent(smokeTransform);
+                smokeObject.transform.localPosition = Vector3.zero;
+            }
+
+            // explosion radius VFX
+            // start fuse can be called multiple times, but only spawn the circle once
+            if (!explosionCircleObject) {
+                explosionCircleObject = Instantiate(explosionCircle, bombBody.position, Quaternion.identity);
+                explosionCircleObject.transform.localScale = new Vector3(explosionRadius*2,explosionRadius*2,explosionRadius*2);
+                explosionCircleObject.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            }
 
             yield return new WaitForSeconds(fuseDelay);
-
-            //Destroy(smokeObject);
         }
 
         if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
+    void Update(){
+        if (explosionCircleObject) {
+            Vector3 circleFollowPos = new Vector3(bombBody.transform.position.x,bombBody.transform.position.y - 0.4f, bombBody.transform.position.z);
+            explosionCircleObject.transform.position = circleFollowPos;
+        }
+    }
+
     // explode immediately
     public IEnumerator ExplodeNow() {
         destroyed = true;
+
+        if (explosionCircleObject) Destroy(explosionCircleObject);
 
         // if explosionFX not set in editor, don't play explosion FX
         GameObject explosion = null;
@@ -156,7 +188,7 @@ public class ExplosiveController : CommonController {
             if (fuseDelay < 0) StartCoroutine(ExplodeNow());
 
             // explode if contact wall
-            if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
+            // if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
 
             // explode if contact another activated bomb
             if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().getActive()) {

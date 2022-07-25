@@ -61,7 +61,8 @@ public class PlayerController : CommonController {
     private void OnPickUpDrop() {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
-            pickableBomb.GetComponent<ExplosiveController>().AttachToPlayer(gameObject);
+            bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
+            bombScript.AttachToPlayer(gameObject);
             pickableBomb = null;
         }
 
@@ -98,7 +99,6 @@ public class PlayerController : CommonController {
 
             // declare bombBody here before carriedBomb is nullified by DetachFromPlayer()
             bombBody = carriedBomb.GetComponent<Rigidbody>();
-            bombScript = carriedBomb.GetComponent<ExplosiveController>();
 
             // detach bomb from player
             bombScript.DetachFromPlayer();
@@ -120,28 +120,11 @@ public class PlayerController : CommonController {
 
     public void DropBomb() {
         if (carriedBomb) {
-            carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+            bombScript.DetachFromPlayer();
         }
     }
 
     private void Update() {
-        // move
-        Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
-        playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
-
-        // dash
-        if (dashActivated) {
-            dashActivated = false;
-
-            // if character is moving, apply dash in direction of movement
-            if (movementTranslation != Vector3.zero) {
-                playerBody.AddForce(movementTranslation / movementTranslation.magnitude * dashDistance, ForceMode.Impulse);
-            }
-
-            // if character is stationary, apply dash in direction that player is facing
-            else playerBody.AddForce(latestDir / latestDir.magnitude * dashDistance, ForceMode.Impulse);
-        }
-
         // spin
         // rotate character according to spin input, by "looking at" corresponding world coordinates
         float lookX = transform.position.x + spinVal.x;
@@ -155,20 +138,41 @@ public class PlayerController : CommonController {
         }
     }
 
+    private void FixedUpdate() {
+        // move
+        Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
+        playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
+
+        // dash
+        if (dashActivated) {
+            dashActivated = false;
+
+            Vector3 dashForce;
+
+            // if character is moving, apply dash in direction of movement
+            if (movementTranslation != Vector3.zero) dashForce = movementTranslation;
+
+            // if character is stationary, apply dash in direction that player is facing
+            else dashForce = latestDir;
+
+            playerBody.AddForce(dashForce / dashForce.magnitude * dashDistance, ForceMode.Impulse);
+        }
+    }
+
     // use OnCollisionEnter to check bomb in-air hit
     private void OnCollisionEnter(Collision col) {
         if (col.gameObject.CompareTag("Bomb")) {
             System.String colliderName = col.GetContact(0).thisCollider.name;
-            bombScript = col.gameObject.GetComponent<ExplosiveController>();
+            ExplosiveController colBombScript = col.gameObject.GetComponent<ExplosiveController>();
 
-            if (colliderName == "FrontCollider" && bombScript.getInAir() && !carriedBomb) {
+            if (colliderName == "FrontCollider" && colBombScript.getInAir() && !carriedBomb) {
                 // can only pick up if bomb comes from the front and empty hands
-                bombScript.AttachToPlayer(gameObject);
+                colBombScript.AttachToPlayer(gameObject);
             }
 
-            else if (colliderName == "SideBackCollider" && bombScript.getInAir() && bombScript.getActive()) {
+            else if (colliderName == "SideBackCollider" && colBombScript.getInAir() && colBombScript.getActive()) {
                 // activate bomb effect immediately if hit side or back
-                StartCoroutine(bombScript.ExplodeNow());
+                StartCoroutine(colBombScript.ExplodeNow());
             }
         }
     }
@@ -191,7 +195,7 @@ public class PlayerController : CommonController {
 
         // drop any carried bombs
         // no need to light the fuse because it will be handled from within bomb script
-        if (carriedBomb) carriedBomb.GetComponent<ExplosiveController>().DetachFromPlayer();
+        if (carriedBomb) bombScript.DetachFromPlayer();
 
 
         // play death animation
