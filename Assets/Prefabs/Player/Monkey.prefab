@@ -1243,6 +1243,7 @@ GameObject:
   - component: {fileID: 3722157027754185212}
   - component: {fileID: -4668056755766103616}
   - component: {fileID: 5702454110998792915}
+  - component: {fileID: -1731823443167105420}
   m_Layer: 2
   m_Name: Monkey
   m_TagString: Player
@@ -1343,6 +1344,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombContainer: {fileID: 5746082519967853474}
+--- !u!95 &-1731823443167105420
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700831722076095505}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6204eb978e9650c47943bf987ec89d7d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4825725571074474857
 GameObject:
   m_ObjectHideFlags: 0

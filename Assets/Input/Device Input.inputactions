@@ -49,15 +49,6 @@
                     "processors": "",
                     "interactions": "Press(behavior=2)",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Ultimate Skill",
-                    "type": "Button",
-                    "id": "789efd39-77d9-4ea0-89c8-a9f94391360d",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -261,30 +252,19 @@
                 },
                 {
                     "name": "",
-                    "id": "a2af6510-679c-4438-94c8-e24649903da3",
-                    "path": "<XInputController>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Controller",
-                    "action": "Ultimate Skill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "665a1d17-3654-40bb-9ddf-69afefd3357a",
-                    "path": "<XInputController>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Controller",
-                    "action": "Ultimate Skill",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c72309d4-830f-4bec-b3cd-ddd8d45f71aa",
                     "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Pick Up / Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0aa42d5f-b875-496f-ae37-0c7efd38d4e3",
+                    "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
@@ -316,12 +296,12 @@
                 },
                 {
                     "name": "",
-                    "id": "b9d9abb7-5b4d-4ab4-852d-5bf29a0d1aa5",
-                    "path": "<Mouse>/middleButton",
+                    "id": "1c115465-7810-41d2-aede-11fdae1f7465",
+                    "path": "<Keyboard>/k",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
-                    "action": "Ultimate Skill",
+                    "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
