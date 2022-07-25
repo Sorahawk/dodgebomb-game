@@ -7,14 +7,15 @@ public class ExplosiveController : CommonController {
 
     public Transform smokeTransform;
     public GameObject smokeFX;
+
     public GameObject explosionFX;
     public GameObject explosionCircle;
-    GameObject explosionVisualCircle;
-
-    private bool explosionCircleSpawned;
 
     public float fuseDelay;
     public float explosionRadius;
+
+    protected GameObject smokeObject;
+    protected GameObject explosionCircleObject;
 
     protected Rigidbody bombBody;
     protected Collider bombCollider;
@@ -98,38 +99,39 @@ public class ExplosiveController : CommonController {
     // start fuse timer
     public IEnumerator StartFuse() {
         if (fuseDelay > 0) {
-            GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
-            smokeObject.transform.SetParent(smokeTransform);
-            smokeObject.transform.localPosition = Vector3.zero;
+            // smoke VFX
+            if (!smokeObject) {
+                smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
+                smokeObject.transform.SetParent(smokeTransform);
+                smokeObject.transform.localPosition = Vector3.zero;
+            }
 
-            explosionCircleSpawned = true;
-            explosionVisualCircle = Instantiate(explosionCircle, bombBody.position, Quaternion.identity);
-            explosionVisualCircle.transform.localScale = new Vector3(explosionRadius*2,explosionRadius*2,explosionRadius*2);
-            explosionVisualCircle.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            // explosion radius VFX
+            // start fuse can be called multiple times, but only spawn the circle once
+            if (!explosionCircleObject) {
+                explosionCircleObject = Instantiate(explosionCircle, bombBody.position, Quaternion.identity);
+                explosionCircleObject.transform.localScale = new Vector3(explosionRadius*2,explosionRadius*2,explosionRadius*2);
+                explosionCircleObject.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            }
 
             yield return new WaitForSeconds(fuseDelay);
-
-            //Destroy(smokeObject);
-            explosionCircleSpawned = false;
         }
 
         if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
     void Update(){
-        if (explosionCircleSpawned){
-            Vector3 circleFollowPos = new Vector3(bombBody.transform.position.x,bombBody.transform.position.y-0.4f,bombBody.transform.position.z); 
-            explosionVisualCircle.transform.position = circleFollowPos;
+        if (explosionCircleObject) {
+            Vector3 circleFollowPos = new Vector3(bombBody.transform.position.x,bombBody.transform.position.y - 0.4f, bombBody.transform.position.z);
+            explosionCircleObject.transform.position = circleFollowPos;
         }
-        else{
-            Destroy(explosionVisualCircle);
-        }
-        
     }
 
     // explode immediately
     public IEnumerator ExplodeNow() {
         destroyed = true;
+
+        if (explosionCircleObject) Destroy(explosionCircleObject);
 
         // if explosionFX not set in editor, don't play explosion FX
         GameObject explosion = null;
@@ -159,10 +161,6 @@ public class ExplosiveController : CommonController {
                 // this raycast will detect if there any colliders between the explosion origin and the player
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
-                Debug.Log("transform position");
-                Debug.Log(transform.position);
-                Debug.Log("other gameobject position");
-                Debug.Log(other.gameObject.transform.position);
 
                 if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
