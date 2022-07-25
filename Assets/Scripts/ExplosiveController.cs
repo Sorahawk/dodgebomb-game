@@ -166,12 +166,6 @@ public class ExplosiveController : CommonController {
                 if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
 
-            else if (other.tag == "Grass") {
-                bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
-
-                if (!isBlocked) other.gameObject.GetComponent<Renderer>().enabled = false;
-            }
-
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
                 StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
 
@@ -183,6 +177,10 @@ public class ExplosiveController : CommonController {
 
             else if (other.tag == "Rock") {
                 other.gameObject.GetComponent<RockController>().ExplodeNow();
+            }
+
+            else if (other.tag == "Grass") {
+                other.gameObject.GetComponent<Renderer>().enabled = false;
             }
         }
     }

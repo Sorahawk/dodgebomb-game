@@ -144,6 +144,6 @@ MonoBehaviour:
   smokeTransform: {fileID: 0}
   smokeFX: {fileID: 0}
   explosionFX: {fileID: 0}
+  explosionCircle: {fileID: 0}
   fuseDelay: -1
   explosionRadius: 0
-  finalScript: {fileID: 0}

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 356261459182756293}
   - component: {fileID: 356261459183923541}
   - component: {fileID: 1819109499785829144}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Reed
   m_TagString: Grass
   m_Icon: {fileID: 0}
