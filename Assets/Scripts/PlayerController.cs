@@ -181,6 +181,10 @@ public class PlayerController : CommonController {
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = other.gameObject;
         }
+
+        else if (other.gameObject.CompareTag("OutOfBounds")) {
+            KillPlayer();
+        }
     }
 
     private void OnTriggerExit(Collider other) {

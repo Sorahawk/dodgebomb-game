@@ -100,7 +100,7 @@ public class ExplosiveController : CommonController {
     public IEnumerator StartFuse() {
         if (fuseDelay > 0) {
             // smoke VFX
-            if (!smokeObject) {
+            if (smokeFX && !smokeObject) {
                 smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
                 smokeObject.transform.SetParent(smokeTransform);
                 smokeObject.transform.localPosition = Vector3.zero;
@@ -110,7 +110,7 @@ public class ExplosiveController : CommonController {
             // start fuse can be called multiple times, but only spawn the circle once
             if (!explosionCircleObject) {
                 explosionCircleObject = Instantiate(explosionCircle, bombBody.position, Quaternion.identity);
-                explosionCircleObject.transform.localScale = new Vector3(explosionRadius*2,explosionRadius*2,explosionRadius*2);
+                explosionCircleObject.transform.localScale = new Vector3(explosionRadius * 2, explosionRadius * 2, explosionRadius * 2);
                 explosionCircleObject.transform.localRotation = Quaternion.Euler(90, 0, 0);
             }
 
@@ -120,9 +120,10 @@ public class ExplosiveController : CommonController {
         if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
-    void Update(){
+    void Update() {
         if (explosionCircleObject) {
-            Vector3 circleFollowPos = new Vector3(bombBody.transform.position.x,bombBody.transform.position.y - 0.4f, bombBody.transform.position.z);
+            Vector3 bombPosition = bombBody.transform.position;
+            Vector3 circleFollowPos = new Vector3(bombPosition.x, bombPosition.y + 0.1f, bombPosition.z);
             explosionCircleObject.transform.position = circleFollowPos;
         }
     }
@@ -165,6 +166,12 @@ public class ExplosiveController : CommonController {
                 if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
 
+            else if (other.tag == "Grass") {
+                bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
+
+                if (!isBlocked) other.gameObject.GetComponent<Renderer>().enabled = false;
+            }
+
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
                 StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
 
@@ -199,5 +206,12 @@ public class ExplosiveController : CommonController {
     
     protected void OnCollisionStay(Collision col) {
         if (col.gameObject.CompareTag("Ground")) inAir = false;
+    }
+
+    protected void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("OutOfBounds")) {
+            if (explosionCircleObject) Destroy(explosionCircleObject);
+            Destroy(gameObject);
+        }
     }
 }

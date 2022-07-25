@@ -9,6 +9,8 @@ TagManager:
   - Ground
   - Barrel
   - Rock
+  - Grass
+  - OutOfBounds
   layers:
   - Default
   - TransparentFX
