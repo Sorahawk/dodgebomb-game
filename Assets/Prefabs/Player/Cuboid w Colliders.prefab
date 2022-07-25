@@ -161,6 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538c536174e0ee84789ff45be1486b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: af58fbc7eab7b2c40a0375907e3098e1, type: 2}
+  moveSpeed: {fileID: 11400000, guid: 84fddbdf29b73fe42b7da70f3dc376dd, type: 2}
   bombContainer: {fileID: 959961219965523728}
 --- !u!1 &1001274882457906563
 GameObject:

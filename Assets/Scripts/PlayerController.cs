@@ -10,9 +10,10 @@ public class PlayerController : CommonController {
     private Rigidbody playerBody;
     private Vector2 lookDirection;
     private bool isAiming = false;
+    public GameConstants gameConstants;
 
     // move
-    private float moveSpeed = 5;
+    public FloatVariable moveSpeed;
     private Vector2 moveVal;
 
     // spin
@@ -21,7 +22,7 @@ public class PlayerController : CommonController {
 
     // dash
     private bool dashActivated = false;
-    private float dashDistance = 70;
+    private float dashDistance;
 
     // bomb
     public Transform bombContainer;
@@ -30,12 +31,15 @@ public class PlayerController : CommonController {
     private ExplosiveController bombScript;
     private GameObject pickableBomb = null;
     private GameObject carriedBomb = null;
-    private int bombThrowForce = 30;
+    private int bombThrowForce;
 
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
         playerBody = GetComponent<Rigidbody>();
+        moveSpeed.SetValue(gameConstants.playerMoveSpeed);
+        dashDistance = gameConstants.dashDistance;
+        bombThrowForce = gameConstants.bombThrowForce;
     }
 
     // automatic callback when corresponding input is detected
@@ -141,7 +145,7 @@ public class PlayerController : CommonController {
     private void FixedUpdate() {
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
-        playerBody.AddForce(movementTranslation * moveSpeed, ForceMode.Impulse);
+        playerBody.AddForce(movementTranslation * moveSpeed.Value, ForceMode.Impulse);
 
         // dash
         if (dashActivated) {
