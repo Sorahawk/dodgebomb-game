@@ -10,13 +10,12 @@ public class MenuController : MonoBehaviour {
 
     public GameObject playButton;
     public GameObject backButton;
-    public GameObject Canvas;
 
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
     }
 
-    public void LoadCanvas() {
-        Canvas.SetActive(true);
+    public void LoadCanvas(GameObject canvas) {
+        canvas.SetActive(true);
     }
 }
