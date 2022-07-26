@@ -110,6 +110,7 @@ public class PlayerController : CommonController {
             bombScript.ActivateBomb();
 
             // normalize direction vector and throw bomb
+            latestDir.y = 0.1f;
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
         }
     }

@@ -5,11 +5,6 @@ using UnityEngine;
 
 public class RockController : ExplosiveController {
 
-    // set bomb to active
-    public new void ActivateBomb() {
-        activated = true;
-    }
-
     // explode immediately
     public new void ExplodeNow() {
         destroyed = true;
@@ -35,9 +30,6 @@ public class RockController : ExplosiveController {
                 if (!col.gameObject.GetComponent<ExplosiveController>().getActive()) {
                     col.gameObject.GetComponent<ExplosiveController>().ActivateBomb();
                 }
-
-                // blow up immediately if bomb is already activated
-                else StartCoroutine(col.gameObject.GetComponent<ExplosiveController>().ExplodeNow());
             }
         }
     }

@@ -188,7 +188,6 @@ public class ExplosiveController : CommonController {
     protected void OnCollisionEnter(Collision col) {
         // check if activated i.e. bomb fuse is lit
         if (activated) {
-
             // explode on contact with anything if fuseDelay is negative
             if (fuseDelay < 0) StartCoroutine(ExplodeNow());
 
