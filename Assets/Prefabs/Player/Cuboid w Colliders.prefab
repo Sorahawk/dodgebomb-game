@@ -162,7 +162,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: af58fbc7eab7b2c40a0375907e3098e1, type: 2}
-  moveSpeed: {fileID: 11400000, guid: 84fddbdf29b73fe42b7da70f3dc376dd, type: 2}
+  player1Variable: {fileID: 11400000, guid: 38ee09b240b97e449bb0e192175570a0, type: 2}
+  player2Variable: {fileID: 11400000, guid: 2bccc17312f292e4dac972a69d6dc5e0, type: 2}
+  player3Variable: {fileID: 11400000, guid: 31cfe9eea3081134b9e2672a5ed4c03c, type: 2}
+  player4Variable: {fileID: 11400000, guid: 6aa95aff2b4f88f489e3fddb4c401381, type: 2}
+  player5Variable: {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
+  player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
   bombContainer: {fileID: 959961219965523728}
 --- !u!1 &1001274882457906563
 GameObject:

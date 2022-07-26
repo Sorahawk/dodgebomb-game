@@ -20,8 +20,7 @@ public class FloatVariable : ScriptableObject
     }
 
     // overload
-    public void SetValue(FloatVariable
- value)
+    public void SetValue(FloatVariable value)
     {
         _value = value._value;
     }
