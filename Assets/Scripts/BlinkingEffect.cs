@@ -6,9 +6,12 @@ public class BlinkingEffect : MonoBehaviour {
 
     public Color startColor = Color.green;
     public Color endColor = Color.black;
-    public float speed = -1;
+
     [Range(0,10)]
-    Renderer ren;
+    public float speed = -1;
+
+    private Renderer ren;
+
 
     void Awake() {
         ren = GetComponent<Renderer>();
