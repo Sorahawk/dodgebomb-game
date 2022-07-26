@@ -266,10 +266,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (45)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 35
@@ -320,11 +316,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 29846531}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &37543112 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 2045875189}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &43510115
 PrefabInstance:
@@ -392,11 +383,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 43510115}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &46374420 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1900693674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &46742747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -463,6 +449,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 46742747}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &74300847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74300848}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &74300848
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74300847}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 17.79}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &79484305
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -524,11 +541,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8461597022737592094, guid: d3bf60e3b86d8ad45854cf2bc4d6d126, type: 3}
   m_PrefabInstance: {fileID: 79484305}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &86974219 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 449505050}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &97246774
 PrefabInstance:
@@ -608,11 +620,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6137059936718555983, guid: 41d2cf6fa61ab7d49a842763be600249, type: 3}
   m_PrefabInstance: {fileID: 97246774}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &104651384 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1693607688}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &104746586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -623,10 +630,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (55)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -678,26 +681,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 104746586}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &122942722 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 592345189}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &125555242 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1183787435}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &129800826 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 295350217}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &134398799 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 551561273}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &136388981
 PrefabInstance:
@@ -776,10 +759,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (66)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 59
@@ -831,35 +810,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 141351561}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &162648151 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1382326854}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &168067661 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 29846531}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &168067664
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 168067661}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &170285182 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1041723111}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &174025544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -870,10 +820,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (41)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -937,10 +883,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (23)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 21
@@ -992,30 +934,15 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 185604465}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &203142119 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1322221154}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &223783473 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 1108188732}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &225233346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 990284417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &249506475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1657511094}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &263553267 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1608603023}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &272957768
 PrefabInstance:
@@ -1027,10 +954,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (24)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -1088,30 +1011,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1517243359}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &283888517 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1020071408}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &288958943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 272957768}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &288958946
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288958943}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &295350217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1122,10 +1021,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (26)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -1178,30 +1073,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 295350217}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &295350221
-MeshCollider:
+--- !u!1 &323555858
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129800826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &306534365 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1890798710}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 323555859}
+  m_Layer: 0
+  m_Name: GameObject (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323555859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &312674258 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1567887370}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 323555858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.61, y: 0, z: -2.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &343470375
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,11 +1289,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
---- !u!1 &381396316 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1878118740}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &403611532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1464,10 +1361,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -1593,11 +1486,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6137059936718555983, guid: 41d2cf6fa61ab7d49a842763be600249, type: 3}
   m_PrefabInstance: {fileID: 420050636}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &432946990 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1422228793}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &449505050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1608,10 +1496,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (27)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -1664,25 +1548,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 449505050}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &449505054
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86974219}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &452873234 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 2046225623}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &466730847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1693,10 +1558,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (34)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -1886,73 +1747,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 472656782}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &479092948
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.3656015
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.3013787
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7096001003852448006, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7580085927754636220, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
-      propertyPath: m_Name
-      value: Grass Bomb
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
---- !u!1 &482684536 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1152846738}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &526274861 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1850406744}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &533071993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1963,10 +1757,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (29)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -2030,10 +1820,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (53)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 46
@@ -2085,11 +1871,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 533698587}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &545836444 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 774411574}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &551561273
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2100,10 +1881,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (19)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -2167,10 +1944,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (49)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 43
@@ -2233,10 +2006,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (38)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 30
@@ -2288,30 +2057,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 559445803}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &560468548 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1686007314}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &572223230 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 533071993}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &572223233
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572223230}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &582875722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2322,10 +2067,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (28)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -2389,10 +2130,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (48)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 40
@@ -2444,48 +2181,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 592345189}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &592345193
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122942722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &593039368 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1331469286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &600726973 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1152846738}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &600726976
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 482684536}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &608250774 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1599185782}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &646960885
 PrefabInstance:
@@ -2497,10 +2196,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (42)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -2645,27 +2340,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &708121730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 185604465}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &708121733
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 708121730}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &712406401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2849,7 +2525,7 @@ MonoBehaviour:
       m_SingletonActionBindings: []
       m_Flags: 0
     m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 4700831722076095505, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+  m_PlayerPrefab: {fileID: 908372511460652623, guid: c1f7f8e1e8b52804abd37bae647cbb4f, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0
   m_FixedNumberOfSplitScreens: -1
@@ -2872,13 +2548,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &764582244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 988678950}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &774411574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2889,10 +2560,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (51)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -2945,20 +2612,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 774411574}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &774411578
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545836444}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &786057967
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3042,20 +2695,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1686007314}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &838584886
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 560468548}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &853615379
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3122,30 +2761,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 853615379}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &859800105 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 417667999}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &866323045 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1431464682}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &866323048
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866323045}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &872242789
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3208,11 +2823,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4118906036946206, guid: 347a0be0c5f2fd846a2cd6eb737c84da, type: 3}
   m_PrefabInstance: {fileID: 872242789}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &885574843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1738823819}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &888767931
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,7 +2863,7 @@ Transform:
   - {fileID: 1236196361}
   - {fileID: 543450652531170209}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &893394403
 PrefabInstance:
@@ -3321,39 +2931,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 893394403}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &899692179 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 141351561}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &899692182
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 899692179}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!4 &902363577 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1578842151811385489, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
   m_PrefabInstance: {fileID: 1255554443}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &930530663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1123579650}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &938007512 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1504127664}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &942053337
 PrefabInstance:
@@ -3421,6 +3002,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 942053337}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &960880346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 960880347}
+  m_Layer: 0
+  m_Name: GameObject (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &960880347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960880346}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.56, y: 0, z: 6.78}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -3471,7 +3083,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 1
   orthographic size: 15
@@ -3515,10 +3127,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (67)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -3570,11 +3178,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 965901583}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &969700550 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1431349808}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &970308849
 PrefabInstance:
@@ -3653,10 +3256,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (7)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3714,10 +3313,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (62)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 55
@@ -3769,20 +3364,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 990284417}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &990284421
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 225233346}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &996815474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3793,10 +3374,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -3860,10 +3437,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (54)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 47
@@ -3915,44 +3488,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1020071408}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1020071412
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 283888517}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!4 &1022820000 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 1418761517}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1029398421 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 533698587}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1029398424
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1029398421}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1041723111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3963,10 +3503,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (43)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -4019,20 +3555,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1041723111}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1041723115
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170285182}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1041971254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4043,10 +3565,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (25)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -4110,10 +3628,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (60)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 53
@@ -4164,11 +3678,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1059122602}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1062120281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1391517437}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1066588964
 PrefabInstance:
@@ -4237,20 +3746,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1693607688}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1071583686
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104651384}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1094741265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4313,6 +3808,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8461597022737592094, guid: d3bf60e3b86d8ad45854cf2bc4d6d126, type: 3}
   m_PrefabInstance: {fileID: 1094741265}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1096598857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1096598858}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1096598858
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096598857}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12, y: 0, z: 23}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1096858317
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4323,10 +3849,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (32)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -4595,10 +4117,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (36)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 32
@@ -4650,20 +4168,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1123579650}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1123579654
-MeshCollider:
+--- !u!1 &1148842025
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 930530663}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1148842026}
+  m_Layer: 0
+  m_Name: GameObject (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1148842026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148842025}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.4, y: 0, z: 16.38}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1152846738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4674,10 +4209,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -4798,10 +4329,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (61)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 54
@@ -4853,20 +4380,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1183787435}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1183787439
-MeshCollider:
+--- !u!1 &1200017197
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125555242}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1200017198}
+  m_Layer: 0
+  m_Name: GameObject (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1200017198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200017197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.07, y: 0, z: -3.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1207756545
 GameObject:
   m_ObjectHideFlags: 0
@@ -4902,17 +4446,12 @@ Transform:
   - {fileID: 1169198502}
   - {fileID: 1553827518}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1210247177 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1524788942}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1216798696 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1449121376}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1221174286
 PrefabInstance:
@@ -5047,11 +4586,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8461597022737592094, guid: d3bf60e3b86d8ad45854cf2bc4d6d126, type: 3}
   m_PrefabInstance: {fileID: 1236196360}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1254367175 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1971403343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1255554443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5109,30 +4643,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
---- !u!1 &1259906622 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1950356386}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1284215375 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1059122602}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1284215378
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284215375}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1322221154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5143,10 +4653,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (31)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -5199,20 +4705,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1322221154}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1322221158
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203142119}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1327971332
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5290,10 +4782,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (14)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -5340,49 +4828,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
---- !u!1 &1334108561 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 2096038070}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1336689174 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 2046225623}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1336689177
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 452873234}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!4 &1341135201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 551561273}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1341135204
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 134398799}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1382326854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5393,10 +4848,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (50)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -5449,20 +4900,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1382326854}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1382326858
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 162648151}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1391517437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5473,10 +4910,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (22)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -5524,6 +4957,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
+--- !u!1 &1410945318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1410945320}
+  - component: {fileID: 1410945319}
+  m_Layer: 0
+  m_Name: RoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1410945319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410945318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 295f6fa9c542d854aab4b7e7b1293074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: af58fbc7eab7b2c40a0375907e3098e1, type: 2}
+--- !u!4 &1410945320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1410945318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7278881, y: -3.0563068, z: 2.8668594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1412948287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5662,10 +5140,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (37)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 31
@@ -5717,20 +5191,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1422228793}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1422228797
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432946990}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1431349808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5741,10 +5201,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (63)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -5797,20 +5253,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1431349808}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1431349812
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 969700550}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1431464682
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5821,10 +5263,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -5883,10 +5321,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 61
@@ -5938,20 +5372,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1449121376}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1449121380
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1216798696}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1 &1498873457
 GameObject:
   m_ObjectHideFlags: 0
@@ -6118,10 +5538,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (46)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 34
@@ -6173,20 +5589,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1504127664}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1504127668
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 938007512}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1512384199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6197,10 +5599,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (15)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -6259,10 +5657,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (21)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -6320,10 +5714,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (10)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6370,25 +5760,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
---- !u!1 &1547864448 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1517243359}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1547864451
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1547864448}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1553827517
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6462,10 +5833,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (65)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 58
@@ -6517,58 +5884,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1567887370}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1567887374
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 312674258}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &1568713120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 582875722}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1568713123
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568713120}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &1568737156 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 965901583}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1568737159
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1568737156}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1578450029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6640,20 +5955,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 988678950}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1593145229
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764582244}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1599185782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6664,10 +5965,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (57)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -6720,20 +6017,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1599185782}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1599185786
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608250774}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1608603023
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6744,10 +6027,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (35)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -6800,20 +6079,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1608603023}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1608603027
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 263553267}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1613499561
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6824,10 +6089,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (58)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -6969,10 +6230,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (47)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 41
@@ -7024,44 +6281,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1624692759}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1632706713 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1624692759}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1632706716
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1632706713}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &1646000460 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 646960885}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1646000463
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1646000460}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1657511094
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7072,10 +6291,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (13)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -7128,20 +6343,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1331469286}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1667820221
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593039368}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1686007314
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7152,10 +6353,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (20)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -7214,10 +6411,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (9)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7264,25 +6457,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
---- !u!1 &1697627862 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 174025544}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1697627865
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1697627862}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1 &1702418992
 GameObject:
   m_ObjectHideFlags: 0
@@ -7348,46 +6522,13 @@ Transform:
   - {fileID: 97246775}
   - {fileID: 2136719058}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1716240260 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1096858317}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1716240263
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716240260}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!4 &1734755204 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1391517437}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1734755207
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1062120281}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1738823819
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7398,10 +6539,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (56)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -7454,39 +6591,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1738823819}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1738823823
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 885574843}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &1745420756 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 559445803}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1745420759
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745420756}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1747113446
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7549,25 +6653,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8461597022737592094, guid: d3bf60e3b86d8ad45854cf2bc4d6d126, type: 3}
   m_PrefabInstance: {fileID: 1747113446}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1769015060 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1524788942}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1769015063
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769015060}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1771002260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7692,6 +6777,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4633076283600828, guid: 07ccb08ca05868c4ba24c483f1888f85, type: 3}
   m_PrefabInstance: {fileID: 1774658617}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1789335848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1789335849}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1789335849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789335848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 0, z: -3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1800980553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7753,30 +6869,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
---- !u!1 &1822749681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 2130762458}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1824230007 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1900693674}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1824230010
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46374420}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1850406744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7787,10 +6884,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (33)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -7843,58 +6936,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1850406744}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1850406748
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526274861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!4 &1856874511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 417667999}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1856874514
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 859800105}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &1861324267 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 553000269}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1861324270
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861324267}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1878118740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7905,10 +6951,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (59)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -7961,20 +7003,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1878118740}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1878118744
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 381396316}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1890798710
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7985,10 +7013,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (44)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -8041,20 +7065,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1890798710}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1890798714
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 306534365}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1900693674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8065,10 +7075,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -8116,6 +7122,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
+--- !u!1 &1923182470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1923182472}
+  - component: {fileID: 1923182471}
+  m_Layer: 0
+  m_Name: BombSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1923182471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923182470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1b6eddf5a27b224ebb38752cc737e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombPrefab: {fileID: 9090077167378150820, guid: d3bf60e3b86d8ad45854cf2bc4d6d126, type: 3}
+--- !u!4 &1923182472
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923182470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2049536679}
+  - {fileID: 1096598858}
+  - {fileID: 1789335849}
+  - {fileID: 74300848}
+  - {fileID: 323555859}
+  - {fileID: 1200017198}
+  - {fileID: 1148842026}
+  - {fileID: 960880347}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1950356386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8126,10 +7185,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (39)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -8182,39 +7237,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1950356386}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1950356390
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1259906622}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &1957913120 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1657511094}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &1957913123
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957913120}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1971403343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8225,10 +7247,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (40)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -8281,20 +7299,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 1971403343}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1971403347
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1254367175}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &1992773318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8504,10 +7508,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (30)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 26
@@ -8559,20 +7559,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 2045875189}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2045875193
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 37543112}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &2046225623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8583,10 +7569,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (18)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -8634,25 +7616,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
---- !u!1 &2046648928 stripped
+--- !u!1 &2049536678
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1512384199}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2046648931
-MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046648928}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2049536679}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2049536679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049536678}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12, y: 0, z: 20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1923182472}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2059246005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8785,63 +7779,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
   m_PrefabInstance: {fileID: 2065048875}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2078278802 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 466730847}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2078278805
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078278802}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &2078645016 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 996815474}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2078645019
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078645016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &2089010668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1041971254}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2089010671
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089010668}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &2096038070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8852,10 +7789,6 @@ PrefabInstance:
     - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_Name
       value: Reed (52)
-      objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
       objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
@@ -8908,39 +7841,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 2096038070}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2096038074
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334108561}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &2104642704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 1613499561}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2104642707
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2104642704}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!4 &2114033674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
@@ -9019,10 +7919,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Reed (64)
       objectReference: {fileID: 0}
-    - target: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-      propertyPath: m_TagString
-      value: Grass
-      objectReference: {fileID: 0}
     - target: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
       propertyPath: m_RootOrder
       value: 57
@@ -9074,39 +7970,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 464626, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
   m_PrefabInstance: {fileID: 2130762458}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &2130762462
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1822749681}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
---- !u!1 &2131893819 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 137496, guid: 8e29574f61c003a45a3cc9a571582336, type: 3}
-  m_PrefabInstance: {fileID: 104746586}
-  m_PrefabAsset: {fileID: 0}
---- !u!64 &2131893822
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2131893819}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: bf957aaf2ea75894bb409dbeef75bf9f, type: 3}
 --- !u!1001 &2136719057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9281,7 +8144,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652531170209 stripped
 Transform:
