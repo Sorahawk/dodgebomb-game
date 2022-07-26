@@ -1299,7 +1299,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 0
   m_CollisionDetection: 2
 --- !u!114 &-4668056755766103616
 MonoBehaviour:
@@ -1343,6 +1343,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538c536174e0ee84789ff45be1486b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 0}
+  player1Variable: {fileID: 0}
+  player2Variable: {fileID: 0}
+  player3Variable: {fileID: 0}
+  player4Variable: {fileID: 0}
+  player5Variable: {fileID: 0}
+  player6Variable: {fileID: 0}
   bombContainer: {fileID: 5746082519967853474}
 --- !u!95 &-1731823443167105420
 Animator:
