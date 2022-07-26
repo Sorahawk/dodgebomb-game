@@ -40,13 +40,15 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnMove(InputValue value) {
-        if (!isAiming){
+        Debug.Log("moving");
+        if (!isAiming) {
             moveVal = value.Get<Vector2>();
         }
     }
 
     // automatic callback when corresponding input is detected
     private void OnSpin(InputValue value) {
+        Debug.Log("spinning");
         spinVal = value.Get<Vector2>();
     }
 
