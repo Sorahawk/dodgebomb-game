@@ -19,7 +19,9 @@ public class BombSpawnManager : MonoBehaviour
             spawnpoints[i] = transform.GetChild(i);
         }
         
+        InvokeRepeating("spawnBombs", 1, 3);
         InvokeRepeating("spawnBombs", 1, 5);
+        InvokeRepeating("spawnBombs", 1, 2);
     }
     
     void spawnBombs(){

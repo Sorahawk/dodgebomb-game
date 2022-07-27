@@ -335,7 +335,7 @@ MonoBehaviour:
   explosionFX: {fileID: 6231435812455498187, guid: 345dbcb69d41ebb43993b55cb08e1246, type: 3}
   explosionCircle: {fileID: 0}
   fuseDelay: -1
-  explosionRadius: 5
+  explosionRadius: 2
 --- !u!135 &4136078860217818023
 SphereCollider:
   m_ObjectHideFlags: 0
