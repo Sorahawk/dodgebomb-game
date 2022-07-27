@@ -16,9 +16,16 @@ public class BombSpawnManager : MonoBehaviour
     private Vector3 spawnPoint;
     private int bombIndex;
      
-    void Start()
-    {
+    void Start(){
+        count = transform.childCount;
+        spawnpoints = new Transform[count];
+        for(int i = 0; i < count; i++){
+            spawnpoints[i] = transform.GetChild(i);
+        }
+        
         InvokeRepeating("spawnBombs", 1, 3);
+        InvokeRepeating("spawnBombs", 1, 5);
+        InvokeRepeating("spawnBombs", 1, 2);
     }
     
     void spawnBombs()

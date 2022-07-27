@@ -82,8 +82,8 @@ MonoBehaviour:
   smokeFX: {fileID: 0}
   explosionFX: {fileID: 1804206099813350, guid: 4dd02b5f854b6c84990fbeb810abffe4, type: 3}
   explosionCircle: {fileID: 7564128434191510518, guid: a60cba3c241aaee4db4694189727c159, type: 3}
-  fuseDelay: 1
-  explosionRadius: 4
+  fuseDelay: 0.5
+  explosionRadius: 5
 --- !u!33 &1467934889111595047
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -99,4 +99,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startColor: {r: 0.98039216, g: 0.22745098, b: 0.22745098, a: 0.6156863}
   endColor: {r: 0.33962262, g: 0.014417935, b: 0.014417935, a: 1}
-  speed: 2
+  speed: 4

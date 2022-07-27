@@ -20,8 +20,10 @@ public class LobbyPlayerController : CommonController {
         playerManager = PlayerManagerController.Instance;
         playerConfig = playerManager.getPlayerConfig(pIndex);
         playerObject = playerConfig.PlayerObject;
+        playerConfig.PlayerColor = cIndex;
 
-        playerRenderers = playerObject.GetComponentsInChildren<Renderer>();
+        if (playerObject) playerRenderers = playerObject.GetComponentsInChildren<Renderer>();
+        else playerRenderers = new Renderer[0];
     }
 
     private void OnUp() {
@@ -60,17 +62,13 @@ public class LobbyPlayerController : CommonController {
         foreach (Renderer ren in playerRenderers) {
             ren.material = playerManager.playerColors[cIndex];
         }
+
+        playerConfig.PlayerColor = cIndex;
     }
 
     public void BindPlayer() {
         // switch to the correct input component
         GetComponent<PlayerInput>().enabled = false;
-        playerObject.GetComponent<PlayerInput>().enabled = true;
-
-        // disable kinematics
-        playerObject.GetComponent<Rigidbody>().isKinematic = false;
-
-        // bind to the persistent PlayerData object
-        playerObject.transform.SetParent(gameObject.transform);
+        playerConfig.PlayerObject = null;
     }
 }

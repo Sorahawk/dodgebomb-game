@@ -9,12 +9,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4668056755766103616, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1731823443167105420, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4178fa3676430734abbf636d92aa9e1a, type: 2}
+    - target: {fileID: 3722157027754185212, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+      propertyPath: m_Constraints
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 3722157027754185212, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -107,5 +111,9 @@ PrefabInstance:
       propertyPath: player6Variable
       value: 
       objectReference: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5702454110998792915, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+    - {fileID: -4668056755766103616, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+    - {fileID: 3722157027754185212, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+    - {fileID: 3095221141378446349, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}

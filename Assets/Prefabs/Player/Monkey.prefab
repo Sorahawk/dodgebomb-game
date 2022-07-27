@@ -1293,13 +1293,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4700831722076095505}
   serializedVersion: 2
-  m_Mass: 4
-  m_Drag: 4
+  m_Mass: 5
+  m_Drag: 5
   m_AngularDrag: 1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 2
 --- !u!114 &-4668056755766103616
 MonoBehaviour:
@@ -1361,7 +1361,7 @@ Animator:
   m_GameObject: {fileID: 4700831722076095505}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4178fa3676430734abbf636d92aa9e1a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
