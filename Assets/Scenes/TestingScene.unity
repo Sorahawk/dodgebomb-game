@@ -609,7 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1578842151811385493, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
       propertyPath: m_Name
-      value: Bomb
+      value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 7893379227219020506, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
       propertyPath: fireDebris

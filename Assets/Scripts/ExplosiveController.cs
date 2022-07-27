@@ -7,10 +7,15 @@ public class ExplosiveController : CommonController {
 
     public Transform smokeTransform;
     public GameObject smokeFX;
+
     public GameObject explosionFX;
+    public GameObject explosionCircle;
 
     public float fuseDelay;
     public float explosionRadius;
+
+    protected GameObject smokeObject;
+    protected GameObject explosionCircleObject;
 
     protected Rigidbody bombBody;
     protected Collider bombCollider;
@@ -94,9 +99,20 @@ public class ExplosiveController : CommonController {
     // start fuse timer
     public IEnumerator StartFuse() {
         if (fuseDelay > 0) {
-            GameObject smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
-            smokeObject.transform.SetParent(smokeTransform);
-            smokeObject.transform.localPosition = Vector3.zero;
+            // smoke VFX
+            if (smokeFX && !smokeObject) {
+                smokeObject = Instantiate(smokeFX, smokeTransform.position, Quaternion.identity);
+                smokeObject.transform.SetParent(smokeTransform);
+                smokeObject.transform.localPosition = Vector3.zero;
+            }
+
+            // explosion radius VFX
+            // start fuse can be called multiple times, but only spawn the circle once
+            if (!explosionCircleObject) {
+                explosionCircleObject = Instantiate(explosionCircle, bombBody.position, Quaternion.identity);
+                explosionCircleObject.transform.localScale = new Vector3(explosionRadius * 2, explosionRadius * 2, explosionRadius * 2);
+                explosionCircleObject.transform.localRotation = Quaternion.Euler(90, 0, 0);
+            }
 
             yield return new WaitForSeconds(fuseDelay);
         }
@@ -104,9 +120,19 @@ public class ExplosiveController : CommonController {
         if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
+    void Update() {
+        if (explosionCircleObject) {
+            Vector3 bombPosition = bombBody.transform.position;
+            Vector3 circleFollowPos = new Vector3(bombPosition.x, bombPosition.y + 0.1f, bombPosition.z);
+            explosionCircleObject.transform.position = circleFollowPos;
+        }
+    }
+
     // explode immediately
     public IEnumerator ExplodeNow() {
         destroyed = true;
+
+        if (explosionCircleObject) Destroy(explosionCircleObject);
 
         // if explosionFX not set in editor, don't play explosion FX
         GameObject explosion = null;
@@ -152,13 +178,16 @@ public class ExplosiveController : CommonController {
             else if (other.tag == "Rock") {
                 other.gameObject.GetComponent<RockController>().ExplodeNow();
             }
+
+            else if (other.tag == "Grass") {
+                other.gameObject.GetComponent<Renderer>().enabled = false;
+            }
         }
     }
 
     protected void OnCollisionEnter(Collision col) {
         // check if activated i.e. bomb fuse is lit
         if (activated) {
-
             // explode on contact with anything if fuseDelay is negative
             if (fuseDelay < 0) StartCoroutine(ExplodeNow());
 
@@ -174,5 +203,12 @@ public class ExplosiveController : CommonController {
     
     protected void OnCollisionStay(Collision col) {
         if (col.gameObject.CompareTag("Ground")) inAir = false;
+    }
+
+    protected void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("OutOfBounds")) {
+            if (explosionCircleObject) Destroy(explosionCircleObject);
+            Destroy(gameObject);
+        }
     }
 }

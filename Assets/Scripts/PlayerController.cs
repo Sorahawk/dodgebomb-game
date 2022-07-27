@@ -56,13 +56,15 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnMove(InputValue value) {
-        if (!isAiming){
+        Debug.Log("moving");
+        if (!isAiming) {
             moveVal = value.Get<Vector2>();
         }
     }
 
     // automatic callback when corresponding input is detected
     private void OnSpin(InputValue value) {
+        Debug.Log("spinning");
         spinVal = value.Get<Vector2>();
     }
 
@@ -126,6 +128,7 @@ public class PlayerController : CommonController {
             bombScript.ActivateBomb();
 
             // normalize direction vector and throw bomb
+            latestDir.y = 0.1f;
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
         }
     }
@@ -196,6 +199,10 @@ public class PlayerController : CommonController {
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = other.gameObject;
+        }
+
+        else if (other.gameObject.CompareTag("OutOfBounds")) {
+            KillPlayer();
         }
     }
 
