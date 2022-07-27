@@ -10,6 +10,7 @@ public class PlayerManagerController : MonoBehaviour {
 
     public List<GameObject> playerCards;
     public List<Material> playerColors;
+    public GameObject actualMonkeyPrefab;
 
     private List<PlayerConfig> playerConfigs;
     private int MinPlayers = 2;
@@ -36,15 +37,14 @@ public class PlayerManagerController : MonoBehaviour {
     public void ReadyPlayer(int index) {
         Debug.Log("Ready Player " + index);
 
-        if (playerConfigs[index].IsReady == false){
+        if (!playerConfigs[index].IsReady) {
             playerConfigs[index].IsReady = true;
 
             // ui element for ready
             playerCards[index].transform.GetChild(0).gameObject.SetActive(false);
             playerCards[index].transform.GetChild(1).gameObject.SetActive(true);
             playerCards[index].transform.GetChild(3).gameObject.SetActive(true);
-        }
-        else{
+        } else {
             playerConfigs[index].IsReady = false;
 
             // ui element for ready
@@ -65,17 +65,25 @@ public class PlayerManagerController : MonoBehaviour {
                 player.GetComponent<LobbyPlayerController>().BindPlayer();
             }
 
-            LoadNewMap();
+            StartCoroutine(LoadNewMap());
         }
     }
 
     // based on Scene Index under File -> Build Settings
     // ignore index 0 and 1 (Start and Lobby)
-    public void LoadNewMap(int previousMapIndex = -1) {
+    public IEnumerator LoadNewMap(int previousMapIndex = -1) {
         int maxMapIndex = SceneManager.sceneCountInBuildSettings - 1;
         int randomMap = Random.Range(2, maxMapIndex);
 
-        SceneManager.LoadScene(randomMap);
+        // wait for scene to finish loading
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(randomMap);
+
+        while (!asyncLoad.isDone) {
+            yield return null;
+        }
+
+        // wait for scene to be loaded before setting active
+        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(randomMap));
         SpawnAllPlayers();
     }
 
@@ -83,9 +91,9 @@ public class PlayerManagerController : MonoBehaviour {
         GameObject[] playerData = GameObject.FindGameObjectsWithTag("PlayerData");
 
         // spawn monkeys
-        // bind each input to the respective playerindex
         foreach (GameObject player in playerData) {
-            player.GetComponent<PlayerInput>();
+            PlayerInput pInput = PlayerInput.Instantiate(actualMonkeyPrefab);
+            print(pInput.playerIndex);
         }
     }
 

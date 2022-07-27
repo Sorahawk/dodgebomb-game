@@ -35,17 +35,16 @@ public class LobbyPlayerController : CommonController {
     }
 
     private void OnLeft() {
-        if (playerConfig.IsReady == false){
+        if (!playerConfig.IsReady) {
             if (cIndex == 0) cIndex = playerManager.playerColors.Count - 1;
             else cIndex--;
 
             ChangePlayerColor();
         }
-
     }
 
     private void OnRight() {
-        if (playerConfig.IsReady == false){
+        if (!playerConfig.IsReady) {
             if (cIndex == playerManager.playerColors.Count - 1) cIndex = 0;
             else cIndex++;
 
@@ -55,7 +54,7 @@ public class LobbyPlayerController : CommonController {
     }
 
     private void OnReady() {
-        playerManager.ReadyPlayer(pIndex);
+        if (playerManager) playerManager.ReadyPlayer(pIndex);
     }
 
     private void OnBack() {

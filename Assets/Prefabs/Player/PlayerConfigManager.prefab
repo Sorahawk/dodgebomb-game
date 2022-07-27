@@ -113,3 +113,4 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 3bdd2e0c9fbfb20498771d4480407753, type: 2}
   - {fileID: 2100000, guid: 38b0a7815c140504b90052a5c00106af, type: 2}
   - {fileID: 2100000, guid: 17cd2a6aab4c80747881cbf465a3d4a2, type: 2}
+  actualMonkeyPrefab: {fileID: 4700831722076095505, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
