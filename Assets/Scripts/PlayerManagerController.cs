@@ -99,6 +99,8 @@ public class PlayerManagerController : MonoBehaviour {
             playerCards[index].SetActive(true);
 
             GameObject playerObject = playerCards[index].transform.Find("Lobby Monkey").gameObject;
+            playerCards[index].transform.GetChild(2).GetComponent<UnityEngine.UI.Text>().text = "Player " + (index+1);
+            
 
             playerConfigs.Add(new PlayerConfig(pInput, playerObject));
         }
