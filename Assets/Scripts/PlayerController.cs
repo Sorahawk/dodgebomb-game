@@ -47,7 +47,7 @@ public class PlayerController : CommonController {
         playerBody = GetComponent<Rigidbody>();
         
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
-        print(playerInput.user.id);
+
         playerVariable = playerVarList[playerInput.user.id];
         // playerVariable = player1Variable;
 

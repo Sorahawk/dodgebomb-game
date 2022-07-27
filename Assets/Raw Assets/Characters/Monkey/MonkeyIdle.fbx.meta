@@ -6,12 +6,7 @@ ModelImporter:
   - first:
       74: 2910742486769232160
     second: Root|Idle
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MonkeyColour
-    second: {fileID: 2100000, guid: 2aadebb5f0b431c4698470c1d71f087f, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

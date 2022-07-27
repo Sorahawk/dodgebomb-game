@@ -163,7 +163,9 @@ public class ExplosiveController : CommonController {
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
 
-                if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
+                if (!isBlocked) {
+                    other.gameObject.GetComponent<PlayerController>().KillPlayer();
+                }
             }
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {

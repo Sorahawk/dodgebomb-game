@@ -40,14 +40,34 @@ public class PlayerManagerController : MonoBehaviour {
         // only start game if there are at least 2 players, and all players are ready
         if (playerConfigs.Count >= MinPlayers && playerConfigs.All(p => p.IsReady == true)) {
 
-            // TODO: randomly select the string name of an available map
+            // unbind lobby monkey from each PlayerData object
             GameObject[] playerData = GameObject.FindGameObjectsWithTag("PlayerData");
 
             foreach (GameObject player in playerData) {
                 player.GetComponent<LobbyPlayerController>().BindPlayer();
             }
 
-            SceneManager.LoadScene("Beach");
+            LoadNewMap();
+        }
+    }
+
+    // based on Scene Index under File -> Build Settings
+    // ignore index 0 and 1 (Start and Lobby)
+    public void LoadNewMap(int previousMapIndex = -1) {
+        int maxMapIndex = SceneManager.sceneCountInBuildSettings - 1;
+        int randomMap = Random.Range(2, maxMapIndex);
+
+        SceneManager.LoadScene(randomMap);
+        SpawnAllPlayers();
+    }
+
+    public void SpawnAllPlayers() {
+        GameObject[] playerData = GameObject.FindGameObjectsWithTag("PlayerData");
+
+        // spawn monkeys
+        // bind each input to the respective playerindex
+        foreach (GameObject player in playerData) {
+            player.GetComponent<PlayerInput>();
         }
     }
 
@@ -75,9 +95,10 @@ public class PlayerManagerController : MonoBehaviour {
 public class PlayerConfig {
 
     public PlayerInput Input { get; set; }
-    public int PlayerIndex { get; set; }
-
     public GameObject PlayerObject { get; set; }
+
+    public int PlayerIndex { get; set; }
+    public int PlayerColor { get; set; }
     public bool IsReady { get; set; }
 
     public PlayerConfig(PlayerInput pInput, GameObject playerObject) {
