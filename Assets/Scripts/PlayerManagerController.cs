@@ -91,9 +91,14 @@ public class PlayerManagerController : MonoBehaviour {
         GameObject[] playerData = GameObject.FindGameObjectsWithTag("PlayerData");
 
         // spawn monkeys
-        foreach (GameObject player in playerData) {
+        foreach (PlayerConfig player in playerConfigs) {
             PlayerInput pInput = PlayerInput.Instantiate(actualMonkeyPrefab);
-            print(pInput.playerIndex);
+
+            Renderer[] playerRenderers = pInput.gameObject.GetComponentsInChildren<Renderer>();
+
+            foreach (Renderer ren in playerRenderers) {
+                ren.material = playerColors[player.PlayerColor];
+            }
         }
     }
 
