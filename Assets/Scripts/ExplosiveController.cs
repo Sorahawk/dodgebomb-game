@@ -137,10 +137,6 @@ public class ExplosiveController : CommonController {
             Vector3 circleFollowPos = new Vector3(bombPosition.x, bombPosition.y + 0.1f, bombPosition.z);
             explosionCircleObject.transform.position = circleFollowPos;
         }
-        if (bombBody.transform.position.y > 0.7f)
-        {
-            bombBody.transform.position = new Vector3(transform.position.x, 0.35f, transform.position.z);
-        }
     }
 
     // explode immediately
@@ -178,12 +174,9 @@ public class ExplosiveController : CommonController {
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
 
-                if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld)
-                {
+                if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
                     MinusScore(lastHeld);
-                }
-                else
-                {
+                } else {
                     IncreaseScore(lastHeld);
                 }
 
@@ -193,14 +186,13 @@ public class ExplosiveController : CommonController {
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
                 StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
                 
-                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1)
-                {
+                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
                     other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
                 }
+
                 // additionally apply explosion force on bombs
                 if (other.tag == "Bomb") {
                     other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionRadius * 3, transform.position, explosionRadius, 0, ForceMode.Impulse);
-                    
                 }
             }
 
@@ -214,32 +206,27 @@ public class ExplosiveController : CommonController {
         }
     }
 
-    protected void MinusScore(int playerIndex)
-    {
+    protected void MinusScore(int playerIndex) {
         playerVariable = playerVarList[playerIndex];
-        if (playerVariable.Score > 0)
-        {
+        if (playerVariable.Score > 0) {
             playerVariable.ApplyScoreChange(-1);
         }
+
         print(playerVariable.Score);    
     }
 
-    protected void IncreaseScore(int playerIndex)
-    {
-        
+    protected void IncreaseScore(int playerIndex) {
         print("index: " + playerIndex);
         playerVariable = playerVarList[playerIndex];
         playerVariable.ApplyScoreChange(1);
         print(playerVariable.Score);
     }
 
-    public int GetLastHeld()
-    {
+    public int GetLastHeld() {
         return lastHeld;
     }
 
-    public void SetLastHeld(int index)
-    {
+    public void SetLastHeld(int index) {
         print("setting " + index);
         lastHeld = index;
     }

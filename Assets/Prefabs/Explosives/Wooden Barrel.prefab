@@ -84,6 +84,12 @@ MonoBehaviour:
   explosionCircle: {fileID: 7564128434191510518, guid: a60cba3c241aaee4db4694189727c159, type: 3}
   fuseDelay: 0.5
   explosionRadius: 5
+  player1Variable: {fileID: 0}
+  player2Variable: {fileID: 0}
+  player3Variable: {fileID: 0}
+  player4Variable: {fileID: 0}
+  player5Variable: {fileID: 0}
+  player6Variable: {fileID: 0}
 --- !u!33 &1467934889111595047
 MeshFilter:
   m_ObjectHideFlags: 0

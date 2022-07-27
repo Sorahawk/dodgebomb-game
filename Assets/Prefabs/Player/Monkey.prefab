@@ -1343,6 +1343,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 538c536174e0ee84789ff45be1486b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
   gameConstants: {fileID: 11400000, guid: af58fbc7eab7b2c40a0375907e3098e1, type: 2}
   player1Variable: {fileID: 11400000, guid: 38ee09b240b97e449bb0e192175570a0, type: 2}
   player2Variable: {fileID: 11400000, guid: 2bccc17312f292e4dac972a69d6dc5e0, type: 2}

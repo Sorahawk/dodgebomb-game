@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class GrassBombController : ExplosiveController {
 
+    public new IEnumerator StartFuse() {
+        yield return new WaitForSeconds(0);
+
+        if (!destroyed) StartCoroutine(ExplodeNow());
+    }
+
     public new IEnumerator ExplodeNow() {
         destroyed = true;
 
@@ -15,13 +21,13 @@ public class GrassBombController : ExplosiveController {
         EnableAllColliders(false);
         EnableAllRenderers(false);
 
-        CheckExplosionDamage();
-
         if (explosion) {
             // destroy FX object after it finishes
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
             Destroy(explosion);
         }
+
+        CheckExplosionDamage();
 
         // destroy game object
         Destroy(gameObject);
