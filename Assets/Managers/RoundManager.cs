@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using UnityEngine.InputSystem;
 
 public class RoundManager : MonoBehaviour
 {
     public GameConstants gameConstants;
+    public GameObject myPrefab;
     
     // timer
     private bool roundStarting = true;
@@ -27,7 +29,12 @@ public class RoundManager : MonoBehaviour
             spawnpoints[i] = transform.GetChild(i);
         }
 
-        // check how many players and spawn them in the first four spawn points. subsequent respawn
+        // print(InputSystem.devices);
+
+        // check how many players and spawn them in the first six spawn points
+        // foreach (Transform coordinate in spawnpoints){
+        //     Instantiate(myPrefab, new Vector3(coordinate.position.x, coordinate.position.y, coordinate.position.z), Quaternion.identity);
+        // }
 
         // disable controls
 

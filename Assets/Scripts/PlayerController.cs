@@ -45,9 +45,11 @@ public class PlayerController : CommonController {
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
         playerBody = GetComponent<Rigidbody>();
-
+        
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
-        playerVariable = playerVarList[playerInput.playerIndex];
+        print(playerInput.user.id);
+        playerVariable = playerVarList[playerInput.user.id];
+        // playerVariable = player1Variable;
 
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         dashDistance = gameConstants.dashDistance;
