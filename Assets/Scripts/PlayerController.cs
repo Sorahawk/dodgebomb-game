@@ -222,7 +222,6 @@ public class PlayerController : CommonController {
         // no need to light the fuse because it will be handled from within bomb script
         if (carriedBomb) bombScript.DetachFromPlayer();
 
-
         // play death animation
 
         // wait for animation to finish playing

@@ -43,6 +43,7 @@ public class GrassBombController : ExplosiveController {
 
     private new void OnCollisionStay(Collision col) {
         if (activated) {
+            Debug.Log(col.gameObject.tag);
             StartCoroutine(ExplodeNow());
         }
     }

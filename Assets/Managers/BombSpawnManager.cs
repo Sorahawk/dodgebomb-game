@@ -32,7 +32,7 @@ public class BombSpawnManager : MonoBehaviour
 
         // random spawns in fixed positions
         bombIndex = Random.Range(0, bombList.Count);
-        Instantiate(bombList[bombIndex], new Vector3(spawnPoint.x, spawnPoint.y+1.0f, spawnPoint.z), bombList[bombIndex].transform.rotation);
+        Instantiate(bombList[bombIndex], new Vector3(spawnPoint.x, spawnPoint.y + 1f, spawnPoint.z), bombList[bombIndex].transform.rotation);
 
         // random spawn in random positions
         // float _xAxis = Random.Range(-18,18);
