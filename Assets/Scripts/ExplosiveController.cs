@@ -14,6 +14,15 @@ public class ExplosiveController : CommonController {
     public float fuseDelay;
     public float explosionRadius;
 
+    public PlayerVariable player1Variable;
+    public PlayerVariable player2Variable;
+    public PlayerVariable player3Variable;
+    public PlayerVariable player4Variable;
+    public PlayerVariable player5Variable;
+    public PlayerVariable player6Variable;
+    private PlayerVariable[] playerVarList;
+    private PlayerVariable playerVariable;
+
     protected GameObject smokeObject;
     protected GameObject explosionCircleObject;
 
@@ -26,12 +35,13 @@ public class ExplosiveController : CommonController {
     protected bool activated = false;
     protected bool inAir = false;
     protected bool destroyed = false;
-
+    protected int lastHeld = -1;
 
     protected void Start() {
         bombBody = GetComponent<Rigidbody>();
         bombCollider = GetComponent<Collider>();
         bombScript = this;
+        playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
     }
 
     public bool getInAir() {
@@ -51,12 +61,13 @@ public class ExplosiveController : CommonController {
     }
 
     // bind the bomb to the character
-    public void AttachToPlayer(GameObject playerObject) {
+    public void AttachToPlayer(GameObject playerObject, int playerIndex) {
         // if a player is already holding the bomb, detach it
         if (playerHolding) DetachFromPlayer();
 
         // attach bomb to new player
         playerHolding = playerObject;
+        lastHeld = playerIndex;
         playerScript = playerHolding.GetComponent<PlayerController>();
 
         playerScript.SetCarryBomb(gameObject);
@@ -126,6 +137,10 @@ public class ExplosiveController : CommonController {
             Vector3 circleFollowPos = new Vector3(bombPosition.x, bombPosition.y + 0.1f, bombPosition.z);
             explosionCircleObject.transform.position = circleFollowPos;
         }
+        if (bombBody.transform.position.y > 0.7f)
+        {
+            bombBody.transform.position = new Vector3(transform.position.x, 0.35f, transform.position.z);
+        }
     }
 
     // explode immediately
@@ -163,15 +178,29 @@ public class ExplosiveController : CommonController {
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
 
+                if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld)
+                {
+                    MinusScore(lastHeld);
+                }
+                else
+                {
+                    IncreaseScore(lastHeld);
+                }
+
                 if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
             }
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
                 StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
-
+                
+                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1)
+                {
+                    other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
+                }
                 // additionally apply explosion force on bombs
                 if (other.tag == "Bomb") {
                     other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionRadius * 3, transform.position, explosionRadius, 0, ForceMode.Impulse);
+                    
                 }
             }
 
@@ -183,6 +212,36 @@ public class ExplosiveController : CommonController {
                 other.gameObject.GetComponent<Renderer>().enabled = false;
             }
         }
+    }
+
+    protected void MinusScore(int playerIndex)
+    {
+        playerVariable = playerVarList[playerIndex];
+        if (playerVariable.Score > 0)
+        {
+            playerVariable.ApplyScoreChange(-1);
+        }
+        print(playerVariable.Score);    
+    }
+
+    protected void IncreaseScore(int playerIndex)
+    {
+        
+        print("index: " + playerIndex);
+        playerVariable = playerVarList[playerIndex];
+        playerVariable.ApplyScoreChange(1);
+        print(playerVariable.Score);
+    }
+
+    public int GetLastHeld()
+    {
+        return lastHeld;
+    }
+
+    public void SetLastHeld(int index)
+    {
+        print("setting " + index);
+        lastHeld = index;
     }
 
     protected void OnCollisionEnter(Collision col) {

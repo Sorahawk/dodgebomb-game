@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : CommonController {
 
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
     private Rigidbody playerBody;
     private Vector2 lookDirection;
     private bool isAiming = false;
@@ -82,7 +82,7 @@ public class PlayerController : CommonController {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
             bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
-            bombScript.AttachToPlayer(gameObject);
+            bombScript.AttachToPlayer(gameObject, playerInput.playerIndex);
             pickableBomb = null;
         }
 
@@ -188,7 +188,7 @@ public class PlayerController : CommonController {
 
             if (colliderName == "FrontCollider" && colBombScript.getInAir() && !carriedBomb) {
                 // can only pick up if bomb comes from the front and empty hands
-                colBombScript.AttachToPlayer(gameObject);
+                colBombScript.AttachToPlayer(gameObject, playerInput.playerIndex);
             }
 
             else if (colliderName == "SideBackCollider" && colBombScript.getInAir() && colBombScript.getActive()) {
