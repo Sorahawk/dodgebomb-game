@@ -17,7 +17,6 @@ public class BombSpawnManager : MonoBehaviour
     private int bombIndex;
      
     void Start(){
-        InvokeRepeating("spawnBombs", 1, 3);
         InvokeRepeating("spawnBombs", 1, 5);
         InvokeRepeating("spawnBombs", 1, 2);
     }
