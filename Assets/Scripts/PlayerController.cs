@@ -58,7 +58,6 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnMove(InputValue value) {
-        Debug.Log("moving");
         if (!isAiming) {
             moveVal = value.Get<Vector2>();
         }
@@ -66,7 +65,6 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnSpin(InputValue value) {
-        Debug.Log("spinning");
         spinVal = value.Get<Vector2>();
     }
 
@@ -215,6 +213,8 @@ public class PlayerController : CommonController {
     }
 
     public void KillPlayer() {
+        Debug.Log("Player dead");
+
         // disable controls
         playerInput.DeactivateInput();
 
