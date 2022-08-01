@@ -12,7 +12,6 @@ public class LobbyPlayerController : CommonController {
     private Renderer[] playerRenderers;
 
     private int cIndex = 0;
-    private bool isReady;
     private int pIndex;
 
     private void Start() {
