@@ -12,8 +12,8 @@ public class PlayerManagerController : MonoBehaviour {
     public List<Material> playerColors;
     public GameObject actualMonkeyPrefab;
 
-    private List<PlayerConfig> playerConfigs;
     private int MinPlayers = 2;
+    private List<PlayerConfig> playerConfigs;
     // private bool isPlayerReady = false;
 
     public static PlayerManagerController Instance { get; private set; }
@@ -44,7 +44,9 @@ public class PlayerManagerController : MonoBehaviour {
             playerCards[index].transform.GetChild(0).gameObject.SetActive(false);
             playerCards[index].transform.GetChild(1).gameObject.SetActive(true);
             playerCards[index].transform.GetChild(3).gameObject.SetActive(true);
-        } else {
+        }
+
+        else {
             playerConfigs[index].IsReady = false;
 
             // ui element for ready
@@ -52,8 +54,6 @@ public class PlayerManagerController : MonoBehaviour {
             playerCards[index].transform.GetChild(1).gameObject.SetActive(false);
             playerCards[index].transform.GetChild(3).gameObject.SetActive(false);
         }
-
-
 
         // only start game if there are at least 2 players, and all players are ready
         if (playerConfigs.Count >= MinPlayers && playerConfigs.All(p => p.IsReady == true)) {
@@ -138,5 +138,6 @@ public class PlayerConfig {
         Input = pInput;
         PlayerIndex = pInput.playerIndex;
         PlayerObject = playerObject;
+        IsReady = false;
     }
 }
