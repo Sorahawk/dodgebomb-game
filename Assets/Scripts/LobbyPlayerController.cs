@@ -26,15 +26,7 @@ public class LobbyPlayerController : CommonController {
     }
 
     private void OnUp() {
-        Debug.Log("Up button clicked");
-    }
-
-    private void OnDown() {
-        Debug.Log("Down button clicked");
-    }
-
-    private void OnLeft() {
-        if (!playerConfig.IsReady) {
+        if (playerConfig != null && !playerConfig.IsReady) {
             if (cIndex == 0) cIndex = playerManager.playerColors.Count - 1;
             else cIndex--;
 
@@ -42,14 +34,21 @@ public class LobbyPlayerController : CommonController {
         }
     }
 
-    private void OnRight() {
-        if (!playerConfig.IsReady) {
+    private void OnDown() {
+        if (playerConfig != null && !playerConfig.IsReady) {
             if (cIndex == playerManager.playerColors.Count - 1) cIndex = 0;
             else cIndex++;
 
             ChangePlayerColor();
         }
+    }
 
+    private void OnLeft() {
+        // change hat
+    }
+
+    private void OnRight() {
+        // change hat
     }
 
     private void OnReady() {

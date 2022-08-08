@@ -142,6 +142,7 @@ public class ExplosiveController : CommonController {
     // explode immediately
     public IEnumerator ExplodeNow() {
         destroyed = true;
+        DetachFromPlayer();
 
         if (explosionCircleObject) Destroy(explosionCircleObject);
 

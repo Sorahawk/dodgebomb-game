@@ -433,6 +433,17 @@
                 },
                 {
                     "name": "",
+                    "id": "605e0069-b34d-41b9-a63f-0656db754a43",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Up",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "0a136e5d-f69a-4077-98d6-5285f360b8b8",
                     "path": "<XInputController>/leftStick/down",
                     "interactions": "",
@@ -457,6 +468,17 @@
                     "name": "",
                     "id": "9309c9ba-9fbf-4ce5-8dab-ea86832bef46",
                     "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Down",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7acfc359-c9d4-4ed1-ba27-8c809105ff36",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",
@@ -499,6 +521,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c85d108d-39c4-4666-987a-f2900bb3e7ba",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "5d248168-d574-4eba-8a3c-9fcd24867213",
                     "path": "<XInputController>/leftStick/right",
                     "interactions": "",
@@ -523,6 +556,17 @@
                     "name": "",
                     "id": "54e44dd0-7fda-49db-ab9d-b5a05cd26653",
                     "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "403d42f4-66e9-40c3-a118-c50af0900b1e",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard + Mouse",

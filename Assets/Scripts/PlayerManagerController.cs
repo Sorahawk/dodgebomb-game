@@ -40,19 +40,15 @@ public class PlayerManagerController : MonoBehaviour {
         if (!playerConfigs[index].IsReady) {
             playerConfigs[index].IsReady = true;
 
-            // ui element for ready
-            playerCards[index].transform.GetChild(0).gameObject.SetActive(false);
-            playerCards[index].transform.GetChild(1).gameObject.SetActive(true);
-            playerCards[index].transform.GetChild(3).gameObject.SetActive(true);
+            playerCards[index].transform.Find("Ready").gameObject.SetActive(true); // ready
+            playerCards[index].transform.Find("Arrows").gameObject.SetActive(false); // arrows
         }
 
         else {
             playerConfigs[index].IsReady = false;
 
-            // ui element for ready
-            playerCards[index].transform.GetChild(0).gameObject.SetActive(true);
-            playerCards[index].transform.GetChild(1).gameObject.SetActive(false);
-            playerCards[index].transform.GetChild(3).gameObject.SetActive(false);
+            playerCards[index].transform.Find("Ready").gameObject.SetActive(false); // ready
+            playerCards[index].transform.Find("Arrows").gameObject.SetActive(true); // arrows
         }
 
         // only start game if there are at least 2 players, and all players are ready
@@ -112,7 +108,7 @@ public class PlayerManagerController : MonoBehaviour {
             playerCards[index].SetActive(true);
 
             GameObject playerObject = playerCards[index].transform.Find("Lobby Monkey").gameObject;
-            playerCards[index].transform.GetChild(2).GetComponent<UnityEngine.UI.Text>().text = "Player " + (index+1);
+            playerCards[index].transform.Find("Name").GetComponent<UnityEngine.UI.Text>().text = "Player " + (index+1);
             
 
             playerConfigs.Add(new PlayerConfig(pInput, playerObject));

@@ -21,13 +21,14 @@ public class GrassBombController : ExplosiveController {
         EnableAllColliders(false);
         EnableAllRenderers(false);
 
+        CheckExplosionDamage();
+
         if (explosion) {
             // destroy FX object after it finishes
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             Destroy(explosion);
         }
 
-        CheckExplosionDamage();
 
         // destroy game object
         Destroy(gameObject);
