@@ -8,6 +8,7 @@ public class PlayerController : CommonController {
 
     public PlayerInput playerInput;
     private Rigidbody playerBody;
+    private Animator playerAnimator;
     private Vector2 lookDirection;
     private bool isAiming = false;
     public GameConstants gameConstants;
@@ -45,6 +46,7 @@ public class PlayerController : CommonController {
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
         playerBody = GetComponent<Rigidbody>();
+        playerAnimator = GetComponent<Animator>();
         
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
 
@@ -130,17 +132,23 @@ public class PlayerController : CommonController {
             // normalize direction vector and throw bomb
             latestDir.y = 0.1f;
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
+
+            // play throw animation
+            playerAnimator.SetTrigger("bombThrow");
+            playerAnimator.SetBool("holdingBomb", false);
         }
     }
 
     public void SetCarryBomb(GameObject bombObject) {
         carriedBomb = bombObject;
 
-        if (carriedBomb == null) Gamepad.current.SetMotorSpeeds(0, 0);
+        // if controller is keyboard and mouse, Gamepad.current is null
+        if (carriedBomb == null && Gamepad.current != null) Gamepad.current.SetMotorSpeeds(0, 0);
         else {
             bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
+            playerAnimator.SetBool("holdingBomb", true);
 
-            if (bombScript.getActive()) {
+            if (bombScript.getActive() && Gamepad.current != null) {
                 // this line alone is enough to set the rumble speeds, no need declare anything above
                 Gamepad.current.SetMotorSpeeds(0, 0.5f);
             }
@@ -150,6 +158,7 @@ public class PlayerController : CommonController {
     public void DropBomb() {
         if (carriedBomb) {
             bombScript.DetachFromPlayer();
+            playerAnimator.SetBool("holdingBomb", false);
         }
     }
 
@@ -170,6 +179,10 @@ public class PlayerController : CommonController {
     private void FixedUpdate() {
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
+
+        if (movementTranslation == Vector3.zero) playerAnimator.SetBool("isRunning", false);
+        else playerAnimator.SetBool("isRunning", true);
+
         playerBody.AddForce(movementTranslation * playerVariable.MoveSpeed, ForceMode.Impulse);
 
         // dash
@@ -233,9 +246,14 @@ public class PlayerController : CommonController {
         if (carriedBomb) bombScript.DetachFromPlayer();
 
         // play death animation
+        playerAnimator.SetTrigger("deathTrigger");
 
         // wait for animation to finish playing
+        StartCoroutine(DeathDisappear());
+    }
 
+    private IEnumerator DeathDisappear(float delay=1.0f) {
+        yield return new WaitForSeconds(delay);
 
         // setting player object to inactive makes a new one spawn when input is detected
         // so just render the player invisible and uncollidable
