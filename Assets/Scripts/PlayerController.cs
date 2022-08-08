@@ -135,6 +135,16 @@ public class PlayerController : CommonController {
 
     public void SetCarryBomb(GameObject bombObject) {
         carriedBomb = bombObject;
+
+        if (carriedBomb == null) Gamepad.current.SetMotorSpeeds(0, 0);
+        else {
+            bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
+
+            if (bombScript.getActive()) {
+                // this line alone is enough to set the rumble speeds, no need declare anything above
+                Gamepad.current.SetMotorSpeeds(0, 0.5f);
+            }
+        }
     }
 
     public void DropBomb() {
