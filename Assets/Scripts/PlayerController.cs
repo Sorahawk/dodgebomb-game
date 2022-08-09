@@ -94,7 +94,7 @@ public class PlayerController : CommonController {
     }
 
     // automatic callback when corresponding input is detected
-    private void OnThrow(){
+    private void OnThrow() {
         // return if no bomb carried
         if (!carriedBomb) {
             isAiming = false;
@@ -235,6 +235,23 @@ public class PlayerController : CommonController {
         }
     }
 
+    public void StunPlayer() {
+        // disable controls
+        playerInput.DeactivateInput();
+
+        // play stun animation
+        playerAnimator.SetTrigger("stunTrigger");
+
+        StartCoroutine(StunDelay());
+    }
+
+    private IEnumerator StunDelay() {
+        yield return new WaitForSeconds(2);
+
+        // re-enable controls
+        playerInput.ActivateInput();
+    }
+
     public void KillPlayer() {
         Debug.Log("Player dead");
 
@@ -252,8 +269,8 @@ public class PlayerController : CommonController {
         StartCoroutine(DeathDisappear());
     }
 
-    private IEnumerator DeathDisappear(float delay=1.0f) {
-        yield return new WaitForSeconds(delay);
+    private IEnumerator DeathDisappear() {
+        yield return new WaitForSeconds(1.5f);
 
         // setting player object to inactive makes a new one spawn when input is detected
         // so just render the player invisible and uncollidable

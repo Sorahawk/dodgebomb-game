@@ -17,7 +17,13 @@ public class RockController : ExplosiveController {
         if (activated) {
             // disarm players
             if (col.gameObject.CompareTag("Player")) {
-                col.gameObject.GetComponent<PlayerController>().DropBomb();
+                PlayerController playerScript = col.gameObject.GetComponent<PlayerController>();
+
+                // drop any held bombs
+                playerScript.DropBomb();
+
+                // stun player
+                playerScript.StunPlayer();
             }
 
             // activate barrels
