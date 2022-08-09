@@ -37,6 +37,8 @@ public class RockController : ExplosiveController {
                     col.gameObject.GetComponent<ExplosiveController>().ActivateBomb();
                 }
             }
+
+            activated = false;
         }
     }
 }

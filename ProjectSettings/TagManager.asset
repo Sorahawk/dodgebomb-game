@@ -12,7 +12,7 @@ TagManager:
   - Grass
   - OutOfBounds
   - PlayerData
-  - quicksand
+  - Quicksand
   layers:
   - Default
   - TransparentFX

@@ -130,7 +130,7 @@ public class PlayerController : CommonController {
             bombScript.ActivateBomb();
 
             // normalize direction vector and throw bomb
-            latestDir.y = 0.1f;
+            latestDir.y = -0.1f;
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
 
             // play throw animation
@@ -228,7 +228,7 @@ public class PlayerController : CommonController {
         else if (other.gameObject.CompareTag("OutOfBounds")) {
             KillPlayer();
         }
-        else if (other.gameObject.CompareTag("quicksand")) {
+        else if (other.gameObject.CompareTag("Quicksand")) {
             playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
         }
     }
@@ -237,7 +237,7 @@ public class PlayerController : CommonController {
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = null;
         }
-        else if (other.gameObject.CompareTag("quicksand")) {
+        else if (other.gameObject.CompareTag("Quicksand")) {
             playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         }
     }
