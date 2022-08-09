@@ -217,6 +217,7 @@ public class PlayerController : CommonController {
                 StartCoroutine(colBombScript.ExplodeNow());
             }
         }
+
     }
 
     private void OnTriggerStay(Collider other) {
@@ -227,11 +228,17 @@ public class PlayerController : CommonController {
         else if (other.gameObject.CompareTag("OutOfBounds")) {
             KillPlayer();
         }
+        else if (other.gameObject.CompareTag("quicksand")) {
+            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
+        }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = null;
+        }
+        else if (other.gameObject.CompareTag("quicksand")) {
+            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         }
     }
 
