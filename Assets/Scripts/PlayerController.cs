@@ -42,6 +42,9 @@ public class PlayerController : CommonController {
     private GameObject carriedBomb = null;
     private int bombThrowForce;
 
+    private float playerCurrentSpeed;
+    private bool inSand = false;
+
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -181,6 +184,14 @@ public class PlayerController : CommonController {
     }
 
     private void FixedUpdate() {
+        if (inSand){
+            playerCurrentSpeed = gameConstants.playerMoveSpeed/2;
+        }else if (!inSand){
+            playerCurrentSpeed = gameConstants.playerMoveSpeed;
+        }
+        playerVariable.SetMoveSpeed(playerCurrentSpeed);
+        
+
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
 
@@ -233,7 +244,8 @@ public class PlayerController : CommonController {
             KillPlayer();
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
+            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
+            inSand = true;
         }
     }
 
@@ -242,7 +254,8 @@ public class PlayerController : CommonController {
             pickableBomb = null;
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
+            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
+            inSand= false;
         }
     }
 
