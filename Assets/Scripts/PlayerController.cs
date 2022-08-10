@@ -144,19 +144,22 @@ public class PlayerController : CommonController {
         print(playerVariable.Powerup);
         if (playerVariable.Powerup==1) {
             // confusion (call a script that input current player index)
+            print("confusion");
             StartCoroutine(Confuse((int)playerInput.user.id));
         } else if (playerVariable.Powerup==2) {
             // Power throw
-
+            print("power throw");
         } else if (playerVariable.Powerup==3) {
             // Shield
-
+            print("shield");
         } else if (playerVariable.Powerup==4) {
             // Speed
+            print("speed");
             StartCoroutine(SpeedPowerup());
         } else if (playerVariable.Powerup==5) {
             // Trap
             // spawn trap prefab at current player position
+            print("trap");
         }
         playerVariable.SetPowerup(0);
     }
@@ -251,7 +254,7 @@ public class PlayerController : CommonController {
             KillPlayer();
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(playerVariable.MoveSpeed/2);
+            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
         }
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
@@ -264,7 +267,7 @@ public class PlayerController : CommonController {
             pickableBomb = null;
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(playerVariable.MoveSpeed*2);
+            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         }
     }
 
@@ -307,6 +310,7 @@ public class PlayerController : CommonController {
             if (i!=playerIndex) {
                 var.SetMoveSpeed(var.MoveSpeed*-1);
             }
+            i++;
         }
     }
 
