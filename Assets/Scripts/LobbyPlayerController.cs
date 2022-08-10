@@ -81,7 +81,7 @@ public class LobbyPlayerController : CommonController {
     }
 
     private void OnReady() {
-        if (playerManager) playerManager.ReadyPlayer(pIndex);
+        if (playerManager && playerConfig != null) playerManager.ReadyPlayer(pIndex);
     }
 
     private void OnBack() {
@@ -106,8 +106,23 @@ public class LobbyPlayerController : CommonController {
     }
 
     public void BindPlayer() {
-        // switch to the correct input component
-        GetComponent<PlayerInput>().enabled = false;
-        playerConfig.PlayerObject = null;
+        // switch to game action map
+        GetComponent<PlayerInput>().SwitchCurrentActionMap("Default");
+
+        // unbind lobby monkey and bind to player monkey
+        playerConfig.PlayerObject = gameObject;
+
+        // change appearance of player monkey based on selected customisation
+        Renderer[] playerRenderers = gameObject.transform.Find("Model").GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer ren in playerRenderers) {
+            ren.material = playerManager.playerColors[cIndex];
+        }
+
+        // if no hat selected, then don't enable any
+        if (hIndex != -1) {
+            Renderer[] playerHats = gameObject.transform.Find("Hats").GetComponentsInChildren<Renderer>();
+            playerHats[hIndex].enabled = true;
+        }
     }
 }

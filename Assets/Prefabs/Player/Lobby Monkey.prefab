@@ -14,7 +14,7 @@ PrefabInstance:
     - target: {fileID: -1731823443167105420, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 4178fa3676430734abbf636d92aa9e1a, type: 2}
+      objectReference: {fileID: 9100000, guid: 6204eb978e9650c47943bf987ec89d7d, type: 2}
     - target: {fileID: 1082589460198850319, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -30,6 +30,10 @@ PrefabInstance:
     - target: {fileID: 4700831722076095505, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Name
       value: Lobby Monkey
+      objectReference: {fileID: 0}
+    - target: {fileID: 4700831722076095505, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4967831395098430987, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -132,4 +136,6 @@ PrefabInstance:
     - {fileID: -4668056755766103616, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
     - {fileID: 3722157027754185212, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
     - {fileID: 3095221141378446349, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+    - {fileID: 569472861815502193, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
+    - {fileID: -1731823443167105420, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}

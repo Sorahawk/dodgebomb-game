@@ -1361,6 +1361,7 @@ GameObject:
   - component: {fileID: -4668056755766103616}
   - component: {fileID: 5702454110998792915}
   - component: {fileID: -1731823443167105420}
+  - component: {fileID: 569472861815502193}
   m_Layer: 2
   m_Name: Monkey
   m_TagString: Player
@@ -1445,7 +1446,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Default
+  m_DefaultActionMap: ba553617-3f54-478d-ab81-e0921f8f3659
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5702454110998792915
@@ -1489,6 +1490,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &569472861815502193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4700831722076095505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c1a1fff0d011947a5872a1f65bb938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4825725571074474857
 GameObject:
   m_ObjectHideFlags: 0

@@ -3890,7 +3890,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291739421658415406, guid: 28b3a019128b13e45b843a5e4a9b3ddf, type: 3}
       propertyPath: MinPlayers
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1291739421658415406, guid: 28b3a019128b13e45b843a5e4a9b3ddf, type: 3}
       propertyPath: playerColors.Array.size
@@ -3948,6 +3948,10 @@ PrefabInstance:
       propertyPath: playerColors.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: 3b60d7343e3cfe64f9928ccbbbe25ebf, type: 2}
+    - target: {fileID: 6126004703599470041, guid: 28b3a019128b13e45b843a5e4a9b3ddf, type: 3}
+      propertyPath: m_PlayerPrefab
+      value: 
+      objectReference: {fileID: 4700831722076095505, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
     - target: {fileID: 7914157897565987409, guid: 28b3a019128b13e45b843a5e4a9b3ddf, type: 3}
       propertyPath: m_Name
       value: PlayerConfigManager
