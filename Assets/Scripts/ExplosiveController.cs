@@ -186,7 +186,7 @@ public class ExplosiveController : CommonController {
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
                 StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
-                
+
                 if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
                     other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
                 }
@@ -209,18 +209,15 @@ public class ExplosiveController : CommonController {
 
     protected void MinusScore(int playerIndex) {
         playerVariable = playerVarList[playerIndex];
+
         if (playerVariable.Score > 0) {
             playerVariable.ApplyScoreChange(-1);
         }
-
-        print(playerVariable.Score);    
     }
 
     protected void IncreaseScore(int playerIndex) {
-        print("index: " + playerIndex);
         playerVariable = playerVarList[playerIndex];
         playerVariable.ApplyScoreChange(1);
-        print(playerVariable.Score);
     }
 
     public int GetLastHeld() {
@@ -228,7 +225,6 @@ public class ExplosiveController : CommonController {
     }
 
     public void SetLastHeld(int index) {
-        print("setting " + index);
         lastHeld = index;
     }
 
