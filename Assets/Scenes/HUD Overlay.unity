@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -384,13 +384,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 874982052418720550, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_RootOrder
@@ -414,11 +418,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1590
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 910
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_LocalPosition.x
@@ -450,11 +466,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 793.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 451.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219130, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -472,9 +488,13 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 988345200}
+    - target: {fileID: 1492864088821219131, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219132, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1492864088821219134, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_Name
@@ -499,6 +519,26 @@ PrefabInstance:
     - target: {fileID: 1492864090135333994, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354950395109519319, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354950395632235302, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354950395990822650, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354950396243556331, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7354950396625564588, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9115620009071718555, guid: b54d840e5f968d24eb925ba11a14a319, type: 3}
       propertyPath: m_AnchorMax.y
