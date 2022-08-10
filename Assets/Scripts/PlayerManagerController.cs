@@ -130,12 +130,14 @@ public class PlayerConfig {
 
     public int PlayerIndex { get; set; }
     public int PlayerColor { get; set; }
+    public int PlayerHat { get; set; }
     public bool IsReady { get; set; }
 
     public PlayerConfig(PlayerInput pInput, GameObject playerObject) {
         Input = pInput;
         PlayerIndex = pInput.playerIndex;
         PlayerObject = playerObject;
+        PlayerHat = -1;
         IsReady = false;
     }
 }

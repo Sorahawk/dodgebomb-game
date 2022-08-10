@@ -139,6 +139,10 @@ public class PlayerController : CommonController {
         }
     }
 
+    // automatic callback when corresponding input is detected
+    private void OnUsePowerup() {
+    }
+
     public void SetCarryBomb(GameObject bombObject) {
         carriedBomb = bombObject;
 
