@@ -231,6 +231,10 @@ public class PlayerController : CommonController {
         else if (other.gameObject.CompareTag("Quicksand")) {
             playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
         }
+        else if (other.gameObject.CompareTag("Powerup")) {
+            playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
+            Destroy(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other) {

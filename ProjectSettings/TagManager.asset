@@ -13,6 +13,7 @@ TagManager:
   - OutOfBounds
   - PlayerData
   - Quicksand
+  - Powerup
   layers:
   - Default
   - TransparentFX
