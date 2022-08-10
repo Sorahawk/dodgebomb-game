@@ -55,14 +55,14 @@ public class LobbyPlayerController : CommonController {
     private void OnLeft() {
         // change hat
         if (playerConfig != null && !playerConfig.IsReady) {
-            if (hIndex == -1) {
-                hIndex = playerHats.Length - 1;
-            } else {
+            if (hIndex != -1) {
                 playerHats[hIndex].enabled = false;
                 hIndex--;
+            } else {
+                hIndex = playerHats.Length - 1;
             }
 
-            if (hIndex != -1) playerHats[hIndex].enabled = true;
+            ChangePlayerHat();
         }
     }
 
@@ -74,10 +74,9 @@ public class LobbyPlayerController : CommonController {
             }
             
             if (hIndex == playerHats.Length - 1) hIndex = -1;
-            else {
-                hIndex++;
-                playerHats[hIndex].enabled = true;
-            }
+            else hIndex++;
+
+            ChangePlayerHat();
         }
     }
 
@@ -97,6 +96,13 @@ public class LobbyPlayerController : CommonController {
         }
 
         playerConfig.PlayerColor = cIndex;
+    }
+
+    private void ChangePlayerHat() {
+        // enable renderer for the corresponding hat
+        if (hIndex != -1) playerHats[hIndex].enabled = true;
+
+        playerConfig.PlayerHat = hIndex;
     }
 
     public void BindPlayer() {

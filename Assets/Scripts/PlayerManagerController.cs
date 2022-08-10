@@ -92,10 +92,16 @@ public class PlayerManagerController : MonoBehaviour {
         foreach (PlayerConfig player in playerConfigs) {
             PlayerInput pInput = PlayerInput.Instantiate(actualMonkeyPrefab);
 
-            Renderer[] playerRenderers = pInput.gameObject.GetComponentsInChildren<Renderer>();
+            Renderer[] playerRenderers = pInput.gameObject.transform.Find("Model").GetComponentsInChildren<Renderer>();
 
             foreach (Renderer ren in playerRenderers) {
                 ren.material = playerColors[player.PlayerColor];
+            }
+
+            // if no hat selected, then don't enable any
+            if (player.PlayerHat != -1) {
+                Renderer[] playerHats = pInput.gameObject.transform.Find("Hats").GetComponentsInChildren<Renderer>();
+                playerHats[player.PlayerHat].enabled = true;
             }
         }
     }
