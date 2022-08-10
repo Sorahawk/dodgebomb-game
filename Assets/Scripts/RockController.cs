@@ -15,9 +15,11 @@ public class RockController : ExplosiveController {
 
     private new void OnCollisionEnter(Collision col) {
         if (activated) {
+            GameObject other = col.gameObject;
+
             // disarm players
-            if (col.gameObject.CompareTag("Player")) {
-                PlayerController playerScript = col.gameObject.GetComponent<PlayerController>();
+            if (other.CompareTag("Player")) {
+                PlayerController playerScript = other.GetComponent<PlayerController>();
 
                 // drop any held bombs
                 playerScript.DropBomb();
@@ -26,15 +28,19 @@ public class RockController : ExplosiveController {
                 playerScript.StunPlayer();
             }
 
-            // activate barrels
-            else if (col.gameObject.CompareTag("Barrel")) {
-                StartCoroutine(col.gameObject.GetComponent<ExplosiveController>().StartFuse());
-            }
+            else if (other.CompareTag("Bomb") || other.CompareTag("Barrel")) {
+                ExplosiveController bombScript = other.GetComponent<ExplosiveController>();
 
-            else if (col.gameObject.CompareTag("Bomb")) {
-                // activate inactive bombs
-                if (!col.gameObject.GetComponent<ExplosiveController>().getActive()) {
-                    col.gameObject.GetComponent<ExplosiveController>().ActivateBomb();
+                if (bombScript.GetLastHeld() == -1) bombScript.SetLastHeld(lastHeld);
+
+                if (other.CompareTag("Barrel")) StartCoroutine(bombScript.StartFuse());
+                else {
+                    // activate inactive bombs
+                    if (!bombScript.getActive()) {
+                        if (bombScript.GetLastHeld() == -1) bombScript.SetLastHeld(lastHeld);
+
+                        bombScript.ActivateBomb();
+                    }
                 }
             }
 

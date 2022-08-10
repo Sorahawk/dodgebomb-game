@@ -130,13 +130,17 @@ public class PlayerController : CommonController {
             bombScript.ActivateBomb();
 
             // normalize direction vector and throw bomb
-            latestDir.y = -0.1f;
+            latestDir.y = 0.1f;
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
 
             // play throw animation
             playerAnimator.SetTrigger("bombThrow");
             playerAnimator.SetBool("holdingBomb", false);
         }
+    }
+
+    // automatic callback when corresponding input is detected
+    private void OnUsePowerup() {
     }
 
     public void SetCarryBomb(GameObject bombObject) {

@@ -11,8 +11,8 @@ public class PlayerManagerController : MonoBehaviour {
     public List<GameObject> playerCards;
     public List<Material> playerColors;
     public GameObject actualMonkeyPrefab;
+    public int MinPlayers = 2;
 
-    private int MinPlayers = 2;
     private List<PlayerConfig> playerConfigs;
     // private bool isPlayerReady = false;
 
@@ -66,10 +66,12 @@ public class PlayerManagerController : MonoBehaviour {
     }
 
     // based on Scene Index under File -> Build Settings
-    // ignore index 0 and 1 (Start and Lobby)
+    // ignore index 0 - 2 (Start, Instructions and Lobby)
     public IEnumerator LoadNewMap(int previousMapIndex = -1) {
-        int maxMapIndex = SceneManager.sceneCountInBuildSettings - 1;
-        int randomMap = Random.Range(2, maxMapIndex);
+        int numberOfNonPlayableScenes = 3;
+
+        int maxMapIndex = SceneManager.sceneCountInBuildSettings;
+        int randomMap = Random.Range(numberOfNonPlayableScenes, maxMapIndex);
 
         // wait for scene to finish loading
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(randomMap);
@@ -128,12 +130,14 @@ public class PlayerConfig {
 
     public int PlayerIndex { get; set; }
     public int PlayerColor { get; set; }
+    public int PlayerHat { get; set; }
     public bool IsReady { get; set; }
 
     public PlayerConfig(PlayerInput pInput, GameObject playerObject) {
         Input = pInput;
         PlayerIndex = pInput.playerIndex;
         PlayerObject = playerObject;
+        PlayerHat = -1;
         IsReady = false;
     }
 }
