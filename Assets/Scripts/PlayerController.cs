@@ -141,6 +141,24 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnUsePowerup() {
+        print(playerVariable.Powerup);
+        if (playerVariable.Powerup==1) {
+            // confusion (call a script that input current player index)
+            StartCoroutine(Confuse((int)playerInput.user.id));
+        } else if (playerVariable.Powerup==2) {
+            // Power throw
+
+        } else if (playerVariable.Powerup==3) {
+            // Shield
+
+        } else if (playerVariable.Powerup==4) {
+            // Speed
+            StartCoroutine(SpeedPowerup());
+        } else if (playerVariable.Powerup==5) {
+            // Trap
+            // spawn trap prefab at current player position
+        }
+        playerVariable.SetPowerup(0);
     }
 
     public void SetCarryBomb(GameObject bombObject) {
@@ -233,7 +251,7 @@ public class PlayerController : CommonController {
             KillPlayer();
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
+            playerVariable.SetMoveSpeed(playerVariable.MoveSpeed/2);
         }
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
@@ -246,7 +264,7 @@ public class PlayerController : CommonController {
             pickableBomb = null;
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
+            playerVariable.SetMoveSpeed(playerVariable.MoveSpeed*2);
         }
     }
 
@@ -265,6 +283,31 @@ public class PlayerController : CommonController {
 
         // re-enable controls
         playerInput.ActivateInput();
+    }
+
+    //Speed Boost Powerup
+    private IEnumerator SpeedPowerup() {
+        playerVariable.SetMoveSpeed(playerVariable.MoveSpeed*2);
+        yield return new WaitForSeconds(5);
+        playerVariable.SetMoveSpeed(playerVariable.MoveSpeed/2);
+    }
+
+    // Confusion Powerup
+    private IEnumerator Confuse(int playerIndex) {
+        int i = 0;
+        foreach (PlayerVariable var in playerVarList) {
+            if (i!=playerIndex) {
+                var.SetMoveSpeed(var.MoveSpeed*-1);
+            }
+            i++;
+        }
+        yield return new WaitForSeconds(5);
+        i = 0;
+        foreach (PlayerVariable var in playerVarList) {
+            if (i!=playerIndex) {
+                var.SetMoveSpeed(var.MoveSpeed*-1);
+            }
+        }
     }
 
     public void KillPlayer() {
