@@ -286,11 +286,22 @@ public class PlayerController : CommonController {
         // no need to light the fuse because it will be handled from within bomb script
         if (carriedBomb) bombScript.DetachFromPlayer();
 
+        // turn off hat renderers
+        DisableHats();
+
         // play death animation
         playerAnimator.SetTrigger("deathTrigger");
 
         // wait for animation to finish playing
         StartCoroutine(DeathDisappear());
+    }
+
+    private void DisableHats() {
+        Renderer[] hats = transform.Find("Hats").GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer hat in hats) {
+            hat.enabled = false;
+        }
     }
 
     private IEnumerator DeathDisappear() {
