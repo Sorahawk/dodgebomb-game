@@ -14,7 +14,6 @@ public class PlayerManagerController : MonoBehaviour {
     public int MinPlayers = 2;
 
     private List<PlayerConfig> playerConfigs;
-    // private bool isPlayerReady = false;
 
     public static PlayerManagerController Instance { get; private set; }
 
