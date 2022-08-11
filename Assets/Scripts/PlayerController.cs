@@ -249,12 +249,11 @@ public class PlayerController : CommonController {
             pickableBomb = other.gameObject;
         }
 
+        else if (other.gameObject.CompareTag("Quicksand")) inSand = true;
+
         else if (other.gameObject.CompareTag("OutOfBounds")) {
+            print("out of bounds");
             KillPlayer();
-        }
-        else if (other.gameObject.CompareTag("Quicksand")) {
-            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
-            inSand = true;
         }
     }
 
@@ -299,12 +298,15 @@ public class PlayerController : CommonController {
 
     public void KillPlayer() {
         if (!isDead) {
-            isDead = true;
-
             Debug.Log("Player dead");
+
+            isDead = true;
 
             // disable controls
             playerInput.DeactivateInput();
+
+            // disable colliders
+            EnableAllColliders(false);
 
             // drop any carried bombs
             // no need to light the fuse because it will be handled from within bomb script
@@ -322,11 +324,10 @@ public class PlayerController : CommonController {
     }
 
     private IEnumerator DeathDisappear() {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         // setting player object to inactive makes a new one spawn when input is detected
-        // so just render the player invisible and uncollidable
-        EnableAllColliders(false);
+        // so just render the player invisible
         EnableAllRenderers(false);
     }
 
