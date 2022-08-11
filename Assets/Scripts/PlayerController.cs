@@ -43,6 +43,7 @@ public class PlayerController : CommonController {
     private int bombThrowForce;
 
     private float playerCurrentSpeed;
+    private bool isDash = true;
     private bool inSand = false;
     private bool powerThrow = false;
     private bool isShield = false;
@@ -77,8 +78,10 @@ public class PlayerController : CommonController {
 
     // automatic callback when corresponding input is detected
     private void OnDash() {
-        if (!isAiming && !carriedBomb){
+        if (!isAiming && !carriedBomb && isDash){
             dashActivated = true;
+            isDash = false;
+            StartCoroutine(DashReset);
         }
     }
 
@@ -239,7 +242,7 @@ public class PlayerController : CommonController {
 
             // if character is moving, apply dash in direction of movement
             if (movementTranslation != Vector3.zero) dashForce = movementTranslation;
-
+            
             // if character is stationary, apply dash in direction that player is facing
             else dashForce = latestDir;
 
@@ -309,6 +312,12 @@ public class PlayerController : CommonController {
 
         // re-enable controls
         playerInput.ActivateInput();
+    }
+
+    // Resetting Dash after 3s
+    private IEnumerator DashReset() {
+        yield return new WaitForSeconds(3);
+        isDash = true;
     }
 
     //Speed Boost Powerup
