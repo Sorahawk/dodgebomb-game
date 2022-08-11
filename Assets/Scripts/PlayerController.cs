@@ -44,6 +44,8 @@ public class PlayerController : CommonController {
 
     private float playerCurrentSpeed;
     private bool inSand = false;
+    private bool powerThrow = false;
+    private bool isShield = false;
 
 
     private void Start() {
@@ -133,9 +135,16 @@ public class PlayerController : CommonController {
             bombScript.ActivateBomb();
 
             // normalize direction vector and throw bomb
-            latestDir.y = 0.1f;
-            bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
+            if (powerThrow) {
+                print("throwing over wall");
+                latestDir.y = 0.2f;  // need to test angle to throw over walls
+                powerThrow = false;
+            } else {
+                latestDir.y = 0.1f;
+            }
 
+            bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
+            
             // play throw animation
             playerAnimator.SetTrigger("bombThrow");
             playerAnimator.SetBool("holdingBomb", false);
@@ -152,17 +161,20 @@ public class PlayerController : CommonController {
         } else if (playerVariable.Powerup==2) {
             // Power throw
             print("power throw");
+            powerThrow = true;
         } else if (playerVariable.Powerup==3) {
             // Shield
             print("shield");
+            isShield = true;
         } else if (playerVariable.Powerup==4) {
             // Speed
             print("speed");
             StartCoroutine(SpeedPowerup());
         } else if (playerVariable.Powerup==5) {
             // Trap
-            // spawn trap prefab at current player position
             print("trap");
+            // instantiate bear trap prefab at current player position
+            // tag bear trap to player index
         }
         playerVariable.SetPowerup(0);
     }
@@ -206,12 +218,10 @@ public class PlayerController : CommonController {
 
     private void FixedUpdate() {
         if (inSand){
-            playerCurrentSpeed = gameConstants.playerMoveSpeed/2;
+            playerCurrentSpeed = playerVariable.MoveSpeed/2;
         }else if (!inSand){
-            playerCurrentSpeed = gameConstants.playerMoveSpeed;
+            playerCurrentSpeed = playerVariable.MoveSpeed;
         }
-        playerVariable.SetMoveSpeed(playerCurrentSpeed);
-        
 
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
@@ -219,7 +229,7 @@ public class PlayerController : CommonController {
         if (movementTranslation == Vector3.zero) playerAnimator.SetBool("isRunning", false);
         else playerAnimator.SetBool("isRunning", true);
 
-        playerBody.AddForce(movementTranslation * playerVariable.MoveSpeed, ForceMode.Impulse);
+        playerBody.AddForce(movementTranslation * playerCurrentSpeed, ForceMode.Impulse);
 
         // dash
         if (dashActivated) {
@@ -303,9 +313,9 @@ public class PlayerController : CommonController {
 
     //Speed Boost Powerup
     private IEnumerator SpeedPowerup() {
-        playerVariable.SetMoveSpeed(playerVariable.MoveSpeed*2);
+        playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed*2);
         yield return new WaitForSeconds(5);
-        playerVariable.SetMoveSpeed(playerVariable.MoveSpeed/2);
+        playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
     }
 
     // Confusion Powerup
@@ -325,6 +335,20 @@ public class PlayerController : CommonController {
             }
             i++;
         }
+    }
+
+    // Shield Powerup
+    public bool CheckShield() {
+        return isShield;
+    }
+
+    public void DisableShield() {
+        StartCoroutine(DisablingShield());
+    }
+    // delayed disable for shield by 0.5s
+    private IEnumerator DisablingShield() {
+        yield return new WaitForSeconds(0.5f);
+        isShield = false;
     }
 
     public void KillPlayer() {

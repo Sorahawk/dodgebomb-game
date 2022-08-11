@@ -174,14 +174,20 @@ public class ExplosiveController : CommonController {
                 // this raycast will detect if there any colliders between the explosion origin and the player
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
-
-                if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
-                    MinusScore(lastHeld);
+                // chekc for shield
+                if (other.GetComponent<PlayerController>().CheckShield()){
+                    // disable shield if there is
+                    other.GetComponent<PlayerController>().DisableShield();
                 } else {
-                    IncreaseScore(lastHeld);
-                }
+                    // if no shield
+                    if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
+                    MinusScore(lastHeld);
+                    } else {
+                        IncreaseScore(lastHeld);
+                    }
 
-                if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
+                    if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
+                }
             }
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
