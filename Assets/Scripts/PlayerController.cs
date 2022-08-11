@@ -42,6 +42,9 @@ public class PlayerController : CommonController {
     private GameObject carriedBomb = null;
     private int bombThrowForce;
 
+    private float playerCurrentSpeed;
+    private bool inSand = false;
+
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -202,6 +205,14 @@ public class PlayerController : CommonController {
     }
 
     private void FixedUpdate() {
+        if (inSand){
+            playerCurrentSpeed = gameConstants.playerMoveSpeed/2;
+        }else if (!inSand){
+            playerCurrentSpeed = gameConstants.playerMoveSpeed;
+        }
+        playerVariable.SetMoveSpeed(playerCurrentSpeed);
+        
+
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);
 
@@ -254,7 +265,8 @@ public class PlayerController : CommonController {
             KillPlayer();
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
+            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
+            inSand = true;
         }
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
@@ -267,7 +279,8 @@ public class PlayerController : CommonController {
             pickableBomb = null;
         }
         else if (other.gameObject.CompareTag("Quicksand")) {
-            playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
+            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
+            inSand= false;
         }
     }
 
@@ -324,11 +337,22 @@ public class PlayerController : CommonController {
         // no need to light the fuse because it will be handled from within bomb script
         if (carriedBomb) bombScript.DetachFromPlayer();
 
+        // turn off hat renderers
+        DisableHats();
+
         // play death animation
         playerAnimator.SetTrigger("deathTrigger");
 
         // wait for animation to finish playing
         StartCoroutine(DeathDisappear());
+    }
+
+    private void DisableHats() {
+        Renderer[] hats = transform.Find("Hats").GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer hat in hats) {
+            hat.enabled = false;
+        }
     }
 
     private IEnumerator DeathDisappear() {

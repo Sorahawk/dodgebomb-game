@@ -11,9 +11,8 @@ TagManager:
   - Rock
   - Grass
   - OutOfBounds
-  - PlayerData
   - Quicksand
-  - Powerup
+  - PlayerData
   layers:
   - Default
   - TransparentFX

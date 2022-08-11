@@ -14,7 +14,6 @@ public class PlayerManagerController : MonoBehaviour {
     public int MinPlayers = 2;
 
     private List<PlayerConfig> playerConfigs;
-    // private bool isPlayerReady = false;
 
     public static PlayerManagerController Instance { get; private set; }
 
@@ -54,11 +53,11 @@ public class PlayerManagerController : MonoBehaviour {
         // only start game if there are at least 2 players, and all players are ready
         if (playerConfigs.Count >= MinPlayers && playerConfigs.All(p => p.IsReady == true)) {
 
-            // unbind lobby monkey from each PlayerData object
-            GameObject[] playerData = GameObject.FindGameObjectsWithTag("PlayerData");
+            LobbyPlayerController[] lobbyControllers = transform.GetComponentsInChildren<LobbyPlayerController>();
 
-            foreach (GameObject player in playerData) {
-                player.GetComponent<LobbyPlayerController>().BindPlayer();
+            foreach(LobbyPlayerController controller in lobbyControllers) {
+                // bind new monkey to PlayerObject
+                controller.BindPlayer();
             }
 
             StartCoroutine(LoadNewMap());
@@ -86,16 +85,10 @@ public class PlayerManagerController : MonoBehaviour {
     }
 
     public void SpawnAllPlayers() {
-        GameObject[] playerData = GameObject.FindGameObjectsWithTag("PlayerData");
-
-        // spawn monkeys
-        foreach (PlayerConfig player in playerConfigs) {
-            PlayerInput pInput = PlayerInput.Instantiate(actualMonkeyPrefab);
-
-            Renderer[] playerRenderers = pInput.gameObject.GetComponentsInChildren<Renderer>();
-
-            foreach (Renderer ren in playerRenderers) {
-                ren.material = playerColors[player.PlayerColor];
+        // set the transform position of all monkeys
+        foreach (Transform tr in transform) {
+            if (tr.tag == "Player") {
+                tr.position = Vector3.zero;
             }
         }
     }
@@ -112,7 +105,6 @@ public class PlayerManagerController : MonoBehaviour {
             GameObject playerObject = playerCards[index].transform.Find("Lobby Monkey").gameObject;
             playerCards[index].transform.Find("Name").GetComponent<UnityEngine.UI.Text>().text = "Player " + (index+1);
             
-
             playerConfigs.Add(new PlayerConfig(pInput, playerObject));
         }
     }

@@ -55,14 +55,14 @@ public class LobbyPlayerController : CommonController {
     private void OnLeft() {
         // change hat
         if (playerConfig != null && !playerConfig.IsReady) {
-            if (hIndex == -1) {
-                hIndex = playerHats.Length - 1;
-            } else {
+            if (hIndex != -1) {
                 playerHats[hIndex].enabled = false;
                 hIndex--;
+            } else {
+                hIndex = playerHats.Length - 1;
             }
 
-            if (hIndex != -1) playerHats[hIndex].enabled = true;
+            ChangePlayerHat();
         }
     }
 
@@ -74,15 +74,14 @@ public class LobbyPlayerController : CommonController {
             }
             
             if (hIndex == playerHats.Length - 1) hIndex = -1;
-            else {
-                hIndex++;
-                playerHats[hIndex].enabled = true;
-            }
+            else hIndex++;
+
+            ChangePlayerHat();
         }
     }
 
     private void OnReady() {
-        if (playerManager) playerManager.ReadyPlayer(pIndex);
+        if (playerManager && playerConfig != null) playerManager.ReadyPlayer(pIndex);
     }
 
     private void OnBack() {
@@ -99,9 +98,31 @@ public class LobbyPlayerController : CommonController {
         playerConfig.PlayerColor = cIndex;
     }
 
+    private void ChangePlayerHat() {
+        // enable renderer for the corresponding hat
+        if (hIndex != -1) playerHats[hIndex].enabled = true;
+
+        playerConfig.PlayerHat = hIndex;
+    }
+
     public void BindPlayer() {
-        // switch to the correct input component
-        GetComponent<PlayerInput>().enabled = false;
-        playerConfig.PlayerObject = null;
+        // switch to game action map
+        GetComponent<PlayerInput>().SwitchCurrentActionMap("Default");
+
+        // unbind lobby monkey and bind to player monkey
+        playerConfig.PlayerObject = gameObject;
+
+        // change appearance of player monkey based on selected customisation
+        Renderer[] playerRenderers = gameObject.transform.Find("Model").GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer ren in playerRenderers) {
+            ren.material = playerManager.playerColors[cIndex];
+        }
+
+        // if no hat selected, then don't enable any
+        if (hIndex != -1) {
+            Renderer[] playerHats = gameObject.transform.Find("Hats").GetComponentsInChildren<Renderer>();
+            playerHats[hIndex].enabled = true;
+        }
     }
 }
