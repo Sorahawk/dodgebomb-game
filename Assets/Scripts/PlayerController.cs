@@ -81,7 +81,7 @@ public class PlayerController : CommonController {
         if (!isAiming && !carriedBomb && isDash){
             dashActivated = true;
             isDash = false;
-            StartCoroutine(DashReset);
+            StartCoroutine(DashReset());
         }
     }
 
