@@ -256,6 +256,9 @@ public class PlayerController : CommonController {
             // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
             inSand = true;
         }
+        else if (other.gameObject.CompareTag("BearTrap")) {
+            StunPlayer();
+        }
     }
 
     private void OnTriggerExit(Collider other) {
