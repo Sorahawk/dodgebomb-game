@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
       propertyPath: m_LocalScale.y
@@ -280,7 +280,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &762761349
 GameObject:
@@ -368,6 +368,10 @@ PrefabInstance:
     - target: {fileID: 6992306609914686872, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: m_Name
       value: BombSpawnManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992306609914686872, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6992306609914686878, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: m_RootOrder
@@ -580,7 +584,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2872390287373814736, guid: 238e4f83581e15a4481cf854161c5e45, type: 3}
       propertyPath: m_LocalScale.y
@@ -795,5 +799,5 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

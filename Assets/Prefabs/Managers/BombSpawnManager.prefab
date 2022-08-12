@@ -48,5 +48,8 @@ MonoBehaviour:
   - {fileID: 9090077167378150820, guid: d3bf60e3b86d8ad45854cf2bc4d6d126, type: 3}
   - {fileID: 1578842151811385493, guid: 75ac0700dc79d044785b1039c5792700, type: 3}
   - {fileID: 7580085927754636220, guid: fa1cd88c278459a47831eb2d7435e6c6, type: 3}
+  - {fileID: 4391318455225919253, guid: e7f52dcba3d22a84ca112b5f85498e08, type: 3}
   - {fileID: 1453646978204330979, guid: 55e8f26259133044cb0b3d8b35b2d273, type: 3}
   spawnGrid: {fileID: 0}
+  numSpawningRoutines: 3
+  spawnPeriod: 02000000050000000a000000

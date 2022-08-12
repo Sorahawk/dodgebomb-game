@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -4668056755766103616, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_DefaultActionMap
-      value: 5a8ace6f-67ff-4c36-87b2-389fdf3a0418
+      value: Default
       objectReference: {fileID: 0}
     - target: {fileID: 4700831722076095505, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_Name
-      value: Monkey Variant
+      value: Testing Monkey
       objectReference: {fileID: 0}
     - target: {fileID: 5365868699574836907, guid: 8d7d3ba7ff7dc06489d3de0ed0ed3341, type: 3}
       propertyPath: m_RootOrder
