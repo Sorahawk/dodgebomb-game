@@ -95,7 +95,7 @@ public class PlayerController : CommonController {
     private void OnPickUpDrop() {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
-            bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
+            bombScript = pickableBomb.GetComponent<ExplosiveController>();
             bombScript.AttachToPlayer(gameObject, playerInput.playerIndex);
             pickableBomb = null;
         }

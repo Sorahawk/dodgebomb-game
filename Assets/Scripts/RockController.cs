@@ -26,7 +26,7 @@ public class RockController : ExplosiveController {
             }
 
             else if (other.CompareTag("Bomb") || other.CompareTag("StickyBomb") || other.CompareTag("Barrel")) {
-                ExplosiveController bombScript = other.GetComponent<ExplosiveController>().getScript();
+                ExplosiveController bombScript = other.GetComponent<ExplosiveController>();
 
                 if (bombScript.GetLastHeld() == -1) bombScript.SetLastHeld(lastHeld);
 

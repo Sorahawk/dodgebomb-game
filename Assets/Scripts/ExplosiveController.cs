@@ -28,7 +28,6 @@ public class ExplosiveController : CommonController {
 
     protected Rigidbody bombBody;
     protected Collider bombCollider;
-    protected ExplosiveController bombScript;
     protected PlayerController playerScript;
     protected GameObject playerHolding = null;
 
@@ -40,7 +39,6 @@ public class ExplosiveController : CommonController {
     protected void Start() {
         bombBody = GetComponent<Rigidbody>();
         bombCollider = GetComponent<Collider>();
-        bombScript = this;
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
     }
 
@@ -56,10 +54,6 @@ public class ExplosiveController : CommonController {
         return activated;
     }
 
-    public ExplosiveController getScript() {
-        return bombScript;
-    }
-
     // bind the bomb to the character
     public void AttachToPlayer(GameObject playerObject, int playerIndex) {
         // if a player is already holding the bomb, detach it
@@ -71,6 +65,11 @@ public class ExplosiveController : CommonController {
         playerScript = playerHolding.GetComponent<PlayerController>();
 
         playerScript.SetCarryBomb(gameObject);
+
+        // reset object rotation so it doesn't get skewed
+        transform.rotation = Quaternion.identity;
+
+        // attach bomb to player's bomb holder
         transform.SetParent(playerScript.bombContainer);
         transform.localPosition = Vector3.zero;
 
@@ -174,7 +173,8 @@ public class ExplosiveController : CommonController {
                 // this raycast will detect if there any colliders between the explosion origin and the player
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
-                // chekc for shield
+
+                // check for shield
                 if (other.GetComponent<PlayerController>().CheckShield()){
                     // disable shield if there is
                     other.GetComponent<PlayerController>().DisableShield();
@@ -191,10 +191,10 @@ public class ExplosiveController : CommonController {
             }
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
-                StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().getScript().StartFuse());
+                StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
 
-                if (other.gameObject.GetComponent<ExplosiveController>().getScript().GetLastHeld() == -1) {
-                    other.gameObject.GetComponent<ExplosiveController>().getScript().SetLastHeld(lastHeld);
+                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
+                    other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
                 }
 
                 // additionally apply explosion force on bombs
@@ -204,15 +204,15 @@ public class ExplosiveController : CommonController {
             }
 
             else if (other.tag == "StickyBomb") {
-                other.gameObject.GetComponent<StickyBombController>().getScript().ActivateBomb();
+                other.gameObject.GetComponent<StickyBombController>().ActivateBomb();
 
-                if (other.gameObject.GetComponent<ExplosiveController>().getScript().GetLastHeld() == -1) {
-                    other.gameObject.GetComponent<ExplosiveController>().getScript().SetLastHeld(lastHeld);
+                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
+                    other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
                 }
             }
 
             else if (other.tag == "Rock") {
-                other.gameObject.GetComponent<RockController>().getScript().ExplodeNow();
+                other.gameObject.GetComponent<RockController>().ExplodeNow();
             }
 
             else if (other.tag == "Grass") {

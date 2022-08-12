@@ -6,6 +6,9 @@ using UnityEngine;
 public class StickyBombController : ExplosiveController {
     protected new void OnCollisionEnter(Collision col) {
         if (activated) {
+            // reset object rotation so it doesn't get skewed
+            transform.rotation = Quaternion.identity;
+
             // stick to the first thing it touches after being activated
             transform.SetParent(col.gameObject.transform);
 
