@@ -13,6 +13,7 @@ TagManager:
   - OutOfBounds
   - Quicksand
   - PlayerData
+  - BearTrap
   layers:
   - Default
   - TransparentFX
