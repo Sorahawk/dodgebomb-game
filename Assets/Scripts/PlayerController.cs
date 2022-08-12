@@ -11,8 +11,9 @@ public class PlayerController : CommonController {
     private Animator playerAnimator;
     private Vector2 lookDirection;
     private bool isAiming = false;
-    public GameConstants gameConstants;
+    private bool isDead = false;
 
+    public GameConstants gameConstants;
     public PlayerVariable player1Variable;
     public PlayerVariable player2Variable;
     public PlayerVariable player3Variable;
@@ -48,6 +49,10 @@ public class PlayerController : CommonController {
     private bool powerThrow = false;
     private bool isShield = false;
 
+    // hat
+    private int hatIndex = -1;
+    private Renderer[] hatArray;
+
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -57,11 +62,12 @@ public class PlayerController : CommonController {
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
 
         playerVariable = playerVarList[playerInput.user.id];
-        // playerVariable = player1Variable;
 
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         dashDistance = gameConstants.dashDistance;
         bombThrowForce = gameConstants.bombThrowForce;
+
+        hatArray = transform.Find("Hats").GetComponentsInChildren<Renderer>();
     }
 
     // automatic callback when corresponding input is detected
@@ -247,6 +253,9 @@ public class PlayerController : CommonController {
             else dashForce = latestDir;
 
             playerBody.AddForce(dashForce / dashForce.magnitude * dashDistance, ForceMode.Impulse);
+
+            // play dash animation
+            playerAnimator.SetTrigger("dashTrigger");
         }
     }
 
@@ -266,7 +275,6 @@ public class PlayerController : CommonController {
                 StartCoroutine(colBombScript.ExplodeNow());
             }
         }
-
     }
 
     private void OnTriggerStay(Collider other) {
@@ -274,16 +282,25 @@ public class PlayerController : CommonController {
             pickableBomb = other.gameObject;
         }
 
+        else if (other.gameObject.CompareTag("Quicksand")) inSand = true;
+
         else if (other.gameObject.CompareTag("OutOfBounds")) {
+            print("out of bounds");
             KillPlayer();
         }
+
         else if (other.gameObject.CompareTag("Quicksand")) {
             // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
             inSand = true;
         }
+
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
             Destroy(other.gameObject);
+        }
+
+        else if (other.gameObject.CompareTag("BearTrap")) {
+            StunPlayer();
         }
     }
 
@@ -314,39 +331,40 @@ public class PlayerController : CommonController {
         playerInput.ActivateInput();
     }
 
-    // Resetting Dash after 3s
+    // resetting dash after 3s
     private IEnumerator DashReset() {
         yield return new WaitForSeconds(3);
         isDash = true;
     }
 
-    //Speed Boost Powerup
+    // speed boost powerup
     private IEnumerator SpeedPowerup() {
-        playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed*2);
+        playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed * 2);
+
         yield return new WaitForSeconds(5);
+
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
     }
 
-    // Confusion Powerup
+    // confusion powerup
     private IEnumerator Confuse(int playerIndex) {
-        int i = 0;
-        foreach (PlayerVariable var in playerVarList) {
-            if (i!=playerIndex) {
-                var.SetMoveSpeed(var.MoveSpeed*-1);
-            }
-            i++;
-        }
+        invertSpeeds(playerIndex);
+
         yield return new WaitForSeconds(5);
-        i = 0;
+
+        invertSpeeds(playerIndex);
+    }
+
+    private void invertSpeeds(int playerIndex) {
+        int i = 0;
+
         foreach (PlayerVariable var in playerVarList) {
-            if (i!=playerIndex) {
-                var.SetMoveSpeed(var.MoveSpeed*-1);
-            }
+            if (i != playerIndex) var.SetMoveSpeed(var.MoveSpeed * -1);
             i++;
         }
     }
 
-    // Shield Powerup
+    // shield powerup
     public bool CheckShield() {
         return isShield;
     }
@@ -354,46 +372,93 @@ public class PlayerController : CommonController {
     public void DisableShield() {
         StartCoroutine(DisablingShield());
     }
+
     // delayed disable for shield by 0.5s
     private IEnumerator DisablingShield() {
         yield return new WaitForSeconds(0.5f);
         isShield = false;
     }
 
-    public void KillPlayer() {
-        Debug.Log("Player dead");
+    private void DisableHats() {
+        int hIndex = 0;
+        foreach (Renderer hat in hatArray) {
+            if (hat.enabled == true) {
+                hatIndex = hIndex;
+                hat.enabled = false;
+            }
 
-        // disable controls
-        playerInput.DeactivateInput();
-
-        // drop any carried bombs
-        // no need to light the fuse because it will be handled from within bomb script
-        if (carriedBomb) bombScript.DetachFromPlayer();
-
-        // turn off hat renderers
-        DisableHats();
-
-        // play death animation
-        playerAnimator.SetTrigger("deathTrigger");
-
-        // wait for animation to finish playing
-        StartCoroutine(DeathDisappear());
+            hIndex++;
+        }
     }
 
-    private void DisableHats() {
-        Renderer[] hats = transform.Find("Hats").GetComponentsInChildren<Renderer>();
+    public void KillPlayer() {
+        if (!isDead) {
+            Debug.Log("Player dead");
 
-        foreach (Renderer hat in hats) {
-            hat.enabled = false;
+            isDead = true;
+
+            // disable controls
+            playerInput.DeactivateInput();
+
+            // disable colliders
+            EnableAllColliders(false);
+
+            // drop any carried bombs
+            // no need to light the fuse because it will be handled from within bomb script
+            if (carriedBomb) bombScript.DetachFromPlayer();
+
+            // turn off hat renderers
+            DisableHats();
+
+            // play death animation
+            playerAnimator.SetTrigger("deathTrigger");
+
+            // wait for animation to finish playing
+            StartCoroutine(DeathDisappear());
         }
     }
 
     private IEnumerator DeathDisappear() {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         // setting player object to inactive makes a new one spawn when input is detected
-        // so just render the player invisible and uncollidable
-        EnableAllColliders(false);
+        // so just render the player invisible
         EnableAllRenderers(false);
+    }
+
+    public void RevivePlayer() {
+        Debug.Log("Player respawning");
+
+        // turn renderers only for model back on
+        Renderer[] playerRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in playerRenderers) {
+            renderer.enabled = true;
+        }
+
+        // shift monkey transform vertically up in the air
+        transform.position = new Vector3(transform.position.x, 4, transform.position.z);
+
+        // play revive animation
+        playerAnimator.SetTrigger("reviveTrigger");
+
+        // wait for animation to finish playing before proceeding
+        StartCoroutine(ReviveDelay());
+    }
+
+    private IEnumerator ReviveDelay() {
+        yield return new WaitForSeconds(1.5f);
+
+        // turn on hat renderer
+        if (hatIndex != -1) hatArray[hatIndex].enabled = true;
+
+        // enable colliders
+        EnableAllColliders(true);
+
+        // enable controls
+        playerInput.ActivateInput();
+
+        // set isDead to false
+        isDead = false;
     }
 }

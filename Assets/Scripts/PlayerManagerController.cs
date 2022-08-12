@@ -53,6 +53,9 @@ public class PlayerManagerController : MonoBehaviour {
         // only start game if there are at least 2 players, and all players are ready
         if (playerConfigs.Count >= MinPlayers && playerConfigs.All(p => p.IsReady == true)) {
 
+            // disable player input manager joining so new controllers can't be added in halfway
+            GetComponent<PlayerInputManager>().DisableJoining();
+
             LobbyPlayerController[] lobbyControllers = transform.GetComponentsInChildren<LobbyPlayerController>();
 
             foreach(LobbyPlayerController controller in lobbyControllers) {
