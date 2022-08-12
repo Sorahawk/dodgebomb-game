@@ -3,7 +3,16 @@ guid: 538c536174e0ee84789ff45be1486b83
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - playerInput: {instanceID: 0}
+  - gameConstants: {instanceID: 0}
+  - player1Variable: {fileID: 11400000, guid: 38ee09b240b97e449bb0e192175570a0, type: 2}
+  - player2Variable: {fileID: 11400000, guid: 2bccc17312f292e4dac972a69d6dc5e0, type: 2}
+  - player3Variable: {fileID: 11400000, guid: 31cfe9eea3081134b9e2672a5ed4c03c, type: 2}
+  - player4Variable: {fileID: 11400000, guid: 6aa95aff2b4f88f489e3fddb4c401381, type: 2}
+  - player5Variable: {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
+  - player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
+  - bombContainer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
