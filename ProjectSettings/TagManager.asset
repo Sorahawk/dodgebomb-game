@@ -14,6 +14,8 @@ TagManager:
   - Quicksand
   - PlayerData
   - BearTrap
+  - Powerup
+  - StickyBomb
   layers:
   - Default
   - TransparentFX

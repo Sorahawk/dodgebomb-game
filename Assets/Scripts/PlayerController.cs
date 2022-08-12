@@ -190,18 +190,6 @@ public class PlayerController : CommonController {
 
     public void SetCarryBomb(GameObject bombObject) {
         carriedBomb = bombObject;
-
-        // if controller is keyboard and mouse, Gamepad.current is null
-        if (carriedBomb == null && Gamepad.current != null) Gamepad.current.SetMotorSpeeds(0, 0);
-        else {
-            bombScript = pickableBomb.GetComponent<ExplosiveController>().getScript();
-            playerAnimator.SetBool("holdingBomb", true);
-
-            if (bombScript.getActive() && Gamepad.current != null) {
-                // this line alone is enough to set the rumble speeds, no need declare anything above
-                Gamepad.current.SetMotorSpeeds(0, 0.5f);
-            }
-        }
     }
 
     public void DropBomb() {
@@ -288,6 +276,10 @@ public class PlayerController : CommonController {
             pickableBomb = other.gameObject;
         }
 
+        else if (other.gameObject.CompareTag("StickyBomb") && !other.gameObject.GetComponent<StickyBombController>().getActive()) {
+            pickableBomb = other.gameObject;
+        }
+
         else if (other.gameObject.CompareTag("Quicksand")) inSand = true;
 
         else if (other.gameObject.CompareTag("OutOfBounds")) KillPlayer();
@@ -299,7 +291,7 @@ public class PlayerController : CommonController {
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
+        if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("StickyBomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = null;
         }
 
@@ -397,6 +389,9 @@ public class PlayerController : CommonController {
             // disable controls
             playerInput.DeactivateInput();
 
+            // turn off gravity so doesn't fall through the floor
+            playerBody.useGravity = false;
+
             // disable colliders
             EnableAllColliders(false);
 
@@ -451,6 +446,9 @@ public class PlayerController : CommonController {
 
         // enable colliders
         EnableAllColliders(true);
+
+        // turn gravity back on
+        playerBody.useGravity = true;
 
         // enable controls
         playerInput.ActivateInput();

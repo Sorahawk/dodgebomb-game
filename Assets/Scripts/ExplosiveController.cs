@@ -191,10 +191,10 @@ public class ExplosiveController : CommonController {
             }
 
             else if (other.tag == "Bomb" || other.tag == "Barrel") {
-                StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
+                StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().getScript().StartFuse());
 
-                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
-                    other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
+                if (other.gameObject.GetComponent<ExplosiveController>().getScript().GetLastHeld() == -1) {
+                    other.gameObject.GetComponent<ExplosiveController>().getScript().SetLastHeld(lastHeld);
                 }
 
                 // additionally apply explosion force on bombs
@@ -203,8 +203,16 @@ public class ExplosiveController : CommonController {
                 }
             }
 
+            else if (other.tag == "StickyBomb") {
+                other.gameObject.GetComponent<StickyBombController>().getScript().ActivateBomb();
+
+                if (other.gameObject.GetComponent<ExplosiveController>().getScript().GetLastHeld() == -1) {
+                    other.gameObject.GetComponent<ExplosiveController>().getScript().SetLastHeld(lastHeld);
+                }
+            }
+
             else if (other.tag == "Rock") {
-                other.gameObject.GetComponent<RockController>().ExplodeNow();
+                other.gameObject.GetComponent<RockController>().getScript().ExplodeNow();
             }
 
             else if (other.tag == "Grass") {
@@ -244,7 +252,7 @@ public class ExplosiveController : CommonController {
             // if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
 
             // explode if contact another activated bomb
-            if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().getActive()) {
+            if (col.gameObject.CompareTag("Bomb")) {
                 StartCoroutine(ExplodeNow());
             }
         }

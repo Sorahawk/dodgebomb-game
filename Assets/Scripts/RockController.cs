@@ -13,7 +13,7 @@ public class RockController : ExplosiveController {
         Destroy(gameObject);
     }
 
-    private new void OnCollisionEnter(Collision col) {
+    protected new void OnCollisionEnter(Collision col) {
         if (activated) {
             GameObject other = col.gameObject;
 
@@ -25,8 +25,8 @@ public class RockController : ExplosiveController {
                 playerScript.StunPlayer();
             }
 
-            else if (other.CompareTag("Bomb") || other.CompareTag("Barrel")) {
-                ExplosiveController bombScript = other.GetComponent<ExplosiveController>();
+            else if (other.CompareTag("Bomb") || other.CompareTag("StickyBomb") || other.CompareTag("Barrel")) {
+                ExplosiveController bombScript = other.GetComponent<ExplosiveController>().getScript();
 
                 if (bombScript.GetLastHeld() == -1) bombScript.SetLastHeld(lastHeld);
 

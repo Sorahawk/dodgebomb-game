@@ -34,7 +34,7 @@ public class GrassBombController : ExplosiveController {
         Destroy(gameObject);
     }
 
-    private new void CheckExplosionDamage() {
+    protected new void CheckExplosionDamage() {
         Collider[] objectsInExplosion = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider other in objectsInExplosion) {
@@ -45,10 +45,10 @@ public class GrassBombController : ExplosiveController {
     }
 
     // just to override the inherited one
-    private new void OnCollisionEnter(Collision col) {
+    protected new void OnCollisionEnter(Collision col) {
     }
 
-    private new void OnCollisionStay(Collision col) {
+    protected new void OnCollisionStay(Collision col) {
         if (activated) {
             StartCoroutine(ExplodeNow());
         }
