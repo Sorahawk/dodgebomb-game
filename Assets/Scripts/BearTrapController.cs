@@ -8,11 +8,24 @@ public class BearTrapController : MonoBehaviour {
     public GameObject sparkFX;
     protected GameObject trap;
     public AudioSource activateSound;
+    private bool active = true;
+    private int owner = -1;
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            StartCoroutine(activateTrap());
+            if ((int)other.gameObject.GetComponent<PlayerController>().playerInput.user.id-1 != owner) {
+                StartCoroutine(activateTrap());
+            }
         }
+    }
+
+    public void setOwner(int playerIndex) {
+        owner = playerIndex;
+        print(owner);
+    }
+
+    public int getOwner() {
+        return owner;
     }
 
     public IEnumerator activateTrap() {

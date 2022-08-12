@@ -180,7 +180,7 @@ public class ExplosiveController : CommonController {
                     other.GetComponent<PlayerController>().DisableShield();
                 } else {
                     // if no shield
-                    if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
+                    if ((int)other.gameObject.GetComponent<PlayerController>().playerInput.user.id-1 == lastHeld) {
                     MinusScore(lastHeld);
                     } else {
                         IncreaseScore(lastHeld);

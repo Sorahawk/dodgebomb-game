@@ -7,6 +7,7 @@ public  class GameConstants : ScriptableObject
     public float playerMoveSpeed = 5;
     public float dashDistance = 70;
     public int bombThrowForce = 30;
+    public int powerThrowForce = 50;
 
     // timer
     public float roundDuration = 300;
