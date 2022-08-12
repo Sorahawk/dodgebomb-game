@@ -8,6 +8,9 @@ public class BombSpawnManager : MonoBehaviour
     private List<GameObject> bombList = new List<GameObject>();
     public GameObject spawnGrid;
 
+    public int numSpawningRoutines = 2;
+    public int[] spawnPeriod = {2, 5};
+
     private int z_index;
     private int x_index;
 
@@ -17,8 +20,9 @@ public class BombSpawnManager : MonoBehaviour
     private int bombIndex;
      
     void Start(){
-        InvokeRepeating("spawnBombs", 1, 5);
-        InvokeRepeating("spawnBombs", 1, 2);
+        for (int i = 0; i < numSpawningRoutines; i++) {
+            InvokeRepeating("spawnBombs", 1, spawnPeriod[i]);
+        }
     }
     
     void spawnBombs()
