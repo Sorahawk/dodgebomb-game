@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BearTrapController : MonoBehaviour {
+public class BearTrapController : CommonController {
     public Transform FXcontainer;
     public GameObject sparkFX;
     protected GameObject trap;
@@ -11,6 +11,7 @@ public class BearTrapController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
+            EnableAllColliders(false);
             StartCoroutine(activateTrap());
         }
     }

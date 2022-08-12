@@ -22,18 +22,10 @@ public class ReplaceWithPrefab : EditorWindow
             for (var i = selection.Length - 1; i >= 0; --i)
             {
                 var selected = selection[i];
-                var prefabType = PrefabUtility.GetPrefabType(prefab);
                 GameObject newObject;
 
-                if (prefabType == PrefabType.Prefab)
-                {
-                    newObject = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
-                }
-                else
-                {
-                    newObject = Instantiate(prefab);
-                    newObject.name = prefab.name;
-                }
+                newObject = Instantiate(prefab);
+                newObject.name = prefab.name;
 
                 if (newObject == null)
                 {

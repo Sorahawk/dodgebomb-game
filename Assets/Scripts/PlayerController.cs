@@ -277,6 +277,12 @@ public class PlayerController : CommonController {
         }
     }
 
+    private void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("BearTrap")) {
+            StunPlayer();
+        }
+    }
+
     private void OnTriggerStay(Collider other) {
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = other.gameObject;
@@ -298,19 +304,15 @@ public class PlayerController : CommonController {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
             Destroy(other.gameObject);
         }
-
-        else if (other.gameObject.CompareTag("BearTrap")) {
-            StunPlayer();
-        }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.CompareTag("Bomb") || other.gameObject.CompareTag("Rock")) {
             pickableBomb = null;
         }
+
         else if (other.gameObject.CompareTag("Quicksand")) {
-            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
-            inSand= false;
+            inSand = false;
         }
     }
 
@@ -321,11 +323,14 @@ public class PlayerController : CommonController {
         // play stun animation
         playerAnimator.SetTrigger("stunTrigger");
 
+        // drop any held bombs
+        DropBomb();
+
         StartCoroutine(StunDelay());
     }
 
     private IEnumerator StunDelay() {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1.5f);
 
         // re-enable controls
         playerInput.ActivateInput();
