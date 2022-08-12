@@ -7,6 +7,7 @@ public class BearTrapController : MonoBehaviour
     public Transform FXcontainer;
     public GameObject sparkFX;
     protected GameObject trap;
+    public AudioSource activateSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class BearTrapController : MonoBehaviour
 
     }
     public IEnumerator activateTrap() {
+        StartCoroutine(playSound());
         trap = Instantiate(sparkFX, FXcontainer.position, Quaternion.identity);
         trap.transform.SetParent(FXcontainer);
         trap.transform.localPosition = Vector3.zero;
@@ -38,5 +40,12 @@ public class BearTrapController : MonoBehaviour
 
         // destroy game object
         Destroy(gameObject);
+    }
+
+    public IEnumerator playSound()
+    {
+        activateSound.time=0.4f;
+        activateSound.PlayOneShot(activateSound.clip);
+        yield return new WaitForSeconds(activateSound.clip.length);
     }
 }
