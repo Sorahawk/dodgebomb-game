@@ -275,7 +275,6 @@ public class PlayerController : CommonController {
                 StartCoroutine(colBombScript.ExplodeNow());
             }
         }
-
     }
 
     private void OnTriggerStay(Collider other) {
@@ -289,6 +288,7 @@ public class PlayerController : CommonController {
             print("out of bounds");
             KillPlayer();
         }
+
         else if (other.gameObject.CompareTag("Quicksand")) {
             // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
             inSand = true;
@@ -331,39 +331,40 @@ public class PlayerController : CommonController {
         playerInput.ActivateInput();
     }
 
-    // Resetting Dash after 3s
+    // resetting dash after 3s
     private IEnumerator DashReset() {
         yield return new WaitForSeconds(3);
         isDash = true;
     }
 
-    //Speed Boost Powerup
+    // speed boost powerup
     private IEnumerator SpeedPowerup() {
-        playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed*2);
+        playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed * 2);
+
         yield return new WaitForSeconds(5);
+
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
     }
 
-    // Confusion Powerup
+    // confusion powerup
     private IEnumerator Confuse(int playerIndex) {
-        int i = 0;
-        foreach (PlayerVariable var in playerVarList) {
-            if (i!=playerIndex) {
-                var.SetMoveSpeed(var.MoveSpeed*-1);
-            }
-            i++;
-        }
+        invertSpeeds(playerIndex);
+
         yield return new WaitForSeconds(5);
-        i = 0;
+
+        invertSpeeds(playerIndex);
+    }
+
+    private void invertSpeeds(int playerIndex) {
+        int i = 0;
+
         foreach (PlayerVariable var in playerVarList) {
-            if (i!=playerIndex) {
-                var.SetMoveSpeed(var.MoveSpeed*-1);
-            }
+            if (i != playerIndex) var.SetMoveSpeed(var.MoveSpeed * -1);
             i++;
         }
     }
 
-    // Shield Powerup
+    // shield powerup
     public bool CheckShield() {
         return isShield;
     }
