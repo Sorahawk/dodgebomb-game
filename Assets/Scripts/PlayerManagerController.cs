@@ -104,10 +104,9 @@ public class PlayerManagerController : MonoBehaviour {
 
             // enable corresponding player card
             playerCards[index].SetActive(true);
-
-            GameObject playerObject = playerCards[index].transform.Find("Lobby Monkey").gameObject;
-            playerCards[index].transform.Find("Name").GetComponent<UnityEngine.UI.Text>().text = "Player " + (index+1);
+            playerCards[index].transform.Find("Name").GetComponent<UnityEngine.UI.Text>().text = "Player " + (index + 1);
             
+            GameObject playerObject = playerCards[index].transform.Find("Lobby Monkey").gameObject;
             playerConfigs.Add(new PlayerConfig(pInput, playerObject));
         }
     }

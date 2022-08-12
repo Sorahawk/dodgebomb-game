@@ -290,15 +290,7 @@ public class PlayerController : CommonController {
 
         else if (other.gameObject.CompareTag("Quicksand")) inSand = true;
 
-        else if (other.gameObject.CompareTag("OutOfBounds")) {
-            print("out of bounds");
-            KillPlayer();
-        }
-
-        else if (other.gameObject.CompareTag("Quicksand")) {
-            // playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed/2);
-            inSand = true;
-        }
+        else if (other.gameObject.CompareTag("OutOfBounds")) KillPlayer();
 
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
@@ -387,7 +379,7 @@ public class PlayerController : CommonController {
     private void DisableHats() {
         int hIndex = 0;
         foreach (Renderer hat in hatArray) {
-            if (hat.enabled == true) {
+            if (hat.enabled) {
                 hatIndex = hIndex;
                 hat.enabled = false;
             }
