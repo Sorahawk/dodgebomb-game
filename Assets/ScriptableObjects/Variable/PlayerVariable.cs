@@ -9,6 +9,7 @@ public class PlayerVariable : ScriptableObject
 #endif
     private float _moveSpeed = 0;
     private int _score = 0;
+    private int _powerup = 0;
 
     // MOVE SPEED
     public float MoveSpeed{
@@ -64,5 +65,20 @@ public class PlayerVariable : ScriptableObject
         _score += amount._score;
     }
 
-    // COLOUR
+    // POWERUP
+    public int Powerup{
+        get{
+            return _powerup;
+        }
+    }
+
+    public void SetPowerup(int value)
+    {
+        _powerup = value;
+    }
+
+    public void SetPowerup(PlayerVariable value)
+    {
+        _score = value._score;
+    }
 }
