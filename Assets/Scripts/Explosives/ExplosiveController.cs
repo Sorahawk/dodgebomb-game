@@ -269,7 +269,13 @@ public class ExplosiveController : CommonController {
         }
 
         else if (other.gameObject.CompareTag("Fire")) {
-            ActivateBomb();
+            if (!activated) {
+                ActivateBomb();
+
+                if (lastHeld == -1) {
+                    lastHeld = other.gameObject.GetComponent<GroundFireController>().getOwner();
+                }
+            }
         }
     }
 }
