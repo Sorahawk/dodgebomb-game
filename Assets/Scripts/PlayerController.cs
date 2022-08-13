@@ -268,6 +268,13 @@ public class PlayerController : CommonController {
         }
 
         else if (other.gameObject.CompareTag("Fire")) {
+            int fireOwnerIndex = other.gameObject.GetComponent<GroundFireController>().getOwner();
+            int scoreChange;
+
+            if (playerInput.playerIndex == fireOwnerIndex) scoreChange = -1;
+            else scoreChange = 1;
+
+            playerVarList[fireOwnerIndex].ApplyScoreChange(scoreChange);
             KillPlayer();
         }
     }

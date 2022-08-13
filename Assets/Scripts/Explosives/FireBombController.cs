@@ -44,6 +44,8 @@ public class FireBombController : ExplosiveController {
                 other.gameObject.GetComponent<Renderer>().enabled = false;
 
                 fireObject = Instantiate(fireFX, other.gameObject.transform.position, Quaternion.identity);
+                fireObject.GetComponent<GroundFireController>().setOwner(lastHeld);
+
                 fireList.Add(fireObject);
             }
         }

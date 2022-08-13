@@ -43,4 +43,10 @@ public class RockController : ExplosiveController {
             activated = false;
         }
     }
+
+    protected override void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("OutOfBounds")) {
+            Destroy(gameObject);
+        }
+    }
 }

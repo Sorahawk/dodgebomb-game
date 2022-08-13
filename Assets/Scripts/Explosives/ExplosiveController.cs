@@ -267,5 +267,9 @@ public class ExplosiveController : CommonController {
             if (explosionCircleObject) Destroy(explosionCircleObject);
             Destroy(gameObject);
         }
+
+        else if (other.gameObject.CompareTag("Fire")) {
+            ActivateBomb();
+        }
     }
 }

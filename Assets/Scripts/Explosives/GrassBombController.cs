@@ -18,4 +18,10 @@ public class GrassBombController : ExplosiveController {
             StartCoroutine(ExplodeNow());
         }
     }
+
+    protected override void OnTriggerEnter(Collider other) {
+        if (other.gameObject.CompareTag("OutOfBounds") || other.gameObject.CompareTag("Fire")) {
+            Destroy(gameObject);
+        }
+    }
 }
