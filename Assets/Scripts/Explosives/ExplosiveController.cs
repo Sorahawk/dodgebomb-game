@@ -157,7 +157,7 @@ public class ExplosiveController : CommonController {
 
         if (explosion) {
             // destroy FX object after it finishes
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(3);
             Destroy(explosion);
         }
 

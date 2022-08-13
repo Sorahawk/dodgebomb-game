@@ -16,6 +16,7 @@ TagManager:
   - BearTrap
   - Powerup
   - StickyBomb
+  - Fire
   layers:
   - Default
   - TransparentFX

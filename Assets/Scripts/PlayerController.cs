@@ -266,6 +266,10 @@ public class PlayerController : CommonController {
         if (other.gameObject.CompareTag("BearTrap")) {
             StunPlayer();
         }
+
+        else if (other.gameObject.CompareTag("Fire")) {
+            KillPlayer();
+        }
     }
 
     private void OnTriggerStay(Collider other) {

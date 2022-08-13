@@ -432,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 6992306609914686879, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: bombList.Array.data[0]
       value: 
-      objectReference: {fileID: 1723463620688485584, guid: e81b706f64243eb49803dc8fb14b20c7, type: 3}
+      objectReference: {fileID: 201249480078093393, guid: a6973994fa36f3041ab066886eb888f1, type: 3}
     - target: {fileID: 6992306609914686879, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: bombList.Array.data[1]
       value: 
