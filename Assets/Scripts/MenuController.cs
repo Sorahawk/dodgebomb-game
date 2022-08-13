@@ -18,4 +18,8 @@ public class MenuController : MonoBehaviour {
     public void LoadCanvas(GameObject canvas) {
         canvas.SetActive(true);
     }
+
+    public void DisableCanvas(GameObject canvas) {
+        canvas.SetActive(false);
+    }
 }

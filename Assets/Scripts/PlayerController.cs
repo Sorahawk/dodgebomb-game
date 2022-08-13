@@ -13,6 +13,7 @@ public class PlayerController : CommonController {
     private bool isAiming = false;
     private bool isDead = false;
 
+    
     public GameConstants gameConstants;
     public PlayerVariable player1Variable;
     public PlayerVariable player2Variable;
@@ -22,6 +23,7 @@ public class PlayerController : CommonController {
     public PlayerVariable player6Variable;
     private PlayerVariable[] playerVarList;
     private PlayerVariable playerVariable;
+    private RoundManager roundManager;
 
     public GameObject bearTrap;
 
@@ -84,6 +86,7 @@ public class PlayerController : CommonController {
         powerThrowForce = gameConstants.powerThrowForce;
 
         hatArray = transform.Find("Hats").GetComponentsInChildren<Renderer>();
+        roundManager = transform.parent.gameObject.transform.GetChild(0).gameObject.GetComponent<RoundManager>();
 
         originalDrag = playerBody.drag;
     }
@@ -447,6 +450,7 @@ public class PlayerController : CommonController {
 
             // wait for animation to finish playing
             StartCoroutine(DeathDisappear());
+            StartCoroutine(roundManager.playerDeathRespawn(this.gameObject));
         }
     }
 

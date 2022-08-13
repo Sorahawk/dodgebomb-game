@@ -11,4 +11,8 @@ public  class GameConstants : ScriptableObject
 
     // timer
     public float roundDuration = 300;
+    public float startingCountdown = 3;
+    public int numberOfNonPlayableScenes = 3;
+    public float respawnTimer = 5f;
+    
 }
