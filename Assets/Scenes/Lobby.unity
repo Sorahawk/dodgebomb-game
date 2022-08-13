@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197470, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_Pivot.x
@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_AnchorMin.x
@@ -164,11 +164,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 477.01
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_SizeDelta.y
@@ -204,11 +204,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 715.515
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -92.4401
       objectReference: {fileID: 0}
     - target: {fileID: 729193781723197471, guid: 3738a1dbde4a8e045b6cc5f3d98cd811, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -754,7 +754,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: to change color
+  m_Text: SELECT HAT
 --- !u!222 &912646583
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1278,7 +1278,7 @@ RectTransform:
   m_GameObject: {fileID: 1113658246}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62, y: 0.62, z: 0.62}
+  m_LocalScale: {x: 0.6200001, y: 0.6200001, z: 0.6200001}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 614212540}
@@ -1286,7 +1286,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238, y: 0}
+  m_AnchoredPosition: {x: -163.4, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1113658248
@@ -1620,7 +1620,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -238, y: 0}
+  m_AnchoredPosition: {x: -163.1, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1267049412
@@ -2141,7 +2141,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: to change hat style
+  m_Text: SELECT COLOR
 --- !u!222 &1455022761
 CanvasRenderer:
   m_ObjectHideFlags: 0

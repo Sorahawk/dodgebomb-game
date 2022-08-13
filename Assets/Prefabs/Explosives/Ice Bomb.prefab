@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2062975890891097706}
   - component: {fileID: 6243852581231646476}
   - component: {fileID: 7278175727746802900}
+  - component: {fileID: -9014688233233369221}
   - component: {fileID: -6700700343255218105}
   - component: {fileID: 3102683488840403407}
   - component: {fileID: 930562286645263621}
@@ -65,6 +66,30 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &-9014688233233369221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723463620688485584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c806a80c446b5b94ba7fe766792aa86a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smokeTransform: {fileID: 0}
+  smokeFX: {fileID: 0}
+  explosionFX: {fileID: 6231435812455498187, guid: 345dbcb69d41ebb43993b55cb08e1246, type: 3}
+  explosionCircle: {fileID: 7564128434191510518, guid: a60cba3c241aaee4db4694189727c159, type: 3}
+  fuseDelay: 1
+  explosionRadius: 5
+  player1Variable: {fileID: 11400000, guid: 38ee09b240b97e449bb0e192175570a0, type: 2}
+  player2Variable: {fileID: 11400000, guid: 2bccc17312f292e4dac972a69d6dc5e0, type: 2}
+  player3Variable: {fileID: 11400000, guid: 31cfe9eea3081134b9e2672a5ed4c03c, type: 2}
+  player4Variable: {fileID: 11400000, guid: 6aa95aff2b4f88f489e3fddb4c401381, type: 2}
+  player5Variable: {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
+  player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
 --- !u!135 &-6700700343255218105
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -432,7 +432,7 @@ PrefabInstance:
     - target: {fileID: 6992306609914686879, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: bombList.Array.data[0]
       value: 
-      objectReference: {fileID: 4391318455225919253, guid: e7f52dcba3d22a84ca112b5f85498e08, type: 3}
+      objectReference: {fileID: 1723463620688485584, guid: e81b706f64243eb49803dc8fb14b20c7, type: 3}
     - target: {fileID: 6992306609914686879, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: bombList.Array.data[1]
       value: 
@@ -455,7 +455,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6992306609914686879, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}
       propertyPath: spawnPeriod.Array.data[0]
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1036bc64c9a34ba4a9bf1665114864af, type: 3}

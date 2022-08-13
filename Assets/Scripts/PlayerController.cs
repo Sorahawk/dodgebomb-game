@@ -254,6 +254,8 @@ public class PlayerController : CommonController {
             ExplosiveController colBombScript = col.gameObject.GetComponent<ExplosiveController>();
 
             if (colliderName == "FrontCollider" && colBombScript.getInAir() && !carriedBomb) {
+                print("picking up bomb");
+
                 // can only pick up if bomb comes from the front and empty hands
                 colBombScript.AttachToPlayer(gameObject, playerInput.playerIndex);
             }
