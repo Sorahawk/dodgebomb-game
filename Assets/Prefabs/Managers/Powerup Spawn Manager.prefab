@@ -46,7 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   powerupList:
   - {fileID: 3107720545228601076, guid: 29293dff6f9aca64dbf304538e074299, type: 3}
-  - {fileID: 3107720545228601076, guid: 7e974c20f9db25d478264c2b34aaa8c6, type: 3}
   - {fileID: 3107720545228601076, guid: 69c420e4d29c81b4ebab19d5e98ea203, type: 3}
   - {fileID: 3107720545228601076, guid: 65839486efd72cd4f929d83a3881504f, type: 3}
   - {fileID: 3107720545228601076, guid: 101d55a0500bbce4bba269fd1b39cdeb, type: 3}

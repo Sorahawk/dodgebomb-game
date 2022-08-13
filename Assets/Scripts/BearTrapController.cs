@@ -5,15 +5,14 @@ using UnityEngine;
 
 public class BearTrapController : CommonController {
     public Transform FXcontainer;
-    public GameObject sparkFX;
+    public GameObject bloodFX;
     protected GameObject trap;
     public AudioSource activateSound;
-    private bool active = true;
     private int owner = -1;
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            if (owner != other.gameObject.GetComponent<PlayerController>().playerInput.user.id - 1) {
+            if (owner != other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex) {
                 EnableAllColliders(false);
                 StartCoroutine(activateTrap());
             }
@@ -22,7 +21,6 @@ public class BearTrapController : CommonController {
 
     public void setOwner(int playerIndex) {
         owner = playerIndex;
-        print(owner);
     }
 
     public int getOwner() {
@@ -30,8 +28,9 @@ public class BearTrapController : CommonController {
     }
 
     public IEnumerator activateTrap() {
-        StartCoroutine(playSound());
-        trap = Instantiate(sparkFX, FXcontainer.position, Quaternion.identity);
+        activateSound.PlayOneShot(activateSound.clip);
+
+        trap = Instantiate(bloodFX, FXcontainer.position, Quaternion.identity);
         trap.transform.SetParent(FXcontainer);
         trap.transform.localPosition = Vector3.zero;
 
@@ -41,12 +40,5 @@ public class BearTrapController : CommonController {
         
         // destroy game object
         Destroy(gameObject);
-    }
-
-    public IEnumerator playSound()
-    {
-        activateSound.time=0.4f;
-        activateSound.PlayOneShot(activateSound.clip);
-        yield return new WaitForSeconds(activateSound.clip.length);
     }
 }

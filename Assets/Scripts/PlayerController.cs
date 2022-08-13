@@ -49,7 +49,6 @@ public class PlayerController : CommonController {
     private float playerCurrentSpeed;
     private bool isDash = true;
     private bool inSand = false;
-    private bool powerThrow = false;
     private bool isShield = false;
 
     // hat
@@ -63,7 +62,7 @@ public class PlayerController : CommonController {
         playerAnimator = GetComponent<Animator>();
         
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
-        playerVariable = playerVarList[playerInput.user.id-1];
+        playerVariable = playerVarList[playerInput.playerIndex];
 
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         dashDistance = gameConstants.dashDistance;
@@ -159,26 +158,31 @@ public class PlayerController : CommonController {
     // automatic callback when corresponding input is detected
     private void OnUsePowerup() {
         print(playerVariable.Powerup);
-        if (playerVariable.Powerup==1) {
+
+        if (playerVariable.Powerup == 1) {
             // confusion (call a script that input current player index)
             print("confusion");
-            StartCoroutine(Confuse((int)playerInput.user.id-1));
-        } else if (playerVariable.Powerup==2) {
+            StartCoroutine(Confuse(playerInput.playerIndex));
+        } else if (playerVariable.Powerup == 2) {
             // Shield
             print("shield");
             isShield = true;
-        } else if (playerVariable.Powerup==3) {
+
+            // enable shield VFX
+            transform.Find("Shield").gameObject.SetActive(true);
+        } else if (playerVariable.Powerup == 3) {
             // Speed
             print("speed");
             StartCoroutine(SpeedPowerup());
-        } else if (playerVariable.Powerup==4) {
+        } else if (playerVariable.Powerup == 4) {
             // Trap
             print("trap");
             // instantiate bear trap prefab at current player position
             // tag bear trap to player index
             GameObject trap = Instantiate(bearTrap, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            trap.GetComponent<BearTrapController>().setOwner((int)playerInput.user.id-1);
+            trap.GetComponent<BearTrapController>().setOwner(playerInput.playerIndex);
         }
+
         playerVariable.SetPowerup(0);
     }
 
@@ -283,7 +287,7 @@ public class PlayerController : CommonController {
         }
 
         else if (other.gameObject.CompareTag("BearTrap")) {
-            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerInput.user.id - 1) {
+            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerInput.playerIndex) {
                 StunPlayer();
             }
         }
@@ -365,6 +369,9 @@ public class PlayerController : CommonController {
     private IEnumerator DisablingShield() {
         yield return new WaitForSeconds(0.5f);
         isShield = false;
+
+        // disable shield VFX
+        transform.Find("Shield").gameObject.SetActive(false);
     }
 
     private void DisableHats() {
