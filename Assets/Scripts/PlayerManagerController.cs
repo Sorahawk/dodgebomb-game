@@ -13,6 +13,8 @@ public class PlayerManagerController : MonoBehaviour {
     public GameObject actualMonkeyPrefab;
     public int MinPlayers = 2;
 
+    public RoundManager roundManager;
+
     private List<PlayerConfig> playerConfigs;
 
     public static PlayerManagerController Instance { get; private set; }
@@ -63,36 +65,7 @@ public class PlayerManagerController : MonoBehaviour {
                 controller.BindPlayer();
             }
 
-            StartCoroutine(LoadNewMap());
-        }
-    }
-
-    // based on Scene Index under File -> Build Settings
-    // ignore index 0 - 2 (Start, Instructions and Lobby)
-    public IEnumerator LoadNewMap(int previousMapIndex = -1) {
-        int numberOfNonPlayableScenes = 3;
-
-        int maxMapIndex = SceneManager.sceneCountInBuildSettings;
-        int randomMap = Random.Range(numberOfNonPlayableScenes, maxMapIndex);
-
-        // wait for scene to finish loading
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(randomMap);
-
-        while (!asyncLoad.isDone) {
-            yield return null;
-        }
-
-        // wait for scene to be loaded before setting active
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(randomMap));
-        SpawnAllPlayers();
-    }
-
-    public void SpawnAllPlayers() {
-        // set the transform position of all monkeys
-        foreach (Transform tr in transform) {
-            if (tr.tag == "Player") {
-                tr.position = Vector3.zero;
-            }
+            StartCoroutine(roundManager.StartNewRound());
         }
     }
 

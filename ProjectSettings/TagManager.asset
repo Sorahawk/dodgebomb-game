@@ -18,6 +18,7 @@ TagManager:
   - StickyBomb
   - Fire
   - Ice
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX
