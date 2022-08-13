@@ -35,6 +35,7 @@ public class ExplosiveController : CommonController {
     protected bool inAir = false;
     protected bool destroyed = false;
     protected int lastHeld = -1;
+    protected int stickTo = -1;
 
     protected void Start() {
         bombBody = GetComponent<Rigidbody>();

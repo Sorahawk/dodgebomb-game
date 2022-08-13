@@ -123,6 +123,83 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &373051423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283090, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283091, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: spawnGrid
+      value: 
+      objectReference: {fileID: 1617992155}
+    - target: {fileID: 7861340870881283091, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: powerupList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7861340870881283091, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: powerupList.Array.data[0]
+      value: 
+      objectReference: {fileID: 3107720545228601076, guid: 69c420e4d29c81b4ebab19d5e98ea203, type: 3}
+    - target: {fileID: 7861340870881283091, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: powerupList.Array.data[1]
+      value: 
+      objectReference: {fileID: 3107720545228601076, guid: 65839486efd72cd4f929d83a3881504f, type: 3}
+    - target: {fileID: 7861340870881283091, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: powerupList.Array.data[2]
+      value: 
+      objectReference: {fileID: 3107720545228601076, guid: 101d55a0500bbce4bba269fd1b39cdeb, type: 3}
+    - target: {fileID: 7861340870881283092, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
+      propertyPath: m_Name
+      value: Powerup Spawn Manager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6d0cd7de843d6494994bb935ac29f95d, type: 3}
 --- !u!1001 &617015035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,7 +741,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617992155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 5}
+  m_LocalPosition: {x: 0, y: 0.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
