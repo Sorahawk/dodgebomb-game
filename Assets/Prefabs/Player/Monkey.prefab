@@ -1469,6 +1469,7 @@ MonoBehaviour:
   player4Variable: {fileID: 11400000, guid: 6aa95aff2b4f88f489e3fddb4c401381, type: 2}
   player5Variable: {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
   player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
+  bearTrap: {fileID: 2534971574343250691, guid: 6216e10ed2456f140bd564c10b4426dc, type: 3}
   bombContainer: {fileID: 5746082519967853474}
 --- !u!95 &-1731823443167105420
 Animator:

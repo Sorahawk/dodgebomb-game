@@ -8,12 +8,25 @@ public class BearTrapController : CommonController {
     public GameObject sparkFX;
     protected GameObject trap;
     public AudioSource activateSound;
+    private bool active = true;
+    private int owner = -1;
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("Player")) {
-            EnableAllColliders(false);
-            StartCoroutine(activateTrap());
+            if (owner != other.gameObject.GetComponent<PlayerController>().playerInput.user.id - 1) {
+                EnableAllColliders(false);
+                StartCoroutine(activateTrap());
+            }
         }
+    }
+
+    public void setOwner(int playerIndex) {
+        owner = playerIndex;
+        print(owner);
+    }
+
+    public int getOwner() {
+        return owner;
     }
 
     public IEnumerator activateTrap() {

@@ -23,6 +23,8 @@ public class PlayerController : CommonController {
     private PlayerVariable[] playerVarList;
     private PlayerVariable playerVariable;
 
+    public GameObject bearTrap;
+
     // move
     private Vector2 moveVal;
 
@@ -42,6 +44,7 @@ public class PlayerController : CommonController {
     private GameObject pickableBomb = null;
     private GameObject carriedBomb = null;
     private int bombThrowForce;
+    private int powerThrowForce;
 
     private float playerCurrentSpeed;
     private bool isDash = true;
@@ -60,12 +63,12 @@ public class PlayerController : CommonController {
         playerAnimator = GetComponent<Animator>();
         
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
-
-        playerVariable = playerVarList[playerInput.user.id];
+        playerVariable = playerVarList[playerInput.user.id-1];
 
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         dashDistance = gameConstants.dashDistance;
         bombThrowForce = gameConstants.bombThrowForce;
+        powerThrowForce = gameConstants.powerThrowForce;
 
         hatArray = transform.Find("Hats").GetComponentsInChildren<Renderer>();
     }
@@ -143,17 +146,10 @@ public class PlayerController : CommonController {
             // activate bomb
             bombScript.ActivateBomb();
 
+            latestDir.y = 0.1f;
             // normalize direction vector and throw bomb
-            if (powerThrow) {
-                print("throwing over wall");
-                latestDir.y = 0.2f;  // need to test angle to throw over walls
-                powerThrow = false;
-            } else {
-                latestDir.y = 0.1f;
-            }
-
             bombBody.AddForce(latestDir / latestDir.magnitude * bombThrowForce, ForceMode.Impulse);
-            
+
             // play throw animation
             playerAnimator.SetTrigger("bombThrow");
             playerAnimator.SetBool("holdingBomb", false);
@@ -166,24 +162,22 @@ public class PlayerController : CommonController {
         if (playerVariable.Powerup==1) {
             // confusion (call a script that input current player index)
             print("confusion");
-            StartCoroutine(Confuse((int)playerInput.user.id));
+            StartCoroutine(Confuse((int)playerInput.user.id-1));
         } else if (playerVariable.Powerup==2) {
-            // Power throw
-            print("power throw");
-            powerThrow = true;
-        } else if (playerVariable.Powerup==3) {
             // Shield
             print("shield");
             isShield = true;
-        } else if (playerVariable.Powerup==4) {
+        } else if (playerVariable.Powerup==3) {
             // Speed
             print("speed");
             StartCoroutine(SpeedPowerup());
-        } else if (playerVariable.Powerup==5) {
+        } else if (playerVariable.Powerup==4) {
             // Trap
             print("trap");
             // instantiate bear trap prefab at current player position
             // tag bear trap to player index
+            GameObject trap = Instantiate(bearTrap, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
+            trap.GetComponent<BearTrapController>().setOwner((int)playerInput.user.id-1);
         }
         playerVariable.SetPowerup(0);
     }
@@ -286,6 +280,12 @@ public class PlayerController : CommonController {
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
             Destroy(other.gameObject);
+        }
+
+        else if (other.gameObject.CompareTag("BearTrap")) {
+            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerInput.user.id - 1) {
+                StunPlayer();
+            }
         }
     }
 
