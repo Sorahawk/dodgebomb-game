@@ -99,7 +99,7 @@ public class ExplosiveController : CommonController {
     }
 
     // set bomb to active
-    public void ActivateBomb() {
+    public virtual void ActivateBomb() {
         activated = true;
 
         // set fuseDelay to -1 in editor for it to explode ONLY on contact with any collider
@@ -107,7 +107,7 @@ public class ExplosiveController : CommonController {
     }
 
     // start fuse timer
-    public IEnumerator StartFuse() {
+    public virtual IEnumerator StartFuse() {
         if (fuseDelay > 0) {
             // smoke VFX
             if (smokeFX && !smokeObject) {
@@ -130,7 +130,7 @@ public class ExplosiveController : CommonController {
         if (!destroyed) StartCoroutine(ExplodeNow());
     }
 
-    void Update() {
+    private void Update() {
         if (explosionCircleObject) {
             Vector3 bombPosition = bombBody.transform.position;
             Vector3 circleFollowPos = new Vector3(bombPosition.x, bombPosition.y + 0.1f, bombPosition.z);
@@ -139,7 +139,7 @@ public class ExplosiveController : CommonController {
     }
 
     // explode immediately
-    public IEnumerator ExplodeNow() {
+    public virtual IEnumerator ExplodeNow() {
         destroyed = true;
         DetachFromPlayer();
 
@@ -165,7 +165,7 @@ public class ExplosiveController : CommonController {
         Destroy(gameObject);
     }
 
-    protected void CheckExplosionDamage() {
+    protected virtual void CheckExplosionDamage() {
         Collider[] objectsInExplosion = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider other in objectsInExplosion) {
@@ -173,20 +173,20 @@ public class ExplosiveController : CommonController {
                 // this raycast will detect if there any colliders between the explosion origin and the player
                 // all objects with colliders on the player itself have been placed on the Ignore Raycast layer to be ignored
                 bool isBlocked = Physics.Linecast(transform.position, other.gameObject.transform.position);
+                PlayerController playerScript = other.GetComponent<PlayerController>();
 
-                // check for shield
-                if (other.GetComponent<PlayerController>().CheckShield()){
-                    // disable shield if there is
-                    other.GetComponent<PlayerController>().DisableShield();
-                } else {
+                if (!isBlocked) {
+                    // disable shield if have
+                    if (playerScript.CheckShield()) playerScript.DisableShield();
+
                     // if no shield
-                    if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
-                    MinusScore(lastHeld);
-                    } else {
-                        IncreaseScore(lastHeld);
-                    }
+                    else {
+                        if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
+                            MinusScore(lastHeld);
+                        } else IncreaseScore(lastHeld);
 
-                    if (!isBlocked) other.gameObject.GetComponent<PlayerController>().KillPlayer();
+                        other.gameObject.GetComponent<PlayerController>().KillPlayer();
+                    }
                 }
             }
 
@@ -242,7 +242,7 @@ public class ExplosiveController : CommonController {
         lastHeld = index;
     }
 
-    protected void OnCollisionEnter(Collision col) {
+    protected virtual void OnCollisionEnter(Collision col) {
         // check if activated i.e. bomb fuse is lit
         if (activated) {
             // explode on contact with anything if fuseDelay is negative
@@ -252,17 +252,17 @@ public class ExplosiveController : CommonController {
             // if (col.gameObject.CompareTag("Wall")) StartCoroutine(ExplodeNow());
 
             // explode if contact another activated bomb
-            if (col.gameObject.CompareTag("Bomb")) {
+            if (col.gameObject.CompareTag("Bomb") && col.gameObject.GetComponent<ExplosiveController>().getActive()) {
                 StartCoroutine(ExplodeNow());
             }
         }
     }
     
-    protected void OnCollisionStay(Collision col) {
+    protected virtual void OnCollisionStay(Collision col) {
         if (col.gameObject.CompareTag("Ground")) inAir = false;
     }
 
-    protected void OnTriggerEnter(Collider other) {
+    protected virtual void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("OutOfBounds")) {
             if (explosionCircleObject) Destroy(explosionCircleObject);
             Destroy(gameObject);

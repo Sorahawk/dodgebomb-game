@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public class IceBombController : ExplosiveController {
-    protected new void CheckExplosionDamage() {
+    protected override void CheckExplosionDamage() {
         Collider[] objectsInExplosion = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider other in objectsInExplosion) {

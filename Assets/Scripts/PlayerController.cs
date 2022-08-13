@@ -214,11 +214,8 @@ public class PlayerController : CommonController {
     }
 
     private void FixedUpdate() {
-        if (inSand){
-            playerCurrentSpeed = playerVariable.MoveSpeed/2;
-        }else if (!inSand){
-            playerCurrentSpeed = playerVariable.MoveSpeed;
-        }
+        if (inSand) playerCurrentSpeed = playerVariable.MoveSpeed/2;
+        else playerCurrentSpeed = playerVariable.MoveSpeed;
 
         // move
         Vector3 movementTranslation = new Vector3(moveVal.x, 0, moveVal.y);

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 public class StickyBombController : ExplosiveController {
-    protected new void OnCollisionEnter(Collision col) {
+    protected override void OnCollisionEnter(Collision col) {
         if (activated) {
             // reset object rotation so it doesn't get skewed
             transform.rotation = Quaternion.identity;

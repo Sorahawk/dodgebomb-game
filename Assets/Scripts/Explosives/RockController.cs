@@ -4,8 +4,6 @@ using UnityEngine;
 
 
 public class RockController : ExplosiveController {
-
-    // explode immediately
     public new void ExplodeNow() {
         destroyed = true;
 
@@ -13,16 +11,17 @@ public class RockController : ExplosiveController {
         Destroy(gameObject);
     }
 
-    protected new void OnCollisionEnter(Collision col) {
+    protected override void OnCollisionEnter(Collision col) {
         if (activated) {
             GameObject other = col.gameObject;
 
-            // stun and disarm players
             if (other.CompareTag("Player")) {
                 PlayerController playerScript = other.GetComponent<PlayerController>();
 
+                if (playerScript.CheckShield()) playerScript.DisableShield();
+
                 // stun and disarm player
-                playerScript.StunPlayer();
+                else playerScript.StunPlayer();
             }
 
             else if (other.CompareTag("Bomb") || other.CompareTag("StickyBomb") || other.CompareTag("Barrel")) {
