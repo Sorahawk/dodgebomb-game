@@ -48,13 +48,27 @@ public class PlayerController : CommonController {
 
     private float playerCurrentSpeed;
     private bool isDash = true;
-    private bool inSand = false;
     private bool isShield = false;
+
+    // environmental
+    private bool inSand = false;
+    private bool onIce = false;
+    private float originalDrag;
 
     // hat
     private int hatIndex = -1;
     private Renderer[] hatArray;
 
+
+    private void ReInitVariables() {
+        isAiming = false;
+        dashActivated = false;
+        isDash = true;
+        isShield = false;
+        inSand = false;
+        onIce = false;
+        playerBody.drag = originalDrag;
+    }
 
     private void Start() {
         playerInput = GetComponent<PlayerInput>();
@@ -70,6 +84,8 @@ public class PlayerController : CommonController {
         powerThrowForce = gameConstants.powerThrowForce;
 
         hatArray = transform.Find("Hats").GetComponentsInChildren<Renderer>();
+
+        originalDrag = playerBody.drag;
     }
 
     // automatic callback when corresponding input is detected
@@ -212,7 +228,8 @@ public class PlayerController : CommonController {
     }
 
     private void FixedUpdate() {
-        if (inSand) playerCurrentSpeed = playerVariable.MoveSpeed/2;
+        if (inSand) playerCurrentSpeed = playerVariable.MoveSpeed / 2;
+        else if (onIce) playerCurrentSpeed = playerVariable.MoveSpeed * 2;
         else playerCurrentSpeed = playerVariable.MoveSpeed;
 
         // move
@@ -289,6 +306,10 @@ public class PlayerController : CommonController {
         }
 
         else if (other.gameObject.CompareTag("Quicksand")) inSand = true;
+        else if (other.gameObject.CompareTag("Ice")) {
+            onIce = true;
+            playerBody.drag = 3;
+        }
 
         else if (other.gameObject.CompareTag("OutOfBounds")) KillPlayer();
 
@@ -309,8 +330,10 @@ public class PlayerController : CommonController {
             pickableBomb = null;
         }
 
-        else if (other.gameObject.CompareTag("Quicksand")) {
-            inSand = false;
+        else if (other.gameObject.CompareTag("Quicksand")) inSand = false;
+        else if (other.gameObject.CompareTag("Ice")) {
+            onIce = false;
+            playerBody.drag = originalDrag;
         }
     }
 
@@ -472,5 +495,8 @@ public class PlayerController : CommonController {
 
         // set isDead to false
         isDead = false;
+
+        // reinitialise script variables
+        ReInitVariables();
     }
 }
