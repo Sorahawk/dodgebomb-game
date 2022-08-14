@@ -15,11 +15,8 @@ MonoBehaviour:
   playerMoveSpeed: 5
   dashDistance: 70
   bombThrowForce: 30
-  consumeTimeStep: 10
-  consumeLargestScale: 4
-  breakTimeStep: 30
-  breakDebrisTorque: 10
-  breakDebrisForce: 10
-  spawnNumberOfDebris: 10
-  rotatorRotateSpeed: 6
-  testValue: 0
+  powerThrowForce: 50
+  roundDuration: 300
+  startingCountdown: 3
+  numberOfNonPlayableScenes: 3
+  respawnTimer: 5

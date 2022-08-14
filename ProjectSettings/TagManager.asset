@@ -5,20 +5,19 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bomb
-  - Wall
   - Ground
   - Barrel
   - Rock
   - Grass
   - OutOfBounds
   - Quicksand
-  - PlayerData
   - BearTrap
   - Powerup
-  - StickyBomb
   - Fire
   - Ice
   - SpawnPoint
+  - Wall
+  - StickyBomb
   layers:
   - Default
   - TransparentFX
