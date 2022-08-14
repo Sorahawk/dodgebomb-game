@@ -365,6 +365,7 @@ public class PlayerController : CommonController {
             playerVariable.SetPowerup(powerupIndex);
 
             // show on HUD
+            hudManager.HidePowerup(playerIndex);
             hudManager.ShowPowerup(playerIndex, powerupIndex - 1);
 
             Destroy(other.gameObject);
