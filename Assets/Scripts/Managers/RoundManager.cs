@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,11 +24,12 @@ public class RoundManager : MonoBehaviour {
 
     private Transform[] spawnpoints;
     private int count;
-    private int[] mapSpawned;
     private int roundNumber;
     private int previousSpawnPoint = -1;
 
     // scene loading
+    [SerializeField]
+    private List<int> mapIndexList;
     private int numberOfNonPlayableScenes; 
     private int maxMapIndex; // Number of playable maps
     private bool isSummaryShown = false;
@@ -44,10 +44,19 @@ public class RoundManager : MonoBehaviour {
         if (!Instance) {
             Instance = this;
         }
+
         numberOfNonPlayableScenes = gameConstants.numberOfNonPlayableScenes;
         maxMapIndex = SceneManager.sceneCountInBuildSettings - numberOfNonPlayableScenes;
-        
-        ResetAllRoundInfo();
+
+        mapIndexList = new List<int>();
+
+        for (int i = numberOfNonPlayableScenes; i < SceneManager.sceneCountInBuildSettings; i++) {
+            mapIndexList.Add(i);
+        }
+
+        //ResetAllRoundInfo();
+        roundNumber = 0;
+
         TimerFloatVariable.SetValue(gameConstants.roundDuration);
 
         // reset all player scores to 0
@@ -69,6 +78,7 @@ public class RoundManager : MonoBehaviour {
     void Update() {
         if (roundStarting) {
             StartingCountdown();
+            isSummaryShown = false;
         }
 
         else if (timerIsRunning) {
@@ -126,10 +136,9 @@ public class RoundManager : MonoBehaviour {
     void RoundTimerCountdown() {
         if (timeRemaining > 0) timeRemaining -= Time.deltaTime;
         else {
-            Debug.Log("Time has run out!");
-            timeRemaining = 0;
             timerIsRunning = false;
-            roundEnded = true;
+
+            Debug.Log("Time has run out!");
 
             // disable all controls
             EnableAllControls(false);
@@ -146,26 +155,24 @@ public class RoundManager : MonoBehaviour {
                     playerScript.EnableModelRenderers(false);
                 }
             }
+
+            timeRemaining = 0;
+            roundEnded = true;
         }
 
         TimerFloatVariable.SetValue(timeRemaining);
     }
 
     // On starting new round, increment round number, reset round timer and change to a new map.
-    public IEnumerator StartNewRound() {
+    public void StartNewRound() {
         // based on Scene Index under File -> Build Settings
         // ignore indices of non-playable maps, e.g. Start, Instructions, Lobby, PostRound
 
-        int randomMap = UnityEngine.Random.Range(0, maxMapIndex) + numberOfNonPlayableScenes;
-        bool mapAlreadyPlayed = Array.Exists( mapSpawned, element => element == randomMap);
+        int rand = Random.Range(0, mapIndexList.Count);
+        int randomMapIndex = mapIndexList[rand];
+        mapIndexList.RemoveAt(rand);
 
-        while (mapAlreadyPlayed) {
-            randomMap = UnityEngine.Random.Range(0, maxMapIndex) + numberOfNonPlayableScenes;
-            mapAlreadyPlayed = Array.Exists( mapSpawned, element => element == randomMap);
-        }
-
-        // wait for scene to finish loading
-        SceneManager.LoadScene(randomMap);
+        SceneManager.LoadScene(randomMapIndex);
 
         SpawnAllPlayers();
 
@@ -177,13 +184,11 @@ public class RoundManager : MonoBehaviour {
 
         roundNumber += 1;
         Debug.Log(roundNumber);
-
-        yield return new WaitForSeconds(1);
     }
 
     // To be called when returning to main menu or restart pressed.
     public void ResetAllRoundInfo(){
-        mapSpawned = new int[maxMapIndex];
+        Awake();
         roundNumber = 0;
     }
 
@@ -215,6 +220,9 @@ public class RoundManager : MonoBehaviour {
                 // enable hat and model renderers
                 playerScript.EnableHatRenderer(true);
                 playerScript.EnableModelRenderers(true);
+
+                // reinitialise player script variables
+                playerScript.ReInitVariables();
 
                 counter += 1;
             }

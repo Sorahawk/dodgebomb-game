@@ -77,7 +77,7 @@ public class PlayerManager : MonoBehaviour {
                 playerObjects.Add(controller.gameObject);
             }
 
-            StartCoroutine(roundManager.StartNewRound());
+            roundManager.StartNewRound();
         }
     }
 

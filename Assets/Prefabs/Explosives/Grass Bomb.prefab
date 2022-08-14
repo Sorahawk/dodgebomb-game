@@ -343,7 +343,7 @@ MonoBehaviour:
   player4Variable: {fileID: 11400000, guid: 6aa95aff2b4f88f489e3fddb4c401381, type: 2}
   player5Variable: {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
   player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
-  explosionClip: {fileID: 8300000, guid: 44fb98e3740d4b443bb4163fadbb2f69, type: 3}
+  explosionClip: {fileID: 8300000, guid: 72b33b9212dfb464d869ffddaadb93a1, type: 3}
 --- !u!135 &4136078860217818023
 SphereCollider:
   m_ObjectHideFlags: 0

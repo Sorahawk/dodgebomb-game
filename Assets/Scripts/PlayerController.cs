@@ -79,7 +79,7 @@ public class PlayerController : CommonController {
         hudManager = HUDManager;
     }
 
-    private void ReInitVariables() {
+    public void ReInitVariables() {
         isAiming = false;
         dashActivated = false;
         isDash = true;
