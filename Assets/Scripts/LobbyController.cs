@@ -111,6 +111,7 @@ public class LobbyController : CommonController {
 
         // unbind lobby monkey and bind to player monkey
         playerConfig.PlayerObject = gameObject;
+        gameObject.transform.position = new Vector3(0, 10, 0);
 
         // change appearance of player monkey based on selected customisation
         Renderer[] playerRenderers = gameObject.transform.Find("Model").GetComponentsInChildren<Renderer>();
