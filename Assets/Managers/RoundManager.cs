@@ -137,7 +137,7 @@ public class RoundManager : MonoBehaviour
         roundStarting=true;  // starts the countdown before the round begins
         roundEnded = false;  // resets this from previous round
         roundNumber +=1;
-        Debug.Log(roundNumber);
+        Debug.Log("Round" + roundNumber);
     }
 
     // To be called when returning to main menu or restart pressed.
