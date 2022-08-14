@@ -11,6 +11,7 @@ public class LobbyController : CommonController {
 
     private PlayerManager playerManager;
     private PlayerConfig playerConfig;
+    private PlayerInput playerInput;
     private GameObject playerObject;
     private Renderer[] playerRenderers;
     private Renderer[] playerHats;
@@ -20,7 +21,8 @@ public class LobbyController : CommonController {
     private int pIndex;  // player index
 
     private void Start() {
-        pIndex = GetComponent<PlayerInput>().playerIndex;
+        playerInput = GetComponent<PlayerInput>();
+        pIndex = playerInput.playerIndex;
         playerManager = PlayerManager.Instance;
         playerConfig = playerManager.getPlayerConfig(pIndex);
         playerObject = playerConfig.PlayerObject;
@@ -110,7 +112,7 @@ public class LobbyController : CommonController {
 
     public void BindPlayer() {
         // switch to game action map
-        GetComponent<PlayerInput>().SwitchCurrentActionMap("Default");
+        playerInput.SwitchCurrentActionMap("Default");
 
         // unbind lobby monkey and bind to player monkey
         playerConfig.PlayerObject = gameObject;
@@ -128,5 +130,8 @@ public class LobbyController : CommonController {
             Renderer[] playerHats = gameObject.transform.Find("Hats").GetComponentsInChildren<Renderer>();
             playerHats[hIndex].enabled = true;
         }
+
+        // deactivate input so players cannot move during countdown
+        playerInput.DeactivateInput();
     }
 }

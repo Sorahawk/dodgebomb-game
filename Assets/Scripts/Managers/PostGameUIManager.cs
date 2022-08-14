@@ -52,6 +52,6 @@ public class PostGameUIManager : MonoBehaviour {
     }
 
     public void ButtonNextRound() {
-        roundManager.StartNewRound();
+        StartCoroutine(roundManager.StartNewRound());
     }
 }

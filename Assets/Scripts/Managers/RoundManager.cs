@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using System;
 
 
 public class RoundManager : MonoBehaviour {
@@ -85,9 +85,13 @@ public class RoundManager : MonoBehaviour {
 
         else if (roundEnded) {
             if (!isSummaryShown) {
+                isSummaryShown = true;
+
+                // disable all controls
+                EnableAllControls(false);
+
                 // show the round summary screen
                 StartCoroutine(LoadPostRound());
-                isSummaryShown = true;
             }
         }
 
@@ -106,13 +110,28 @@ public class RoundManager : MonoBehaviour {
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("PostRound"));
     }
 
+    private void EnableAllControls(bool enable) {
+        foreach (Transform tr in playerConfigManager.transform) {
+            if (tr.tag == "Player") {
+                PlayerInput playerInput = tr.gameObject.GetComponent<PlayerInput>();
+
+                if (enable) playerInput.ActivateInput();
+                else playerInput.DeactivateInput();
+            }
+        }
+    }
+
     void StartingCountdown() {
+        // countdown is ongoing
         if (startingTimer > 0) startingTimer -= Time.deltaTime;
+
+        // countdown is up
         else {
             roundStarting = false;
             timerIsRunning = true;
-            // enable controls
 
+            // enable controls
+            EnableAllControls(true);
         }
 
         roundStartingCountdownFloatVariable.SetValue(startingTimer);
@@ -125,6 +144,22 @@ public class RoundManager : MonoBehaviour {
             timeRemaining = 0;
             timerIsRunning = false;
             roundEnded = true;
+
+            // disable all controls
+            EnableAllControls(false);
+
+            foreach (Transform tr in playerConfigManager.transform) {
+                if (tr.tag == "Player") {
+                    PlayerController playerScript = tr.gameObject.GetComponent<PlayerController>();
+
+                    // drop all held bombs
+                    playerScript.DropBomb();
+
+                    // hide renderers
+                    playerScript.DisableHats();
+                    playerScript.EnableModelRenderers(false);
+                }
+            }
         }
 
         TimerFloatVariable.SetValue(timeRemaining);
@@ -151,12 +186,16 @@ public class RoundManager : MonoBehaviour {
 
         // wait for scene to be loaded before setting active
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(randomMap));
+
         SpawnAllPlayers();
+
         timeRemaining = gameConstants.roundDuration;
         startingTimer = gameConstants.startingCountdown;
-        roundStarting=true;  // starts the countdown before the round begins
+
+        roundStarting = true;  // starts the countdown before the round begins
         roundEnded = false;  // resets this from previous round
-        roundNumber +=1;
+
+        roundNumber += 1;
         Debug.Log(roundNumber);
     }
 
@@ -178,16 +217,23 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void SpawnAllPlayers() {
-        // set the transform position of all monkeys
         int counter = 0;
         Vector3[] vectorList = VectorListVariable.VectorList;
+
+        // set the transform position of all monkeys
         foreach (Transform tr in playerConfigManager.transform) {
             if (tr.tag == "Player") {
                 tr.position = vectorList[counter];
-                counter+=1;
+                tr.LookAt(Vector3.zero);
+
+                PlayerController playerScript = tr.gameObject.GetComponent<PlayerController>();
+
+                // enable hat and model renderers
+                playerScript.EnableHatRenderer(true);
+                playerScript.EnableModelRenderers(true);
+
+                counter += 1;
             }
         }
     }
-
-
 }

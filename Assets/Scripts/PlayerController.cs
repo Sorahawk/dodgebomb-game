@@ -465,7 +465,7 @@ public class PlayerController : CommonController {
         transform.Find("Shield").gameObject.SetActive(false);
     }
 
-    private void DisableHats() {
+    public void DisableHats() {
         int hIndex = 0;
         foreach (Renderer hat in hatArray) {
             if (hat.enabled) {
@@ -477,7 +477,11 @@ public class PlayerController : CommonController {
         }
     }
 
-    public void KillPlayer() {
+    public void EnableHatRenderer(bool enable) {
+        if (hatIndex != -1) hatArray[hatIndex].enabled = enable;
+    }
+
+    public void KillPlayer(bool manualRespawn=false) {
         if (!isDead) {
             Debug.Log("Player dead");
 
@@ -494,7 +498,7 @@ public class PlayerController : CommonController {
 
             // drop any carried bombs
             // no need to light the fuse because it will be handled from within bomb script
-            if (carriedBomb) bombScript.DetachFromPlayer();
+            DropBomb();
 
             // turn off hat renderers
             DisableHats();
@@ -504,7 +508,10 @@ public class PlayerController : CommonController {
 
             // wait for animation to finish playing
             StartCoroutine(DeathDisappear());
-            StartCoroutine(roundManager.playerDeathRespawn(this.gameObject));
+
+            if (!manualRespawn) {
+                StartCoroutine(roundManager.playerDeathRespawn(this.gameObject));
+            }
         }
     }
 
@@ -516,6 +523,14 @@ public class PlayerController : CommonController {
         EnableAllRenderers(false);
     }
 
+    public void EnableModelRenderers(bool enable) {
+        Renderer[] playerRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in playerRenderers) {
+            renderer.enabled = enable;
+        }
+    }
+
     public void RevivePlayer() {
         Debug.Log("Player respawning");
 
@@ -523,11 +538,7 @@ public class PlayerController : CommonController {
         playerAnimator.SetTrigger("reviveTrigger");
 
         // turn renderers only for model back on
-        Renderer[] playerRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer renderer in playerRenderers) {
-            renderer.enabled = true;
-        }
+        EnableModelRenderers(true);
 
         // shift monkey transform vertically up in the air
         transform.position = new Vector3(transform.position.x, 3, transform.position.z);
@@ -540,7 +551,7 @@ public class PlayerController : CommonController {
         yield return new WaitForSeconds(2f);
 
         // turn on hat renderer
-        if (hatIndex != -1) hatArray[hatIndex].enabled = true;
+        EnableHatRenderer(true);
 
         // enable colliders
         EnableAllColliders(true);

@@ -17,6 +17,6 @@ MonoBehaviour:
   bombThrowForce: 30
   powerThrowForce: 50
   roundDuration: 10
-  startingCountdown: 3
+  startingCountdown: 5
   numberOfNonPlayableScenes: 6
   respawnTimer: 5
