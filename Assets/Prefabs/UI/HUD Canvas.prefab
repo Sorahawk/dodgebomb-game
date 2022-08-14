@@ -218,6 +218,7 @@ MonoBehaviour:
   - {fileID: 8445308645918693162}
   - {fileID: 4066976480024581388}
   - {fileID: 8348234748142822801}
+  powerupIcons: []
 --- !u!1 &1492864089673607754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 600
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y

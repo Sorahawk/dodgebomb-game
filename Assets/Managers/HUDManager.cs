@@ -6,11 +6,9 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour {
     public List<GameObject> playerCards;
-    public List<GameObject> powerupIcons;
 
     private PlayerManager playerManager;
     private List<PlayerConfig> playerConfigs;
-    private int currentPowerup = -1;
 
     void Start() {
         playerManager = PlayerManager.Instance;
@@ -42,6 +40,9 @@ public class HUDManager : MonoBehaviour {
             if (hatIndex != -1) {
                 hatRenderers[hatIndex].enabled = true;
             }
+
+            // bind playerCard to that player's PlayerController script
+            playerManager.playerObjects[i].GetComponent<PlayerController>().setHUDManager(this);
         }
     }
 
@@ -50,13 +51,16 @@ public class HUDManager : MonoBehaviour {
 
     }
 
-    public void ShowPowerup(int powerupIndex) {
-        currentPowerup = powerupIndex;
-        powerupIcons[powerupIndex].SetActive(true);
+    public void ShowPowerup(int playerIndex, int powerupIndex) {
+        GameObject powerupIcon = playerCards[playerIndex].transform.Find("Powerups").GetChild(powerupIndex).gameObject;
+        powerupIcon.SetActive(true);
     }
 
-    public void HidePowerup() {
-        powerupIcons[currentPowerup].SetActive(false);
-        currentPowerup = -1;
+    public void HidePowerup(int playerIndex) {
+        Transform powerupIcons = playerCards[playerIndex].transform.Find("Powerups");
+
+        for (int i = 0; i < 4; i++) {
+            powerupIcons.GetChild(i).gameObject.SetActive(false);
+        }
     }
 }

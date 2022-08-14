@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour {
 
-    public List<GameObject> playerCards;
+    public List<GameObject> playerObjects;
     public List<Material> playerColors;
     public GameObject actualMonkeyPrefab;
     public RoundManager roundManager;
@@ -40,15 +40,15 @@ public class PlayerManager : MonoBehaviour {
         if (!playerConfigs[index].IsReady) {
             playerConfigs[index].IsReady = true;
 
-            playerCards[index].transform.Find("Ready").gameObject.SetActive(true); // ready
-            playerCards[index].transform.Find("Arrows").gameObject.SetActive(false); // arrows
+            playerObjects[index].transform.Find("Ready").gameObject.SetActive(true); // ready
+            playerObjects[index].transform.Find("Arrows").gameObject.SetActive(false); // arrows
         }
 
         else {
             playerConfigs[index].IsReady = false;
 
-            playerCards[index].transform.Find("Ready").gameObject.SetActive(false); // ready
-            playerCards[index].transform.Find("Arrows").gameObject.SetActive(true); // arrows
+            playerObjects[index].transform.Find("Ready").gameObject.SetActive(false); // ready
+            playerObjects[index].transform.Find("Arrows").gameObject.SetActive(true); // arrows
         }
 
         // only start game if there are at least 2 players, and all players are ready
@@ -57,11 +57,17 @@ public class PlayerManager : MonoBehaviour {
             // disable player input manager joining so new controllers can't be added in halfway
             GetComponent<PlayerInputManager>().DisableJoining();
 
+            // wipe playerObjects list
+            playerObjects = new List<GameObject>();
+
             LobbyController[] lobbyControllers = transform.GetComponentsInChildren<LobbyController>();
 
             foreach(LobbyController controller in lobbyControllers) {
                 // prepare player monkey
                 controller.BindPlayer();
+
+                // add each player monkey object to the playerObjects list
+                playerObjects.Add(controller.gameObject);
             }
 
             StartCoroutine(roundManager.StartNewRound());
@@ -75,10 +81,10 @@ public class PlayerManager : MonoBehaviour {
             pInput.transform.SetParent(transform);
 
             // enable corresponding player card
-            playerCards[index].SetActive(true);
-            playerCards[index].transform.Find("Name").GetComponent<UnityEngine.UI.Text>().text = "Player " + (index + 1);
+            playerObjects[index].SetActive(true);
+            playerObjects[index].transform.Find("Name").GetComponent<UnityEngine.UI.Text>().text = "Player " + (index + 1);
             
-            GameObject playerObject = playerCards[index].transform.Find("Lobby Monkey").gameObject;
+            GameObject playerObject = playerObjects[index].transform.Find("Lobby Monkey").gameObject;
             playerConfigs.Add(new PlayerConfig(pInput, playerObject));
         }
     }
