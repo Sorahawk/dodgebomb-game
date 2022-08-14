@@ -181,7 +181,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1492864088821219133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundStartingText: {fileID: 3461635543381511584}
   countdown: {fileID: 6695655334115987298}
+  background: {fileID: 4321678328898219625}
   roundStartingCountdownFloatVariable: {fileID: 11400000, guid: dd7ba5c87993889448f2cae3dc11fd62, type: 2}
 --- !u!1 &3461635543381511584
 GameObject:
@@ -595,7 +596,7 @@ GameObject:
   - component: {fileID: 236987087577013414}
   - component: {fileID: 6774734894182278249}
   m_Layer: 5
-  m_Name: Overlay
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

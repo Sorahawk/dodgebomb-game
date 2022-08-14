@@ -60,18 +60,10 @@ public class RoundManager : MonoBehaviour {
         // spawn points
         count = transform.childCount;
         spawnpoints = new Transform[count];
-        for(int i = 0; i < count; i++){
+
+        for (int i = 0; i < count; i++) {
             spawnpoints[i] = transform.GetChild(i);
         }
-
-        // print(InputSystem.devices);
-
-        // check how many players and spawn them in the first six spawn points
-        // foreach (Transform coordinate in spawnpoints){
-        //     Instantiate(myPrefab, new Vector3(coordinate.position.x, coordinate.position.y, coordinate.position.z), Quaternion.identity);
-        // }
-
-        // disable controls
     }
 
     void Update() {
@@ -91,7 +83,7 @@ public class RoundManager : MonoBehaviour {
                 EnableAllControls(false);
 
                 // show the round summary screen
-                StartCoroutine(LoadPostRound());
+                LoadPostRound();
             }
         }
 
@@ -100,14 +92,8 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
-    private IEnumerator LoadPostRound() {
-        // wait for scene to finish loading
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("PostRound");
-
-        while (!asyncLoad.isDone) yield return null;
-
-        // wait for scene to be loaded before setting active
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName("PostRound"));
+    private void LoadPostRound() {
+        SceneManager.LoadScene("PostRound");
     }
 
     private void EnableAllControls(bool enable) {
@@ -171,32 +157,28 @@ public class RoundManager : MonoBehaviour {
         // ignore indices of non-playable maps, e.g. Start, Instructions, Lobby, PostRound
 
         int randomMap = UnityEngine.Random.Range(0, maxMapIndex) + numberOfNonPlayableScenes;
-        bool exists = Array.Exists( mapSpawned, element => element == randomMap);
+        bool mapAlreadyPlayed = Array.Exists( mapSpawned, element => element == randomMap);
 
-        while (exists) {
-            randomMap = UnityEngine.Random.Range(0, maxMapIndex)+numberOfNonPlayableScenes;
+        while (mapAlreadyPlayed) {
+            randomMap = UnityEngine.Random.Range(0, maxMapIndex) + numberOfNonPlayableScenes;
+            mapAlreadyPlayed = Array.Exists( mapSpawned, element => element == randomMap);
         }
 
         // wait for scene to finish loading
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(randomMap);
-
-        while (!asyncLoad.isDone) {
-            yield return null;
-        }
-
-        // wait for scene to be loaded before setting active
-        SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(randomMap));
+        SceneManager.LoadScene(randomMap);
 
         SpawnAllPlayers();
+
+        roundEnded = false;  // resets this from previous round
+        roundStarting = true;  // starts the countdown before the round begins
 
         timeRemaining = gameConstants.roundDuration;
         startingTimer = gameConstants.startingCountdown;
 
-        roundStarting = true;  // starts the countdown before the round begins
-        roundEnded = false;  // resets this from previous round
-
         roundNumber += 1;
         Debug.Log(roundNumber);
+
+        yield return new WaitForSeconds(1);
     }
 
     // To be called when returning to main menu or restart pressed.
@@ -217,6 +199,8 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void SpawnAllPlayers() {
+        print("spawning");
+
         int counter = 0;
         Vector3[] vectorList = VectorListVariable.VectorList;
 
