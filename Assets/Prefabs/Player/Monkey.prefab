@@ -1472,6 +1472,12 @@ MonoBehaviour:
   player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
   bearTrap: {fileID: 2534971574343250691, guid: 6216e10ed2456f140bd564c10b4426dc, type: 3}
   bombContainer: {fileID: 5746082519967853474}
+  footstepsAudioClip: {fileID: 8300000, guid: ec8e4e4cdd16a96469266cb3aae00354, type: 3}
+  throwingAudioClip: {fileID: 8300000, guid: 48cb5e919abfd7f4189db5ed3bbb7e62, type: 3}
+  dashAudioClip: {fileID: 8300000, guid: 7143c3fcdae0a08428d6add8b8f4a4c8, type: 3}
+  footstepsMixer: {fileID: -2869626532250205719, guid: a2a9f333a1aa27a49aa978d4bcefea38, type: 2}
+  throwingMixer: {fileID: -7538189266693430906, guid: a2a9f333a1aa27a49aa978d4bcefea38, type: 2}
+  dashMixer: {fileID: -6707449366151516613, guid: a2a9f333a1aa27a49aa978d4bcefea38, type: 2}
 --- !u!95 &-1731823443167105420
 Animator:
   serializedVersion: 4
