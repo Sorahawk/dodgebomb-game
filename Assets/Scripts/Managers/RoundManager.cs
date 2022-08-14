@@ -86,11 +86,11 @@ public class RoundManager : MonoBehaviour {
         }
 
         else if (roundEnded) {
+            // disable all controls
+            EnableAllControls(false);
+
             if (mapIndexList.Count == 0) {
                 // no more maps
-
-                // disable all controls
-                EnableAllControls(false);
 
                 // show end game screen
                 SceneManager.LoadScene("Game Over");
@@ -100,9 +100,6 @@ public class RoundManager : MonoBehaviour {
 
             else if (!isSummaryShown) {
                 isSummaryShown = true;
-
-                // disable all controls
-                EnableAllControls(false);
 
                 // show the round summary screen
                 SceneManager.LoadScene("PostRound");
@@ -151,8 +148,8 @@ public class RoundManager : MonoBehaviour {
                 if (tr.tag == "Player") {
                     PlayerController playerScript = tr.gameObject.GetComponent<PlayerController>();
 
-                    // drop all held bombs
-                    playerScript.DropBomb();
+                    // destroy any held bombs
+                    if (playerScript.carriedBomb) Destroy(playerScript.carriedBomb);
 
                     // hide renderers
                     playerScript.DisableHats();

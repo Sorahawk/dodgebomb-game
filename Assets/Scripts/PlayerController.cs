@@ -45,7 +45,7 @@ public class PlayerController : CommonController {
     private Rigidbody bombBody;
     private ExplosiveController bombScript;
     private GameObject pickableBomb = null;
-    private GameObject carriedBomb = null;
+    public GameObject carriedBomb = null;
     private int bombThrowForce;
     private int powerThrowForce;
 
