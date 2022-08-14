@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class HUDManager : MonoBehaviour {
+public class PostGameUIManager : MonoBehaviour {
     public List<GameObject> playerCards;
     public PlayerVariable[] playerVarList;
 

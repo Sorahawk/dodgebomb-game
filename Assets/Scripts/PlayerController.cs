@@ -113,6 +113,7 @@ public class PlayerController : CommonController {
             dashActivated = true;
             isDash = false;
             StartCoroutine(DashReset());
+            StartCoroutine(hudManager.ActivateDashCooldown(playerIndex));
         }
     }
 

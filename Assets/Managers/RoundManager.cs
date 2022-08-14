@@ -124,12 +124,12 @@ public class RoundManager : MonoBehaviour {
         // based on Scene Index under File -> Build Settings
         // ignore index 0 - 2 (Start, Instructions and Lobby)
         
-        
         int randomMap = UnityEngine.Random.Range(0, maxMapIndex)+numberOfNonPlayableScenes;
         bool exists = Array.Exists( mapSpawned, element => element == randomMap);
         while(exists){
             randomMap = UnityEngine.Random.Range(0, maxMapIndex)+numberOfNonPlayableScenes;
         }
+
         // wait for scene to finish loading
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(randomMap);
 
