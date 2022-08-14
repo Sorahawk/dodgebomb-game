@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RockController : ExplosiveController {
     public new void ExplodeNow() {
+        destroyed = true;
+
         // destroy game object
         Destroy(gameObject);
     }

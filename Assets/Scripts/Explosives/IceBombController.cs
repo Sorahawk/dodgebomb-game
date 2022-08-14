@@ -19,28 +19,6 @@ public class IceBombController : ExplosiveController {
                     if (!isBlocked) other.gameObject.GetComponent<PlayerController>().StunPlayer();
                 }
             }
-
-
-            else if (other.tag == "Bomb" || other.tag == "Barrel") {
-                StartCoroutine(other.gameObject.GetComponent<ExplosiveController>().StartFuse());
-
-                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
-                    other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
-                }
-
-                // additionally apply explosion force on bombs
-                if (other.tag == "Bomb") {
-                    other.gameObject.GetComponent<Rigidbody>().AddExplosionForce(explosionRadius * 3, transform.position, explosionRadius, 0, ForceMode.Impulse);
-                }
-            }
-
-            else if (other.tag == "StickyBomb") {
-                other.gameObject.GetComponent<StickyBombController>().ActivateBomb();
-
-                if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
-                    other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
-                }
-            }
         }
     }
 }
