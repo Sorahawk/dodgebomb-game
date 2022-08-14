@@ -181,7 +181,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &1492864088821219133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +218,13 @@ MonoBehaviour:
   - {fileID: 8445308645918693162}
   - {fileID: 4066976480024581388}
   - {fileID: 8348234748142822801}
-  powerupIcons: []
+  playerVarList:
+  - {fileID: 11400000, guid: 38ee09b240b97e449bb0e192175570a0, type: 2}
+  - {fileID: 11400000, guid: 2bccc17312f292e4dac972a69d6dc5e0, type: 2}
+  - {fileID: 11400000, guid: 31cfe9eea3081134b9e2672a5ed4c03c, type: 2}
+  - {fileID: 11400000, guid: 6aa95aff2b4f88f489e3fddb4c401381, type: 2}
+  - {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
+  - {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
 --- !u!1 &1492864089673607754
 GameObject:
   m_ObjectHideFlags: 0

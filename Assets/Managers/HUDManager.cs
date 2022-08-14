@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour {
     public List<GameObject> playerCards;
+    public PlayerVariable[] playerVarList;
 
     private PlayerManager playerManager;
     private List<PlayerConfig> playerConfigs;
@@ -46,9 +47,15 @@ public class HUDManager : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
     void Update() {
+        // update player scores every frame by checking playerVariable scores
+        for (int i = 0; i < playerConfigs.Count; i++) {
+            int playerScore = playerVarList[i].Score;
 
+            // update score text
+            Text scoreText = playerCards[i].transform.Find("Kills Text").GetComponent<Text>();
+            scoreText.text = "Kills " + playerScore;
+        }
     }
 
     public void ShowPowerup(int playerIndex, int powerupIndex) {
