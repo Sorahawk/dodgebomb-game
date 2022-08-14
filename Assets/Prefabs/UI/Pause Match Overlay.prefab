@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ff8e7ca342a8493cb01ada0ff200b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausedBoolVariable: {fileID: 11400000, guid: 4cf18d8dadefd0545a18e9e8ac75c36b, type: 2}
   pauseMenu: {fileID: 1728681156163848283}
+  HUD: {fileID: 0}
+  pausedBoolVariable: {fileID: 11400000, guid: 4cf18d8dadefd0545a18e9e8ac75c36b, type: 2}
   QuitorRestartBooleanVariable: {fileID: 11400000, guid: aaf5b83ea8f07a84698ebd1892cdb8a5, type: 2}
 --- !u!1 &486012620980286692
 GameObject:
@@ -176,6 +177,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1243886013653531524, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886013653531524, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886013653531524, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886013653531524, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -223,9 +236,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1243886013653531526, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1243886013653531527, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
       propertyPath: m_Camera
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886013653531527, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886013827163625, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8465666803400651159}
+    - target: {fileID: 1243886013827163625, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886013952944675, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8465666803400651159}
+    - target: {fileID: 1243886013952944675, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeButtonPressed
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243886014119681917, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8465666803400651159}
+    - target: {fileID: 1243886014119681917, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitButtonPressed
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64fd6327013214bc4bbc702dedebc99f, type: 3}
