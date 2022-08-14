@@ -102,6 +102,7 @@ public class RoundManager : MonoBehaviour {
                 timerIsRunning = true;
                 // enable controls
             }
+        roundStartingCountdownFloatVariable.SetValue(startingTimer);
     }
 
     void RoundTimerCountdown()
@@ -117,6 +118,7 @@ public class RoundManager : MonoBehaviour {
                 timerIsRunning = false;
                 roundEnded = true;
             }
+        TimerFloatVariable.SetValue(timeRemaining);
     }
 
     // On starting new round, increment round number, reset round timer and change to a new map.

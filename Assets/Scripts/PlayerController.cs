@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Audio;
 
 
 public class PlayerController : CommonController {
@@ -63,6 +64,16 @@ public class PlayerController : CommonController {
     private int playerIndex;
     private HUDManager hudManager;
 
+    protected AudioSource footstepsAudioSource;
+    protected AudioSource throwingAudioSource;
+    protected AudioSource dashAudioSource;
+    public AudioClip footstepsAudioClip;
+    public AudioClip throwingAudioClip;
+    public AudioClip dashAudioClip;
+    public AudioMixerGroup footstepsMixer;
+    public AudioMixerGroup throwingMixer;
+    public AudioMixerGroup dashMixer;
+
     public void setHUDManager(HUDManager HUDManager) {
         hudManager = HUDManager;
     }
@@ -96,6 +107,20 @@ public class PlayerController : CommonController {
         roundManager = transform.parent.gameObject.transform.GetChild(0).gameObject.GetComponent<RoundManager>();
 
         originalDrag = playerBody.drag;
+
+        // add audiosource component via scripting
+        footstepsAudioSource = gameObject.AddComponent<AudioSource>();
+        footstepsAudioSource.clip = footstepsAudioClip;
+        footstepsAudioSource.outputAudioMixerGroup = footstepsMixer;
+
+        throwingAudioSource = gameObject.AddComponent<AudioSource>();
+        throwingAudioSource.clip = throwingAudioClip;
+        throwingAudioSource.outputAudioMixerGroup = throwingMixer;
+
+        dashAudioSource = gameObject.AddComponent<AudioSource>();
+        dashAudioSource.clip = dashAudioClip;
+        dashAudioSource.outputAudioMixerGroup = dashMixer;
+
     }
 
     private void OnMove(InputValue value) {
@@ -112,6 +137,8 @@ public class PlayerController : CommonController {
         if (!isAiming && !carriedBomb && isDash){
             dashActivated = true;
             isDash = false;
+            //play audio when dashing
+            dashAudioSource.Play();
             StartCoroutine(DashReset());
             StartCoroutine(hudManager.ActivateDashCooldown(playerIndex));
         }
@@ -154,6 +181,9 @@ public class PlayerController : CommonController {
         // if players press and hold Throw before picking up bomb, it will be thrown straight away when released
         else if (!isPress && isAiming) {
             isAiming = false;
+
+            //play audio when throwing
+            throwingAudioSource.Play();
 
             // declare bombBody here before carriedBomb is nullified by DetachFromPlayer()
             bombBody = carriedBomb.GetComponent<Rigidbody>();
@@ -245,6 +275,11 @@ public class PlayerController : CommonController {
         else playerAnimator.SetBool("isRunning", true);
 
         playerBody.AddForce(movementTranslation * playerCurrentSpeed, ForceMode.Impulse);
+        
+        //play audio when walking
+        if (!footstepsAudioSource.isPlaying && movementTranslation != Vector3.zero){
+            footstepsAudioSource.Play();
+        }
 
         // dash
         if (dashActivated) {
