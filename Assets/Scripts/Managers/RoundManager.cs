@@ -86,24 +86,28 @@ public class RoundManager : MonoBehaviour {
         }
 
         else if (roundEnded) {
-            if (!isSummaryShown) {
+            if (mapIndexList.Count == 0) {
+                // no more maps
+
+                // disable all controls
+                EnableAllControls(false);
+
+                // show end game screen
+                SceneManager.LoadScene("Game Over");
+
+                Destroy(this);
+            }
+
+            else if (!isSummaryShown) {
                 isSummaryShown = true;
 
                 // disable all controls
                 EnableAllControls(false);
 
                 // show the round summary screen
-                LoadPostRound();
+                SceneManager.LoadScene("PostRound");
             }
         }
-
-        else if (roundNumber == maxMapIndex) {
-            // show the game summary screen
-        }
-    }
-
-    private void LoadPostRound() {
-        SceneManager.LoadScene("PostRound");
     }
 
     private void EnableAllControls(bool enable) {
