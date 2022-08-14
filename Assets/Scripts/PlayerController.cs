@@ -309,7 +309,7 @@ public class PlayerController : CommonController {
             pickableBomb = other.gameObject;
         }
 
-        else if (other.gameObject.CompareTag("StickyBomb") && !other.gameObject.GetComponent<StickyBombController>().getActive()) {
+        else if (other.gameObject.CompareTag("StickyBomb") && !other.gameObject.GetComponent<ExplosiveController>().getActive()) {
             pickableBomb = other.gameObject;
         }
 
@@ -464,6 +464,9 @@ public class PlayerController : CommonController {
     public void RevivePlayer() {
         Debug.Log("Player respawning");
 
+        // play revive animation
+        playerAnimator.SetTrigger("reviveTrigger");
+
         // turn renderers only for model back on
         Renderer[] playerRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
 
@@ -472,17 +475,14 @@ public class PlayerController : CommonController {
         }
 
         // shift monkey transform vertically up in the air
-        transform.position = new Vector3(transform.position.x, 4, transform.position.z);
-
-        // play revive animation
-        playerAnimator.SetTrigger("reviveTrigger");
+        transform.position = new Vector3(transform.position.x, 3, transform.position.z);
 
         // wait for animation to finish playing before proceeding
         StartCoroutine(ReviveDelay());
     }
 
     private IEnumerator ReviveDelay() {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         // turn on hat renderer
         if (hatIndex != -1) hatArray[hatIndex].enabled = true;

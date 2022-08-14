@@ -13,11 +13,11 @@ TagManager:
   - Quicksand
   - BearTrap
   - Powerup
-  - StickyBomb
   - Fire
   - Ice
   - SpawnPoint
   - Wall
+  - StickyBomb
   layers:
   - Default
   - TransparentFX
