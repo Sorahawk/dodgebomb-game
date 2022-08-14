@@ -7,12 +7,14 @@ using System;
 
 
 public class RoundManager : MonoBehaviour {
+    // public PlayerInput playerInput;
     public GameConstants gameConstants;
     public GameObject playerConfigManager;
     public VectorListVariable VectorListVariable;
     public FloatVariable TimerFloatVariable;
     public FloatVariable roundStartingCountdownFloatVariable;
     public PlayerVariable[] playerVarList;
+    public BoolVariable pausedBoolVariable;
     
     // timer
     private bool roundStarting = false;
@@ -186,4 +188,6 @@ public class RoundManager : MonoBehaviour {
             }
         }
     }
+
+
 }
