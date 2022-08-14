@@ -549,3 +549,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vectorListVariable: {fileID: 11400000, guid: b85b4125612c3dc44a68809511be7d02, type: 2}
+  mapLoadedBoolVariable: {fileID: 11400000, guid: b4c712726edeb8a4d8f13b7f86f33224, type: 2}

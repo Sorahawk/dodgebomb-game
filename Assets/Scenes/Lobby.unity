@@ -2643,7 +2643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1291739421658415406, guid: 28b3a019128b13e45b843a5e4a9b3ddf, type: 3}
       propertyPath: minPlayers
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1291739421658415406, guid: 28b3a019128b13e45b843a5e4a9b3ddf, type: 3}
       propertyPath: roundManager
@@ -3243,6 +3243,10 @@ PrefabInstance:
       propertyPath: playerConfigManager
       value: 
       objectReference: {fileID: 1888846120}
+    - target: {fileID: 8989320397927925284, guid: 00f570409153ba6409fd52e43ab7e0cf, type: 3}
+      propertyPath: mapLoadedBoolVariable
+      value: 
+      objectReference: {fileID: 11400000, guid: b4c712726edeb8a4d8f13b7f86f33224, type: 2}
     - target: {fileID: 8989320397927925285, guid: 00f570409153ba6409fd52e43ab7e0cf, type: 3}
       propertyPath: m_RootOrder
       value: 0

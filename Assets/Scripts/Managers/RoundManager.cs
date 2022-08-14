@@ -14,6 +14,7 @@ public class RoundManager : MonoBehaviour {
     public FloatVariable roundStartingCountdownFloatVariable;
     public PlayerVariable[] playerVarList;
     public BoolVariable pausedBoolVariable;
+    public BoolVariable mapLoadedBoolVariable;
     
     // timer
     private bool roundStarting = false;
@@ -76,6 +77,12 @@ public class RoundManager : MonoBehaviour {
     }
 
     void Update() {
+        if(mapLoadedBoolVariable.Value)
+        {
+            SpawnAllPlayers();
+            mapLoadedBoolVariable.SetValue(false);
+        }
+
         if (roundStarting) {
             StartingCountdown();
             isSummaryShown = false;
@@ -168,14 +175,12 @@ public class RoundManager : MonoBehaviour {
     public void StartNewRound() {
         // based on Scene Index under File -> Build Settings
         // ignore indices of non-playable maps, e.g. Start, Instructions, Lobby, PostRound
-
+        Debug.Log("starting new round");
         int rand = Random.Range(0, mapIndexList.Count);
         int randomMapIndex = mapIndexList[rand];
         mapIndexList.RemoveAt(rand);
 
         SceneManager.LoadScene(randomMapIndex);
-
-        SpawnAllPlayers();
 
         roundEnded = false;  // resets this from previous round
         roundStarting = true;  // starts the countdown before the round begins
