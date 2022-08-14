@@ -24,7 +24,8 @@ public class PlayerController : CommonController {
     private PlayerVariable[] playerVarList;
     private PlayerVariable playerVariable;
     private RoundManager roundManager;
-
+    
+    public BoolVariable pausedBoolVariable;
     public GameObject bearTrap;
 
     // move
@@ -121,6 +122,10 @@ public class PlayerController : CommonController {
         dashAudioSource.clip = dashAudioClip;
         dashAudioSource.outputAudioMixerGroup = dashMixer;
 
+    }
+
+    private void OnPause(){
+        pausedBoolVariable.SetValue(!pausedBoolVariable.Value);
     }
 
     private void OnMove(InputValue value) {

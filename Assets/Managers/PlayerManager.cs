@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour {
     public List<Material> playerColors;
     public GameObject actualMonkeyPrefab;
     public RoundManager roundManager;
+    public BoolVariable QuitorRestartBooleanVariable;
     public int minPlayers = 2;
 
     private List<PlayerConfig> playerConfigs;
@@ -23,6 +24,12 @@ public class PlayerManager : MonoBehaviour {
             Instance = this;
             DontDestroyOnLoad(Instance);
             playerConfigs = new List<PlayerConfig>();
+        }
+    }
+
+    private void Update(){
+        if(QuitorRestartBooleanVariable.Value){
+            DestroyPlayerManager();
         }
     }
 
@@ -92,6 +99,12 @@ public class PlayerManager : MonoBehaviour {
     public void HandlePlayerLeft(PlayerInput pInput) {
         // [KIV] TODO: handle players leaving (not sure how Unity.PlayerInput auto deals with it in terms of the playerIndex)
     }
+
+    public void DestroyPlayerManager(){
+        Destroy(gameObject);
+        Instance = null;
+        QuitorRestartBooleanVariable.SetValue(false);
+    }
 }
 
 
@@ -113,3 +126,4 @@ public class PlayerConfig {
         IsReady = false;
     }
 }
+
