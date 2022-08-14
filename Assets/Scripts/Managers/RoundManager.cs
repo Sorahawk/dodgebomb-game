@@ -161,6 +161,9 @@ public class RoundManager : MonoBehaviour {
                     // hide renderers
                     playerScript.DisableHats();
                     playerScript.EnableModelRenderers(false);
+
+                    // raise transform height so they don't touch beach boundary 
+                    tr.position = new Vector3(0, 10, 0);
                 }
             }
 

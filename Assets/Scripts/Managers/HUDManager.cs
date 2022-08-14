@@ -54,7 +54,7 @@ public class HUDManager : MonoBehaviour {
 
             // update score text
             Text scoreText = playerCards[i].transform.Find("Kills Text").GetComponent<Text>();
-            scoreText.text = "Kills " + playerScore;
+            scoreText.text = "Kills: " + playerScore;
         }
     }
 
