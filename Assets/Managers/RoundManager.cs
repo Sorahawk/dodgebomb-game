@@ -5,12 +5,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System;
 
+
 public class RoundManager : MonoBehaviour
 {
     public GameConstants gameConstants;
     // public GameObject myPrefab;
     public GameObject playerConfigManager;
     public VectorListVariable VectorListVariable;
+    public FloatVariable TimerFloatVariable;
+    public FloatVariable roundStartingCountdownFloatVariable;
     
     // timer
     private bool roundStarting = false;
@@ -36,7 +39,9 @@ public class RoundManager : MonoBehaviour
         }
         numberOfNonPlayableScenes = gameConstants.numberOfNonPlayableScenes;
         maxMapIndex = SceneManager.sceneCountInBuildSettings - numberOfNonPlayableScenes;
+        
         ResetAllRoundInfo();
+        TimerFloatVariable.SetValue(gameConstants.roundDuration);
     }
 
     // Start is called before the first frame update
@@ -48,6 +53,7 @@ public class RoundManager : MonoBehaviour
         for(int i = 0; i < count; i++){
             spawnpoints[i] = transform.GetChild(i);
         }
+        
 
         // print(InputSystem.devices);
 
@@ -80,6 +86,8 @@ public class RoundManager : MonoBehaviour
         {
             // show the game summary screen
         }
+
+        
     }
 
     void StartingCountdown()
@@ -94,6 +102,7 @@ public class RoundManager : MonoBehaviour
                 timerIsRunning = true;
                 // enable controls
             }
+        roundStartingCountdownFloatVariable.SetValue(startingTimer);
     }
 
     void RoundTimerCountdown()
@@ -101,6 +110,7 @@ public class RoundManager : MonoBehaviour
         if (timeRemaining > 0)
             {
                 timeRemaining -= Time.deltaTime;
+                
             }
             else
             {
@@ -109,6 +119,7 @@ public class RoundManager : MonoBehaviour
                 timerIsRunning = false;
                 roundEnded = true;
             }
+        TimerFloatVariable.SetValue(timeRemaining);
     }
 
     // On starting new round, increment round number, reset round timer and change to a new map.
@@ -138,6 +149,7 @@ public class RoundManager : MonoBehaviour
         roundEnded = false;  // resets this from previous round
         roundNumber +=1;
         Debug.Log(roundNumber);
+        roundStartingCountdownFloatVariable.SetValue(gameConstants.startingCountdown);
     }
 
     // To be called when returning to main menu or restart pressed.
@@ -168,4 +180,6 @@ public class RoundManager : MonoBehaviour
             }
         }
     }
+
+
 }
