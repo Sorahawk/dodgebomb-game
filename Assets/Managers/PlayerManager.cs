@@ -12,7 +12,7 @@ public class PlayerManager : MonoBehaviour {
     public List<Material> playerColors;
     public GameObject actualMonkeyPrefab;
     public RoundManager roundManager;
-    public int MinPlayers = 2;
+    public int minPlayers = 2;
 
     private List<PlayerConfig> playerConfigs;
 
@@ -52,7 +52,7 @@ public class PlayerManager : MonoBehaviour {
         }
 
         // only start game if there are at least 2 players, and all players are ready
-        if (playerConfigs.Count >= MinPlayers && playerConfigs.All(p => p.IsReady == true)) {
+        if (playerConfigs.Count >= minPlayers && playerConfigs.All(p => p.IsReady == true)) {
 
             // disable player input manager joining so new controllers can't be added in halfway
             GetComponent<PlayerInputManager>().DisableJoining();
