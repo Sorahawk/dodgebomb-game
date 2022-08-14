@@ -17,6 +17,7 @@ public class RockController : ExplosiveController {
 
             if (other.CompareTag("Player")) {
                 PlayerController playerScript = other.GetComponent<PlayerController>();
+                explosionSound.PlayOneShot(explosionClip);
 
                 if (playerScript.CheckShield()) playerScript.DisableShield();
 
@@ -26,6 +27,7 @@ public class RockController : ExplosiveController {
 
             else if (other.CompareTag("Bomb") || other.CompareTag("StickyBomb") || other.CompareTag("Barrel")) {
                 ExplosiveController bombScript = other.GetComponent<ExplosiveController>();
+                explosionSound.PlayOneShot(explosionClip);
 
                 if (bombScript.GetLastHeld() == -1) bombScript.SetLastHeld(lastHeld);
 
