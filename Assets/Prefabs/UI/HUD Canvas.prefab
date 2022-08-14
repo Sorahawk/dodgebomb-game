@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1492864088821219131}
   - component: {fileID: 1492864088821219132}
   - component: {fileID: 1492864088821219133}
+  - component: {fileID: 7178372151750850519}
   m_Layer: 5
   m_Name: HUD Canvas
   m_TagString: Untagged
@@ -198,6 +199,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7178372151750850519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1492864088821219134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e57114444d17c14db5f665093a67906, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCards:
+  - {fileID: 8528810836766663306}
+  - {fileID: 3841501278166992376}
+  - {fileID: 6653506241124934226}
+  - {fileID: 8445308645918693162}
+  - {fileID: 4066976480024581388}
+  - {fileID: 8348234748142822801}
 --- !u!1 &1492864089673607754
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +666,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Overlay 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -664,7 +688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -672,7 +696,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -712,11 +736,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1200
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -737,6 +761,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
   m_PrefabInstance: {fileID: 1867978606623009391}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8348234748142822801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+  m_PrefabInstance: {fileID: 1867978606623009391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2047708071250210164
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -747,6 +776,10 @@ PrefabInstance:
     - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Name
       value: Player Overlay 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Pivot.x
@@ -766,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -774,7 +807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -814,11 +847,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -834,6 +867,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+--- !u!1 &8528810836766663306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+  m_PrefabInstance: {fileID: 2047708071250210164}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8528810836766663307 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
@@ -849,6 +887,10 @@ PrefabInstance:
     - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Name
       value: Player Overlay 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Pivot.x
@@ -868,7 +910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -876,7 +918,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -916,11 +958,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -936,6 +978,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+--- !u!1 &8445308645918693162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+  m_PrefabInstance: {fileID: 2235268207100287188}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8445308645918693163 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
@@ -951,6 +998,10 @@ PrefabInstance:
     - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Name
       value: Player Overlay 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Pivot.x
@@ -970,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -978,7 +1029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1018,11 +1069,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1038,6 +1089,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+--- !u!1 &6653506241124934226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+  m_PrefabInstance: {fileID: 3918280437011819948}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6653506241124934227 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
@@ -1053,6 +1109,10 @@ PrefabInstance:
     - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Name
       value: Player Overlay 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Pivot.x
@@ -1072,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1080,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1120,11 +1180,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1140,6 +1200,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+--- !u!1 &4066976480024581388 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+  m_PrefabInstance: {fileID: 5928507800464448242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4066976480024581389 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
@@ -1155,6 +1220,10 @@ PrefabInstance:
     - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Name
       value: Player Overlay 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_Pivot.x
@@ -1174,7 +1243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.x
@@ -1182,7 +1251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1222,11 +1291,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1242,6 +1311,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+--- !u!1 &3841501278166992376 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7653454015177101310, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}
+  m_PrefabInstance: {fileID: 6879607901152954886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3841501278166992377 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7653454015177101311, guid: 93ddc7de876ce446c8858945f3b6ef29, type: 3}

@@ -13,7 +13,6 @@ public class PlayerController : CommonController {
     private bool isAiming = false;
     private bool isDead = false;
 
-    
     public GameConstants gameConstants;
     public PlayerVariable player1Variable;
     public PlayerVariable player2Variable;
@@ -284,7 +283,10 @@ public class PlayerController : CommonController {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("BearTrap")) {
-            StunPlayer();
+            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerInput.playerIndex) {
+                    if (CheckShield()) DisableShield();
+                    else StunPlayer();
+            }
         }
 
         else if (other.gameObject.CompareTag("Fire")) {
@@ -319,12 +321,6 @@ public class PlayerController : CommonController {
         else if (other.gameObject.CompareTag("Powerup")) {
             playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
             Destroy(other.gameObject);
-        }
-
-        else if (other.gameObject.CompareTag("BearTrap")) {
-            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerInput.playerIndex) {
-                StunPlayer();
-            }
         }
     }
 

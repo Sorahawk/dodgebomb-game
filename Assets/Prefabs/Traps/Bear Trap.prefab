@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FXcontainer: {fileID: 7478406109903905114}
-  sparkFX: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
+  bloodFX: {fileID: 166404, guid: 78e1c8c5b281b8b439229473779ac9aa, type: 3}
   activateSound: {fileID: 1243690038024223128}
 --- !u!54 &7962442305102198845
 Rigidbody:

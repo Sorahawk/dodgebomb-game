@@ -9,4 +9,8 @@ public class Powerup : MonoBehaviour {
     public int get_power_id() {
         return powerup_id;
     }
+
+    private void Update() {
+        transform.RotateAround(transform.position, transform.up, Time.deltaTime * 90f);
+    }
 }

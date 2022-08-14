@@ -35,11 +35,15 @@ public class ExplosiveController : CommonController {
     protected bool inAir = false;
     protected bool destroyed = false;
     protected int lastHeld = -1;
+    protected int stickTo = -1;
+    protected AudioSource explosionSound;
+    public AudioClip explosionClip;
 
     protected void Start() {
         bombBody = GetComponent<Rigidbody>();
         bombCollider = GetComponent<Collider>();
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
+        explosionSound = GetComponent<AudioSource>();
     }
 
     public bool getInAir() {
@@ -142,6 +146,7 @@ public class ExplosiveController : CommonController {
     public virtual IEnumerator ExplodeNow() {
         destroyed = true;
         DetachFromPlayer();
+        explosionSound.PlayOneShot(explosionClip);
 
         if (explosionCircleObject) Destroy(explosionCircleObject);
 
