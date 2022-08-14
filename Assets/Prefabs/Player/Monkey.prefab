@@ -1472,6 +1472,12 @@ MonoBehaviour:
   player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
   bearTrap: {fileID: 2534971574343250691, guid: 6216e10ed2456f140bd564c10b4426dc, type: 3}
   bombContainer: {fileID: 5746082519967853474}
+  footstepsAudioClip: {fileID: 8300000, guid: ec8e4e4cdd16a96469266cb3aae00354, type: 3}
+  throwingAudioClip: {fileID: 8300000, guid: 48cb5e919abfd7f4189db5ed3bbb7e62, type: 3}
+  dashAudioClip: {fileID: 8300000, guid: 2c054ac70d79a1a429addd903efc7fd1, type: 3}
+  footstepsMixerGroup: {fileID: -2869626532250205719, guid: a2a9f333a1aa27a49aa978d4bcefea38, type: 2}
+  throwingMixerGroup: {fileID: -1514461366263212777, guid: a2a9f333a1aa27a49aa978d4bcefea38, type: 2}
+  dashMixerGroup: {fileID: -1713113022149721464, guid: a2a9f333a1aa27a49aa978d4bcefea38, type: 2}
 --- !u!95 &-1731823443167105420
 Animator:
   serializedVersion: 4
@@ -3296,8 +3302,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7220467063461916098, guid: a372cc1ed3e71ec4abbaa2d67c096f00, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a372cc1ed3e71ec4abbaa2d67c096f00, type: 3}
 --- !u!4 &3137188429866131243 stripped
 Transform:

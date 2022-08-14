@@ -75,7 +75,7 @@ public class StickyBombController : ExplosiveController {
             }
 
             else if (other.tag == "StickyBomb") {
-                other.gameObject.GetComponent<ExplosiveController>().ActivateBomb();
+                other.gameObject.GetComponent<StickyBombController>().ActivateBomb();
 
                 if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
                     other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);

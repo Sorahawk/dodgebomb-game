@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Audio;
 
 public class PlayerController : CommonController {
 
@@ -13,6 +13,7 @@ public class PlayerController : CommonController {
     private bool isAiming = false;
     private bool isDead = false;
 
+    
     public GameConstants gameConstants;
     public PlayerVariable player1Variable;
     public PlayerVariable player2Variable;
@@ -59,13 +60,17 @@ public class PlayerController : CommonController {
     // hat
     private int hatIndex = -1;
     private Renderer[] hatArray;
+    protected AudioSource footstepsAudioSource;
+    protected AudioSource throwingAudioSource;
+    protected AudioSource dashAudioSource;
+    public AudioClip footstepsAudioClip;
+    public AudioClip throwingAudioClip;
+    public AudioClip dashAudioClip;
+    public AudioMixerGroup footstepsMixerGroup;
+    public AudioMixerGroup throwingMixerGroup;
+    public AudioMixerGroup dashMixerGroup;
 
-    private int playerIndex;
-    private HUDManager hudManager;
 
-    public void setHUDManager(HUDManager HUDManager) {
-        hudManager = HUDManager;
-    }
 
     private void ReInitVariables() {
         isAiming = false;
@@ -81,11 +86,9 @@ public class PlayerController : CommonController {
         playerInput = GetComponent<PlayerInput>();
         playerBody = GetComponent<Rigidbody>();
         playerAnimator = GetComponent<Animator>();
-
-        playerIndex = playerInput.playerIndex;
         
         playerVarList = new PlayerVariable[] {player1Variable, player2Variable, player3Variable, player4Variable, player5Variable, player6Variable};
-        playerVariable = playerVarList[playerIndex];
+        playerVariable = playerVarList[playerInput.playerIndex];
 
         playerVariable.SetMoveSpeed(gameConstants.playerMoveSpeed);
         dashDistance = gameConstants.dashDistance;
@@ -94,33 +97,52 @@ public class PlayerController : CommonController {
 
         hatArray = transform.Find("Hats").GetComponentsInChildren<Renderer>();
         roundManager = transform.parent.gameObject.transform.GetChild(0).gameObject.GetComponent<RoundManager>();
+        
+        //adding audiosource directly from script to differentiate between the two
+        footstepsAudioSource = gameObject.AddComponent<AudioSource>();
+        footstepsAudioSource.clip = footstepsAudioClip;
+        footstepsAudioSource.outputAudioMixerGroup = footstepsMixerGroup;
+
+        throwingAudioSource = gameObject.AddComponent<AudioSource>();
+        throwingAudioSource.clip = throwingAudioClip;
+        throwingAudioSource.outputAudioMixerGroup = throwingMixerGroup;
+
+        dashAudioSource = gameObject.AddComponent<AudioSource>();
+        dashAudioSource.clip = dashAudioClip;
+        dashAudioSource.outputAudioMixerGroup = dashMixerGroup;
 
         originalDrag = playerBody.drag;
     }
 
+    // automatic callback when corresponding input is detected
     private void OnMove(InputValue value) {
         if (!isAiming) {
             moveVal = value.Get<Vector2>();
+            
         }
     }
 
+    // automatic callback when corresponding input is detected
     private void OnSpin(InputValue value) {
         spinVal = value.Get<Vector2>();
     }
 
+    // automatic callback when corresponding input is detected
     private void OnDash() {
         if (!isAiming && !carriedBomb && isDash){
             dashActivated = true;
             isDash = false;
+            dashAudioSource.Play();
             StartCoroutine(DashReset());
         }
     }
 
+    // automatic callback when corresponding input is detected
     private void OnPickUpDrop() {
         // check that not carrying any bombs, and a bomb is pickable
         if (!carriedBomb && pickableBomb) {
             bombScript = pickableBomb.GetComponent<ExplosiveController>();
-            bombScript.AttachToPlayer(gameObject, playerIndex);
+            bombScript.AttachToPlayer(gameObject, playerInput.playerIndex);
             pickableBomb = null;
         }
 
@@ -131,6 +153,7 @@ public class PlayerController : CommonController {
         }
     }
 
+    // automatic callback when corresponding input is detected
     private void OnThrow() {
         // return if no bomb carried
         if (!carriedBomb) {
@@ -154,6 +177,9 @@ public class PlayerController : CommonController {
         else if (!isPress && isAiming) {
             isAiming = false;
 
+            //play sound when throwing bomb
+            throwingAudioSource.Play();
+
             // declare bombBody here before carriedBomb is nullified by DetachFromPlayer()
             bombBody = carriedBomb.GetComponent<Rigidbody>();
 
@@ -176,13 +202,14 @@ public class PlayerController : CommonController {
         }
     }
 
+    // automatic callback when corresponding input is detected
     private void OnUsePowerup() {
         print(playerVariable.Powerup);
 
         if (playerVariable.Powerup == 1) {
             // confusion (call a script that input current player index)
             print("confusion");
-            StartCoroutine(Confuse(playerIndex));
+            StartCoroutine(Confuse(playerInput.playerIndex));
         } else if (playerVariable.Powerup == 2) {
             // Shield
             print("shield");
@@ -200,11 +227,10 @@ public class PlayerController : CommonController {
             // instantiate bear trap prefab at current player position
             // tag bear trap to player index
             GameObject trap = Instantiate(bearTrap, new Vector3(transform.position.x, transform.position.y, transform.position.z), transform.rotation);
-            trap.GetComponent<BearTrapController>().setOwner(playerIndex);
+            trap.GetComponent<BearTrapController>().setOwner(playerInput.playerIndex);
         }
 
         playerVariable.SetPowerup(0);
-        hudManager.HidePowerup(playerIndex);
     }
 
     public void SetCarryBomb(GameObject bombObject) {
@@ -230,6 +256,7 @@ public class PlayerController : CommonController {
         if (spinVal != Vector2.zero) {
             latestDir = new Vector3(spinVal.x, 0, spinVal.y);
         }
+ 
     }
 
     private void FixedUpdate() {
@@ -244,6 +271,11 @@ public class PlayerController : CommonController {
         else playerAnimator.SetBool("isRunning", true);
 
         playerBody.AddForce(movementTranslation * playerCurrentSpeed, ForceMode.Impulse);
+
+        //play sound if player is walking
+        if(footstepsAudioSource.isPlaying == false && movementTranslation != Vector3.zero){
+            footstepsAudioSource.Play();
+        }
 
         // dash
         if (dashActivated) {
@@ -274,7 +306,7 @@ public class PlayerController : CommonController {
                 print("picking up bomb");
 
                 // can only pick up if bomb comes from the front and empty hands
-                colBombScript.AttachToPlayer(gameObject, playerIndex);
+                colBombScript.AttachToPlayer(gameObject, playerInput.playerIndex);
             }
 
             else if (colliderName == "SideBackCollider" && colBombScript.getInAir() && colBombScript.getActive()) {
@@ -286,7 +318,7 @@ public class PlayerController : CommonController {
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.CompareTag("BearTrap")) {
-            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerIndex) {
+            if (other.gameObject.GetComponent<BearTrapController>().getOwner() != playerInput.playerIndex) {
                     if (CheckShield()) DisableShield();
                     else StunPlayer();
             }
@@ -296,14 +328,11 @@ public class PlayerController : CommonController {
             int fireOwnerIndex = other.gameObject.GetComponent<GroundFireController>().getOwner();
             int scoreChange;
 
-            if (CheckShield()) DisableShield();
-            else {
-                if (playerIndex == fireOwnerIndex) scoreChange = -1;
-                else scoreChange = 1;
+            if (playerInput.playerIndex == fireOwnerIndex) scoreChange = -1;
+            else scoreChange = 1;
 
-                playerVarList[fireOwnerIndex].ApplyScoreChange(scoreChange);
-                KillPlayer();
-            }
+            playerVarList[fireOwnerIndex].ApplyScoreChange(scoreChange);
+            KillPlayer();
         }
     }
 
@@ -312,7 +341,7 @@ public class PlayerController : CommonController {
             pickableBomb = other.gameObject;
         }
 
-        else if (other.gameObject.CompareTag("StickyBomb") && !other.gameObject.GetComponent<ExplosiveController>().getActive()) {
+        else if (other.gameObject.CompareTag("StickyBomb") && !other.gameObject.GetComponent<StickyBombController>().getActive()) {
             pickableBomb = other.gameObject;
         }
 
@@ -325,12 +354,7 @@ public class PlayerController : CommonController {
         else if (other.gameObject.CompareTag("OutOfBounds")) KillPlayer();
 
         else if (other.gameObject.CompareTag("Powerup")) {
-            int powerupIndex = other.gameObject.GetComponent<Powerup>().powerup_id;
-            playerVariable.SetPowerup(powerupIndex);
-
-            // show on HUD
-            hudManager.ShowPowerup(playerIndex, powerupIndex - 1);
-
+            playerVariable.SetPowerup(other.gameObject.GetComponent<Powerup>().powerup_id);
             Destroy(other.gameObject);
         }
     }
@@ -472,9 +496,6 @@ public class PlayerController : CommonController {
     public void RevivePlayer() {
         Debug.Log("Player respawning");
 
-        // play revive animation
-        playerAnimator.SetTrigger("reviveTrigger");
-
         // turn renderers only for model back on
         Renderer[] playerRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
 
@@ -483,14 +504,17 @@ public class PlayerController : CommonController {
         }
 
         // shift monkey transform vertically up in the air
-        transform.position = new Vector3(transform.position.x, 3, transform.position.z);
+        transform.position = new Vector3(transform.position.x, 4, transform.position.z);
+
+        // play revive animation
+        playerAnimator.SetTrigger("reviveTrigger");
 
         // wait for animation to finish playing before proceeding
         StartCoroutine(ReviveDelay());
     }
 
     private IEnumerator ReviveDelay() {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
 
         // turn on hat renderer
         if (hatIndex != -1) hatArray[hatIndex].enabled = true;
@@ -510,4 +534,5 @@ public class PlayerController : CommonController {
         // reinitialise script variables
         ReInitVariables();
     }
+
 }

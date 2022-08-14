@@ -6,10 +6,10 @@ using UnityEngine;
 public class LobbySingletonDetector : MonoBehaviour {
     public GameObject playerConfigManager;
 
-    private PlayerManager playerManager;
+    private PlayerManagerController playerManager;
 
     private void Awake() {
-        if (!PlayerManager.Instance) {
+        if (!PlayerManagerController.Instance) {
             playerConfigManager.SetActive(true);
         }
     }

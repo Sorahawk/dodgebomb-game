@@ -11,6 +11,7 @@ public class FireBombController : ExplosiveController {
     protected List<GameObject> fireList;
 
     public override IEnumerator ExplodeNow() {
+        destroyed = true;
         DetachFromPlayer();
         explosionSound.PlayOneShot(explosionClip);
 
