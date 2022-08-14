@@ -33,7 +33,6 @@ public class ExplosiveController : CommonController {
 
     protected bool activated = false;
     protected bool inAir = false;
-    protected bool destroyed = false;
     protected int lastHeld = -1;
     protected int stickTo = -1;
     protected AudioSource explosionSound;
@@ -131,7 +130,7 @@ public class ExplosiveController : CommonController {
             yield return new WaitForSeconds(fuseDelay);
         }
 
-        if (!destroyed) StartCoroutine(ExplodeNow());
+        if (this) StartCoroutine(ExplodeNow());
     }
 
     private void Update() {
@@ -144,7 +143,6 @@ public class ExplosiveController : CommonController {
 
     // explode immediately
     public virtual IEnumerator ExplodeNow() {
-        destroyed = true;
         DetachFromPlayer();
         explosionSound.PlayOneShot(explosionClip);
 
@@ -209,7 +207,7 @@ public class ExplosiveController : CommonController {
             }
 
             else if (other.tag == "StickyBomb") {
-                other.gameObject.GetComponent<StickyBombController>().ActivateBomb();
+                other.gameObject.GetComponent<ExplosiveController>().ActivateBomb();
 
                 if (other.gameObject.GetComponent<ExplosiveController>().GetLastHeld() == -1) {
                     other.gameObject.GetComponent<ExplosiveController>().SetLastHeld(lastHeld);
