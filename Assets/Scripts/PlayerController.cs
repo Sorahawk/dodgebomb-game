@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Audio;
+
 
 public class PlayerController : CommonController {
 
@@ -60,16 +60,6 @@ public class PlayerController : CommonController {
     // hat
     private int hatIndex = -1;
     private Renderer[] hatArray;
-    protected AudioSource footstepsAudioSource;
-    protected AudioSource throwingAudioSource;
-    protected AudioSource dashAudioSource;
-    public AudioClip footstepsAudioClip;
-    public AudioClip throwingAudioClip;
-    public AudioClip dashAudioClip;
-    public AudioMixerGroup footstepsMixerGroup;
-    public AudioMixerGroup throwingMixerGroup;
-    public AudioMixerGroup dashMixerGroup;
-
 
 
     private void ReInitVariables() {
@@ -97,19 +87,6 @@ public class PlayerController : CommonController {
 
         hatArray = transform.Find("Hats").GetComponentsInChildren<Renderer>();
         roundManager = transform.parent.gameObject.transform.GetChild(0).gameObject.GetComponent<RoundManager>();
-        
-        //adding audiosource directly from script to differentiate between the two
-        footstepsAudioSource = gameObject.AddComponent<AudioSource>();
-        footstepsAudioSource.clip = footstepsAudioClip;
-        footstepsAudioSource.outputAudioMixerGroup = footstepsMixerGroup;
-
-        throwingAudioSource = gameObject.AddComponent<AudioSource>();
-        throwingAudioSource.clip = throwingAudioClip;
-        throwingAudioSource.outputAudioMixerGroup = throwingMixerGroup;
-
-        dashAudioSource = gameObject.AddComponent<AudioSource>();
-        dashAudioSource.clip = dashAudioClip;
-        dashAudioSource.outputAudioMixerGroup = dashMixerGroup;
 
         originalDrag = playerBody.drag;
     }
@@ -118,7 +95,6 @@ public class PlayerController : CommonController {
     private void OnMove(InputValue value) {
         if (!isAiming) {
             moveVal = value.Get<Vector2>();
-            
         }
     }
 
@@ -132,7 +108,6 @@ public class PlayerController : CommonController {
         if (!isAiming && !carriedBomb && isDash){
             dashActivated = true;
             isDash = false;
-            dashAudioSource.Play();
             StartCoroutine(DashReset());
         }
     }
@@ -176,9 +151,6 @@ public class PlayerController : CommonController {
         // if players press and hold Throw before picking up bomb, it will be thrown straight away when released
         else if (!isPress && isAiming) {
             isAiming = false;
-
-            //play sound when throwing bomb
-            throwingAudioSource.Play();
 
             // declare bombBody here before carriedBomb is nullified by DetachFromPlayer()
             bombBody = carriedBomb.GetComponent<Rigidbody>();
@@ -256,7 +228,6 @@ public class PlayerController : CommonController {
         if (spinVal != Vector2.zero) {
             latestDir = new Vector3(spinVal.x, 0, spinVal.y);
         }
- 
     }
 
     private void FixedUpdate() {
@@ -271,11 +242,6 @@ public class PlayerController : CommonController {
         else playerAnimator.SetBool("isRunning", true);
 
         playerBody.AddForce(movementTranslation * playerCurrentSpeed, ForceMode.Impulse);
-
-        //play sound if player is walking
-        if(footstepsAudioSource.isPlaying == false && movementTranslation != Vector3.zero){
-            footstepsAudioSource.Play();
-        }
 
         // dash
         if (dashActivated) {
@@ -534,5 +500,4 @@ public class PlayerController : CommonController {
         // reinitialise script variables
         ReInitVariables();
     }
-
 }
