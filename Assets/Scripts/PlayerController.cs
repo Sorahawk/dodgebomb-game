@@ -121,10 +121,9 @@ public class PlayerController : CommonController {
         dashAudioSource = gameObject.AddComponent<AudioSource>();
         dashAudioSource.clip = dashAudioClip;
         dashAudioSource.outputAudioMixerGroup = dashMixer;
-
     }
 
-    private void OnPause(){
+    private void OnPause() {
         pausedBoolVariable.SetValue(!pausedBoolVariable.Value);
     }
 

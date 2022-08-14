@@ -4,37 +4,34 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
-{
-    // Start is called before the first frame update
+
+public class PauseMenu : MonoBehaviour {
     public BoolVariable pausedBoolVariable;
     public GameObject pauseMenu; 
     public BoolVariable QuitorRestartBooleanVariable;
     // public GameObject roundManagerObject;
+    // public PlayerInput playerInput;
     
     // private RoundManager roundManager;
 
-    // public PlayerInput playerInput;
-
-    void Start(){
+    void Start() {
         // roundManager = roundManagerObject.GetComponent<RoundManager>();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if (pausedBoolVariable.Value){
+
+    void Update() {
+
+        if (pausedBoolVariable.Value) {
             pauseMenu.SetActive(pausedBoolVariable.Value);
             Time.timeScale = 0;
         }
+
         else{
             Time.timeScale = 1;
             pauseMenu.SetActive(pausedBoolVariable.Value);
         }
         
         // playerInput = GetComponent<PlayerInput>();
-        // if (playerInput.actions["Pause"].IsPressed())
-        // {
+        // if (playerInput.actions["Pause"].IsPressed()) {
         //     PauseUnpause();
         // }
     }
@@ -54,6 +51,7 @@ public class PauseMenu : MonoBehaviour
             
     //     }
     // }
+
     public void RestartButtonPressed(){
         Debug.Log("restart pressed");
         // roundManager.ResetAllRoundInfo();
