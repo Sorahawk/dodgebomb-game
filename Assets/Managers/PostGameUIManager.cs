@@ -43,7 +43,7 @@ public class PostGameUIManager : MonoBehaviour {
             }
 
             // bind playerCard to that player's PlayerController script
-            playerManager.playerObjects[i].GetComponent<PlayerController>().setHUDManager(this);
+            //playerManager.playerObjects[i].GetComponent<PlayerController>().setHUDManager(this);
         }
     }
 

@@ -172,6 +172,7 @@ MonoBehaviour:
   VectorListVariable: {fileID: 11400000, guid: b85b4125612c3dc44a68809511be7d02, type: 2}
   TimerFloatVariable: {fileID: 11400000, guid: 9b89ea67f03b3424ebf1aea9218addad, type: 2}
   roundStartingCountdownFloatVariable: {fileID: 11400000, guid: dd7ba5c87993889448f2cae3dc11fd62, type: 2}
+  playerVarList: []
 --- !u!1001 &258506398
 PrefabInstance:
   m_ObjectHideFlags: 0

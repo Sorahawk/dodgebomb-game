@@ -93,7 +93,7 @@ MonoBehaviour:
   player5Variable: {fileID: 11400000, guid: 0165e96ccdcedf445974f3a7820ec2f3, type: 2}
   player6Variable: {fileID: 11400000, guid: dfd3c1501bc746340841591d88f9134d, type: 2}
   explosionClip: {fileID: 8300000, guid: 44fb98e3740d4b443bb4163fadbb2f69, type: 3}
-  fireFX: {fileID: 5126714159007225809, guid: 57a1f86b99688d5408daec834176f69b, type: 3}
+  fireFX: {fileID: 5234442364302523268, guid: 889ab52cf3ed063478c0f9b2bc025253, type: 3}
   fireLifetime: 5
 --- !u!135 &2266821074794147884
 SphereCollider:
