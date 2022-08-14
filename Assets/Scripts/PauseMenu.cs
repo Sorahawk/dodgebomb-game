@@ -12,12 +12,28 @@ public class PauseMenu : MonoBehaviour {
     public BoolVariable pausedBoolVariable;
     public BoolVariable QuitorRestartBooleanVariable;
 
-    void Update() {
-        pauseMenu.SetActive(pausedBoolVariable.Value);
-        HUD.SetActive(!pausedBoolVariable.Value);
+    private Camera mainCamera;
 
-        if (pausedBoolVariable.Value) Time.timeScale = 0;
+    void Start() {
+        mainCamera = transform.Find("Pause Canvas").GetComponent<Canvas>().worldCamera;
+    }
+
+    void Update() {
+        bool isPaused = pausedBoolVariable.Value;
+
+        pauseMenu.SetActive(isPaused);
+        HUD.SetActive(!isPaused);
+
+        // turn audio on or off
+        ActivateAudio(!isPaused);
+
+        if (isPaused) Time.timeScale = 0;
         else Time.timeScale = 1;
+    }
+
+    private void ActivateAudio(bool activate) {
+        AudioSource cameraAudio = mainCamera.GetComponent<AudioSource>();
+        cameraAudio.enabled = activate;
     }
 
     public void RestartButtonPressed(){
