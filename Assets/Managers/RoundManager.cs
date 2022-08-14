@@ -133,7 +133,7 @@ public class RoundManager : MonoBehaviour {
     // On starting new round, increment round number, reset round timer and change to a new map.
     public IEnumerator StartNewRound() {
         // based on Scene Index under File -> Build Settings
-        // ignore index 0 - 2 (Start, Instructions, Lobby, PostRound)
+        // ignore indices of non-playable maps, e.g. Start, Instructions, Lobby, PostRound
 
         int randomMap = UnityEngine.Random.Range(0, maxMapIndex) + numberOfNonPlayableScenes;
         bool exists = Array.Exists( mapSpawned, element => element == randomMap);

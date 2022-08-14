@@ -18,5 +18,5 @@ MonoBehaviour:
   powerThrowForce: 50
   roundDuration: 10
   startingCountdown: 3
-  numberOfNonPlayableScenes: 4
+  numberOfNonPlayableScenes: 6
   respawnTimer: 5
