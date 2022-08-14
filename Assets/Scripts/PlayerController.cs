@@ -334,7 +334,13 @@ public class PlayerController : CommonController {
 
             if (CheckShield()) DisableShield();
             else {
-                if (playerIndex == fireOwnerIndex) scoreChange = -1;
+                if (playerIndex == fireOwnerIndex) {
+                    if (playerVarList[fireOwnerIndex].Score > 0) {
+                        scoreChange = -1;
+                    } else {
+                        scoreChange = 0;
+                    }
+                }
                 else scoreChange = 1;
 
                 playerVarList[fireOwnerIndex].ApplyScoreChange(scoreChange);

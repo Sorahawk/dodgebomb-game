@@ -25,11 +25,18 @@ public class RoundManager : MonoBehaviour {
     private int count;
     private int[] mapSpawned;
     private int roundNumber;
-    private int numberOfNonPlayableScenes; 
-    private int maxMapIndex; // Number of playable maps
     private int previousSpawnPoint = -1;
 
+    // scene loading
+    private int numberOfNonPlayableScenes; 
+    private int maxMapIndex; // Number of playable maps
+    private bool isSummaryShown = false;
+
     public static RoundManager Instance { get; private set; }
+
+    public int[] getRoundNumbers() {
+        return new int[] {roundNumber, maxMapIndex};
+    }
 
     private void Awake() {
         if (!Instance) {
@@ -47,9 +54,7 @@ public class RoundManager : MonoBehaviour {
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         // spawn points
         count = transform.childCount;
         spawnpoints = new Transform[count];
@@ -65,70 +70,73 @@ public class RoundManager : MonoBehaviour {
         // }
 
         // disable controls
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-        if (roundStarting)
-        {
+    void Update() {
+        if (roundStarting) {
             StartingCountdown();
         }
-        else if (timerIsRunning)
-        {
+
+        else if (timerIsRunning) {
             RoundTimerCountdown();
         }
-        else if (roundEnded)
-        {
-            // show the round summary screen
+
+        else if (roundEnded) {
+            if (!isSummaryShown) {
+                // show the round summary screen
+                StartCoroutine(LoadPostRound());
+                isSummaryShown = true;
+            }
         }
-        else if (roundNumber == maxMapIndex)
-        {
+
+        else if (roundNumber == maxMapIndex) {
             // show the game summary screen
         }
     }
 
-    void StartingCountdown()
-    {
-        if (startingTimer > 0)
-            {
-                startingTimer -= Time.deltaTime;
-            }
-            else
-            {
-                roundStarting = false;
-                timerIsRunning = true;
-                // enable controls
-            }
+    private IEnumerator LoadPostRound() {
+        // wait for scene to finish loading
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync("PostRound");
+
+        while (!asyncLoad.isDone) yield return null;
+
+        // wait for scene to be loaded before setting active
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("PostRound"));
+    }
+
+    void StartingCountdown() {
+        if (startingTimer > 0) startingTimer -= Time.deltaTime;
+        else {
+            roundStarting = false;
+            timerIsRunning = true;
+            // enable controls
+
+        }
+
         roundStartingCountdownFloatVariable.SetValue(startingTimer);
     }
 
-    void RoundTimerCountdown()
-    {
-        if (timeRemaining > 0)
-            {
-                timeRemaining -= Time.deltaTime;
-            }
-            else
-            {
-                Debug.Log("Time has run out!");
-                timeRemaining = 0;
-                timerIsRunning = false;
-                roundEnded = true;
-            }
+    void RoundTimerCountdown() {
+        if (timeRemaining > 0) timeRemaining -= Time.deltaTime;
+        else {
+            Debug.Log("Time has run out!");
+            timeRemaining = 0;
+            timerIsRunning = false;
+            roundEnded = true;
+        }
+
         TimerFloatVariable.SetValue(timeRemaining);
     }
 
     // On starting new round, increment round number, reset round timer and change to a new map.
-    public IEnumerator StartNewRound(int previousMapIndex = -1) {
+    public IEnumerator StartNewRound() {
         // based on Scene Index under File -> Build Settings
-        // ignore index 0 - 2 (Start, Instructions and Lobby)
-        
-        int randomMap = UnityEngine.Random.Range(0, maxMapIndex)+numberOfNonPlayableScenes;
+        // ignore index 0 - 2 (Start, Instructions, Lobby, PostRound)
+
+        int randomMap = UnityEngine.Random.Range(0, maxMapIndex) + numberOfNonPlayableScenes;
         bool exists = Array.Exists( mapSpawned, element => element == randomMap);
-        while(exists){
+
+        while (exists) {
             randomMap = UnityEngine.Random.Range(0, maxMapIndex)+numberOfNonPlayableScenes;
         }
 
