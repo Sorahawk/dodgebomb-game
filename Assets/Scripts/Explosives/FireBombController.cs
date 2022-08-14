@@ -13,6 +13,7 @@ public class FireBombController : ExplosiveController {
     public override IEnumerator ExplodeNow() {
         destroyed = true;
         DetachFromPlayer();
+        explosionSound.PlayOneShot(explosionClip);
 
         if (explosionCircleObject) Destroy(explosionCircleObject);
 
