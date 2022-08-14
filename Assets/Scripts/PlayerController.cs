@@ -13,7 +13,6 @@ public class PlayerController : CommonController {
     private bool isAiming = false;
     private bool isDead = false;
 
-    
     public GameConstants gameConstants;
     public PlayerVariable player1Variable;
     public PlayerVariable player2Variable;

@@ -6,9 +6,11 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour {
     public List<GameObject> playerCards;
+    public List<GameObject> powerupIcons;
 
     private PlayerManager playerManager;
     private List<PlayerConfig> playerConfigs;
+    private int currentPowerup = -1;
 
     void Start() {
         playerManager = PlayerManager.Instance;
@@ -46,5 +48,15 @@ public class HUDManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+    }
+
+    public void ShowPowerup(int powerupIndex) {
+        currentPowerup = powerupIndex;
+        powerupIcons[powerupIndex].SetActive(true);
+    }
+
+    public void HidePowerup() {
+        powerupIcons[currentPowerup].SetActive(false);
+        currentPowerup = -1;
     }
 }
