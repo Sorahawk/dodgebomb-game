@@ -10,6 +10,7 @@ public class MenuController : MonoBehaviour {
 
     public GameObject playButton;
     public GameObject backButton;
+    public BoolVariable QuitorRestartBooleanVariable;
 
     public void LoadScene(string sceneName) {
         SceneManager.LoadScene(sceneName);
@@ -22,4 +23,12 @@ public class MenuController : MonoBehaviour {
     public void DisableCanvas(GameObject canvas) {
         canvas.SetActive(false);
     }
+
+    public void BackButtonPressed(){
+        QuitorRestartBooleanVariable.SetValue(true);
+        SceneManager.LoadScene("Start");
+    }
 }
+
+
+

@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 public class LobbyController : CommonController {
+
+    public BoolVariable QuitorRestartBooleanVariable;
 
     private PlayerManager playerManager;
     private PlayerConfig playerConfig;
@@ -85,8 +88,8 @@ public class LobbyController : CommonController {
     }
 
     private void OnBack() {
-        // TODO: Implement back button from lobby to menu
-        Debug.Log("Back button clicked");
+        QuitorRestartBooleanVariable.SetValue(true);
+        SceneManager.LoadScene("Start");
     }
 
     private void ChangePlayerColor() {

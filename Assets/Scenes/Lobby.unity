@@ -134,13 +134,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295f6fa9c542d854aab4b7e7b1293074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConstants: {fileID: 11400000, guid: af58fbc7eab7b2c40a0375907e3098e1, type: 2}
-  playerConfigManager: {fileID: 1888846120}
-  VectorListVariable: {fileID: 11400000, guid: b85b4125612c3dc44a68809511be7d02, type: 2}
-  TimerFloatVariable: {fileID: 11400000, guid: 9b89ea67f03b3424ebf1aea9218addad, type: 2}
-  roundStartingCountdownFloatVariable: {fileID: 11400000, guid: dd7ba5c87993889448f2cae3dc11fd62, type: 2}
-  playerVarList: []
-  pausedBoolVariable: {fileID: 11400000, guid: 4cf18d8dadefd0545a18e9e8ac75c36b, type: 2}
 --- !u!1001 &258506398
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1250,7 +1243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1087060976
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1542,7 +1535,7 @@ GameObject:
   - component: {fileID: 1213642509}
   - component: {fileID: 1213642508}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: LobbySingletonDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

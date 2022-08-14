@@ -1511,6 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c1a1fff0d011947a5872a1f65bb938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  QuitorRestartBooleanVariable: {fileID: 11400000, guid: aaf5b83ea8f07a84698ebd1892cdb8a5, type: 2}
 --- !u!1 &4825725571074474857
 GameObject:
   m_ObjectHideFlags: 0
