@@ -336,7 +336,7 @@ MonoBehaviour:
   explosionFX: {fileID: 6231435812455498187, guid: 345dbcb69d41ebb43993b55cb08e1246, type: 3}
   explosionCircle: {fileID: 0}
   fuseDelay: -1
-  explosionRadius: 3
+  explosionRadius: 2
   player1Variable: {fileID: 11400000, guid: 38ee09b240b97e449bb0e192175570a0, type: 2}
   player2Variable: {fileID: 11400000, guid: 2bccc17312f292e4dac972a69d6dc5e0, type: 2}
   player3Variable: {fileID: 11400000, guid: 31cfe9eea3081134b9e2672a5ed4c03c, type: 2}

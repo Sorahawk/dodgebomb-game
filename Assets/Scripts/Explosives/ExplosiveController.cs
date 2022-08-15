@@ -184,9 +184,9 @@ public class ExplosiveController : CommonController {
 
                     // if no shield
                     else {
-                        if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
-                            MinusScore(lastHeld);
-                        } else IncreaseScore(lastHeld);
+                        if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex != lastHeld) {
+                            IncreaseScore(lastHeld);
+                        }
 
                         other.gameObject.GetComponent<PlayerController>().KillPlayer();
                     }
@@ -221,14 +221,6 @@ public class ExplosiveController : CommonController {
             else if (other.tag == "Grass") {
                 other.gameObject.GetComponent<Renderer>().enabled = false;
             }
-        }
-    }
-
-    protected void MinusScore(int playerIndex) {
-        playerVariable = playerVarList[playerIndex];
-
-        if (playerVariable.Score > 0) {
-            playerVariable.ApplyScoreChange(-1);
         }
     }
 

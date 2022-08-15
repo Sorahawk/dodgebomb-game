@@ -37,20 +37,17 @@ public class StickyBombController : ExplosiveController {
 
                     // if no shield
                     else {
-                        if (stickTo==-1) {
+                        if (stickTo == -1) {
                             //stick to obstacles
-                            if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
-                                MinusScore(lastHeld);
-                            } else IncreaseScore(lastHeld);
+                            if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex != lastHeld) {
+                                IncreaseScore(lastHeld);
+                            }
 
                             other.gameObject.GetComponent<PlayerController>().KillPlayer();
                         } else {
                             if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == stickTo) {
                                 // suicide. sticky bomb stick to self
-                                if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex == lastHeld) {
-                                    print("sticky self kill");
-                                    MinusScore(lastHeld);
-                                } else {
+                                if (other.gameObject.GetComponent<PlayerController>().playerInput.playerIndex != lastHeld) {
                                     IncreaseScore(lastHeld);
                                 }
                             } else IncreaseScore(stickTo);

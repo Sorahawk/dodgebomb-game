@@ -58,6 +58,7 @@ public class PlayerController : CommonController {
     private bool onIce = false;
     private float originalDrag;
     private bool respawnInvulnerable  = false;
+    private bool onFire = false;
 
     // hat
     private int hatIndex = -1;
@@ -87,6 +88,7 @@ public class PlayerController : CommonController {
         isShield = false;
         inSand = false;
         onIce = false;
+        onFire = false;
         playerBody.drag = originalDrag;
     }
 
@@ -334,18 +336,19 @@ public class PlayerController : CommonController {
         }
 
         else if (other.gameObject.CompareTag("Fire")) {
+            if (onFire) return;
+
+            onFire = true;
             int fireOwnerIndex = other.gameObject.GetComponent<GroundFireController>().getOwner();
             int scoreChange;
 
-            if (CheckShield()) DisableShield();
+            if (CheckShield()) {
+                DisableShield();
+                onFire = false;
+            }
+
             else {
-                if (playerIndex == fireOwnerIndex) {
-                    if (playerVarList[fireOwnerIndex].Score > 0) {
-                        scoreChange = -1;
-                    } else {
-                        scoreChange = 0;
-                    }
-                }
+                if (playerIndex == fireOwnerIndex) scoreChange = 0;
                 else scoreChange = 1;
 
                 playerVarList[fireOwnerIndex].ApplyScoreChange(scoreChange);
