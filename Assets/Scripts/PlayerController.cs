@@ -57,6 +57,7 @@ public class PlayerController : CommonController {
     private bool inSand = false;
     private bool onIce = false;
     private float originalDrag;
+    private bool respawnInvulnerable  = false;
 
     // hat
     private int hatIndex = -1;
@@ -482,37 +483,40 @@ public class PlayerController : CommonController {
     }
 
     public void KillPlayer(bool manualRespawn=false) {
-        if (!isDead) {
-            Debug.Log("Player dead");
+        if(!respawnInvulnerable){
+            if (!isDead) {
+                Debug.Log("Player dead");
 
-            isDead = true;
+                isDead = true;
 
-            // disable controls
-            playerInput.DeactivateInput();
+                // disable controls
+                playerInput.DeactivateInput();
 
-            // turn off gravity so doesn't fall through the floor
-            playerBody.useGravity = false;
+                // turn off gravity so doesn't fall through the floor
+                playerBody.useGravity = false;
 
-            // disable colliders
-            EnableAllColliders(false);
+                // disable colliders
+                EnableAllColliders(false);
 
-            // drop any carried bombs
-            // no need to light the fuse because it will be handled from within bomb script
-            DropBomb();
+                // drop any carried bombs
+                // no need to light the fuse because it will be handled from within bomb script
+                DropBomb();
 
-            // turn off hat renderers
-            DisableHats();
+                // turn off hat renderers
+                DisableHats();
 
-            // play death animation
-            playerAnimator.SetTrigger("deathTrigger");
+                // play death animation
+                playerAnimator.SetTrigger("deathTrigger");
 
-            // wait for animation to finish playing
-            StartCoroutine(DeathDisappear());
+                // wait for animation to finish playing
+                StartCoroutine(DeathDisappear());
 
-            if (!manualRespawn) {
-                StartCoroutine(roundManager.playerDeathRespawn(this.gameObject));
+                if (!manualRespawn) {
+                    StartCoroutine(roundManager.playerDeathRespawn(this.gameObject));
+                }
             }
         }
+
     }
 
     private IEnumerator DeathDisappear() {
@@ -547,6 +551,14 @@ public class PlayerController : CommonController {
         StartCoroutine(ReviveDelay());
     }
 
+    private IEnumerator RespawnInvulnerability() {
+        yield return new WaitForSeconds(2f);
+
+        // setting player object to inactive makes a new one spawn when input is detected
+        // so just render the player invisible
+        respawnInvulnerable = false;
+    }
+
     private IEnumerator ReviveDelay() {
         yield return new WaitForSeconds(2f);
 
@@ -567,5 +579,7 @@ public class PlayerController : CommonController {
 
         // reinitialise script variables
         ReInitVariables();
+        respawnInvulnerable = true;
+        StartCoroutine(RespawnInvulnerability());
     }
 }
