@@ -193,7 +193,7 @@
                 },
                 {
                     "name": "",
-                    "id": "3b8c69ff-3561-4021-9a2a-c8bcff75ba65",
+                    "id": "0e65068e-9903-4019-8e76-eba257cbb491",
                     "path": "<Keyboard>/j",
                     "interactions": "",
                     "processors": "",
@@ -355,6 +355,17 @@
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "3b8c69ff-3561-4021-9a2a-c8bcff75ba65",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard + Mouse",
+                    "action": "Dash",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
