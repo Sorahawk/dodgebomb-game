@@ -60,9 +60,10 @@ public class RoundManager : MonoBehaviour {
 
         TimerFloatVariable.SetValue(gameConstants.roundDuration);
 
-        // reset all player scores to 0
+        // reset all player scores and powerups after new game
         foreach (PlayerVariable playerVar in playerVarList) {
             playerVar.SetScore(0);
+            playerVar.SetPowerup(0);
         }
     }
 
@@ -77,8 +78,7 @@ public class RoundManager : MonoBehaviour {
     }
 
     void Update() {
-        if(mapLoadedBoolVariable.Value)
-        {
+        if (mapLoadedBoolVariable.Value) {
             SpawnAllPlayers();
             mapLoadedBoolVariable.SetValue(false);
         }
@@ -193,6 +193,11 @@ public class RoundManager : MonoBehaviour {
 
         roundNumber += 1;
         Debug.Log(roundNumber);
+
+        // reset player powerups to 0
+        foreach (PlayerVariable playerVar in playerVarList) {
+            playerVar.SetPowerup(0);
+        }
     }
 
     // To be called when returning to main menu or restart pressed.
@@ -213,8 +218,6 @@ public class RoundManager : MonoBehaviour {
     }
 
     public void SpawnAllPlayers() {
-        print("spawning");
-
         int counter = 0;
         Vector3[] vectorList = VectorListVariable.VectorList;
 

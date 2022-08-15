@@ -73,10 +73,10 @@
                 {
                     "name": "",
                     "id": "1f2d75b8-40c9-42eb-aa81-f186d02d8291",
-                    "path": "<XInputController>/leftStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Spin",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -139,10 +139,10 @@
                 {
                     "name": "",
                     "id": "ec316e3e-6364-4712-8e09-3b8f1b4de451",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -150,10 +150,10 @@
                 {
                     "name": "",
                     "id": "7e7b82e0-3360-4461-a08e-e4dc885a7907",
-                    "path": "<XInputController>/buttonSouth",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Pick Up / Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -161,10 +161,10 @@
                 {
                     "name": "",
                     "id": "677cf70a-ffa4-4912-84ac-66573b8d0705",
-                    "path": "<XInputController>/buttonEast",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Throw",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -227,10 +227,10 @@
                 {
                     "name": "",
                     "id": "8b8ab990-393e-4025-8100-522e756afb75",
-                    "path": "<XInputController>/buttonNorth",
+                    "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Use Powerup",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -263,7 +263,7 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -293,10 +293,10 @@
                 {
                     "name": "",
                     "id": "dd386b82-4180-43e6-8824-b98d5a2d276f",
-                    "path": "<XInputController>/leftStick",
+                    "path": "<Gamepad>/leftStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -424,7 +424,7 @@
                     "path": "<XInputController>/leftStick/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -435,7 +435,7 @@
                     "path": "<XInputController>/dpad/up",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Up",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -468,7 +468,7 @@
                     "path": "<XInputController>/leftStick/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -479,7 +479,7 @@
                     "path": "<XInputController>/dpad/down",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Down",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -512,7 +512,7 @@
                     "path": "<XInputController>/leftStick/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -523,7 +523,7 @@
                     "path": "<XInputController>/dpad/left",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Left",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -556,7 +556,7 @@
                     "path": "<XInputController>/leftStick/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -567,7 +567,7 @@
                     "path": "<XInputController>/dpad/right",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Right",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -600,7 +600,7 @@
                     "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Ready",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -633,7 +633,7 @@
                     "path": "<XInputController>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Xbox Controller",
+                    "groups": "Gamepad",
                     "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -665,11 +665,11 @@
     ],
     "controlSchemes": [
         {
-            "name": "Xbox Controller",
-            "bindingGroup": "Xbox Controller",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
-                    "devicePath": "<XInputController>",
+                    "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
                 }

@@ -1473,6 +1473,7 @@ MonoBehaviour:
   pausedBoolVariable: {fileID: 11400000, guid: 4cf18d8dadefd0545a18e9e8ac75c36b, type: 2}
   bearTrap: {fileID: 2534971574343250691, guid: 6216e10ed2456f140bd564c10b4426dc, type: 3}
   bombContainer: {fileID: 5746082519967853474}
+  carriedBomb: {fileID: 0}
   footstepsAudioClip: {fileID: 8300000, guid: ec8e4e4cdd16a96469266cb3aae00354, type: 3}
   throwingAudioClip: {fileID: 8300000, guid: 48cb5e919abfd7f4189db5ed3bbb7e62, type: 3}
   dashAudioClip: {fileID: 8300000, guid: 7143c3fcdae0a08428d6add8b8f4a4c8, type: 3}

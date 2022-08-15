@@ -48,6 +48,8 @@ public class PostGameUIManager : MonoBehaviour {
             if (hatIndex != -1) {
                 hatRenderers[hatIndex].enabled = true;
             }
+
+            // set player score
         }
     }
 
