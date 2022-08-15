@@ -549,6 +549,7 @@ public class PlayerController : CommonController {
 
         // wait for animation to finish playing before proceeding
         StartCoroutine(ReviveDelay());
+        respawnInvulnerable = true;
     }
 
     private IEnumerator RespawnInvulnerability() {
@@ -579,7 +580,6 @@ public class PlayerController : CommonController {
 
         // reinitialise script variables
         ReInitVariables();
-        respawnInvulnerable = true;
         StartCoroutine(RespawnInvulnerability());
     }
 }

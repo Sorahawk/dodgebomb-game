@@ -9,8 +9,11 @@ public class FireBombController : ExplosiveController {
 
     protected GameObject fireObject;
     protected List<GameObject> fireList;
+    protected bool hasExploded;
 
     public override IEnumerator ExplodeNow() {
+        hasExploded = true;
+
         DetachFromPlayer();
         explosionSound.PlayOneShot(explosionClip);
 
@@ -33,8 +36,9 @@ public class FireBombController : ExplosiveController {
         }
     }
 
-
     protected override void CheckExplosionDamage() {
+        if (hasExploded) return;
+
         fireList = new List<GameObject>();
 
         Collider[] objectsInExplosion = Physics.OverlapSphere(transform.position, explosionRadius);
@@ -45,6 +49,7 @@ public class FireBombController : ExplosiveController {
 
                 fireObject = Instantiate(fireFX, other.gameObject.transform.position, Quaternion.identity);
                 fireObject.GetComponent<GroundFireController>().setOwner(lastHeld);
+                fireObject.transform.SetParent(gameObject.transform);
 
                 fireList.Add(fireObject);
             }

@@ -93,6 +93,10 @@ public class RoundManager : MonoBehaviour {
         }
 
         else if (roundEnded) {
+            // stop any running respawn coroutines
+            // StopAllCoroutines();
+            // probably not a good idea, later player doesnt respawn in the new map
+
             // disable all controls
             EnableAllControls(false);
 

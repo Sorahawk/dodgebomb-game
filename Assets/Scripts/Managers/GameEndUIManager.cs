@@ -40,6 +40,12 @@ public class GameEndUIManager : MonoBehaviour {
             if (hatIndex != -1) {
                 hatRenderers[hatIndex].enabled = true;
             }
+
+            // set player score
+            int playerScore = playerVarList[i].Score;
+
+            Text scoreText = playerCard.transform.Find("Kills").GetComponent<Text>();
+            scoreText.text = "Kills: " + playerScore;
         }
     }
 
