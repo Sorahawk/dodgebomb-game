@@ -48,7 +48,6 @@ public class FireBombController : ExplosiveController {
 
                 fireObject = Instantiate(fireFX, other.gameObject.transform.position, Quaternion.identity);
                 fireObject.GetComponent<GroundFireController>().setOwner(lastHeld);
-                fireObject.transform.SetParent(gameObject.transform);
 
                 fireList.Add(fireObject);
             }
