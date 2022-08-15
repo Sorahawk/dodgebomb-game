@@ -12,8 +12,6 @@ public class FireBombController : ExplosiveController {
     protected bool hasExploded;
 
     public override IEnumerator ExplodeNow() {
-        hasExploded = true;
-
         DetachFromPlayer();
         explosionSound.PlayOneShot(explosionClip);
 
@@ -39,6 +37,7 @@ public class FireBombController : ExplosiveController {
     protected override void CheckExplosionDamage() {
         if (hasExploded) return;
 
+        hasExploded = true;
         fireList = new List<GameObject>();
 
         Collider[] objectsInExplosion = Physics.OverlapSphere(transform.position, explosionRadius);

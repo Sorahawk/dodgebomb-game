@@ -16,7 +16,7 @@ MonoBehaviour:
   dashDistance: 70
   bombThrowForce: 30
   powerThrowForce: 50
-  roundDuration: 30
+  roundDuration: 180
   startingCountdown: 3
   numberOfNonPlayableScenes: 7
   respawnTimer: 5
