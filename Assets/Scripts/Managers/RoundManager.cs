@@ -183,7 +183,9 @@ public class RoundManager : MonoBehaviour {
         // based on Scene Index under File -> Build Settings
         // ignore indices of non-playable maps, e.g. Start, Instructions, Lobby, PostRound
         Debug.Log("starting new round");
-        int rand = Random.Range(0, mapIndexList.Count);
+        //int rand = Random.Range(0, mapIndexList.Count);
+
+        int rand = 0;
         int randomMapIndex = mapIndexList[rand];
         mapIndexList.RemoveAt(rand);
 
