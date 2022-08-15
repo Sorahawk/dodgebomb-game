@@ -213,6 +213,7 @@ public class RoundManager : MonoBehaviour {
         while(randomSpawnPoint == previousSpawnPoint){
             randomSpawnPoint = UnityEngine.Random.Range(0, 6);
         }
+        previousSpawnPoint = randomSpawnPoint;
         player.transform.position = vectorList[randomSpawnPoint];
         player.GetComponent<PlayerController>().RevivePlayer();
     }
