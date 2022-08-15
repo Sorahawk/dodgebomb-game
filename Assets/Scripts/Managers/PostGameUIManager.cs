@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PostGameUIManager : MonoBehaviour {
     public List<GameObject> playerCards;
     public PlayerVariable[] playerVarList;
+    public GameObject nextButton;
 
     private PlayerManager playerManager;
     private RoundManager roundManager;
@@ -55,6 +56,14 @@ public class PostGameUIManager : MonoBehaviour {
             Text scoreText = playerCard.transform.Find("Kills").GetComponent<Text>();
             scoreText.text = "Kills: " + playerScore;
         }
+
+        StartCoroutine(ShowButtonDelay());
+    }
+
+    private IEnumerator ShowButtonDelay() {
+        yield return new WaitForSeconds(2);
+
+        nextButton.SetActive(true);
     }
 
     public void ButtonNextRound() {

@@ -9,6 +9,7 @@ public class GameEndUIManager : MonoBehaviour {
     public List<GameObject> playerCards;
     public PlayerVariable[] playerVarList;
     public BoolVariable QuitorRestartBooleanVariable;
+    public GameObject nextButton;
 
     private PlayerManager playerManager;
     private List<PlayerConfig> playerConfigs;
@@ -47,6 +48,14 @@ public class GameEndUIManager : MonoBehaviour {
             Text scoreText = playerCard.transform.Find("Kills").GetComponent<Text>();
             scoreText.text = "Kills: " + playerScore;
         }
+
+        StartCoroutine(ShowButtonDelay());
+    }
+
+    private IEnumerator ShowButtonDelay() {
+        yield return new WaitForSeconds(2);
+
+        nextButton.SetActive(true);
     }
 
     public void ButtonRematch() {
