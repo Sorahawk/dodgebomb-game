@@ -556,11 +556,15 @@ public class PlayerController : CommonController {
     }
 
     private IEnumerator RespawnInvulnerability() {
+        // activate shield FX
+        transform.Find("Shield").gameObject.SetActive(true);
+
         yield return new WaitForSeconds(2f);
 
         // setting player object to inactive makes a new one spawn when input is detected
         // so just render the player invisible
         respawnInvulnerable = false;
+        transform.Find("Shield").gameObject.SetActive(false);
     }
 
     private IEnumerator ReviveDelay() {
