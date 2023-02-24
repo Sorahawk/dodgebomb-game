@@ -1,5 +1,10 @@
 # DodgeBomb
 
+![GitHub repo size shield](https://img.shields.io/github/repo-size/Sorahawk/dodgebomb-game)
+![GitHub contributors shield](https://img.shields.io/github/contributors/Sorahawk/dodgebomb-game)
+
+![Game Logo](https://github.com/Sorahawk/dodgebomb-game/blob/main/dodgebomb_logo.jpg)
+
 DodgeBomb is a chaotic PvP party game for 2-6 players where you play as monkeys trying to kill your opponents with bombs, while at the same time avoiding their attacks.
 
 Website: https://sorahawk.itch.io/dodgebomb
