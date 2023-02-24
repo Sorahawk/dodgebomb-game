@@ -20,9 +20,9 @@ Website: https://sorahawk.itch.io/dodgebomb
 Controller input is supported for all players, and instructions can be found in the 'How to Play' section of the game's main menu.
 
 ## About
-This game was a Unity project made by a group of students from Singapore University of Technology and Design for 50.033 Foundations of Game Design and Development. Our GitHub repository can be viewed here: https://github.com/Sorahawk/dodgebomb-game.
+This game was a Unity project made by a group of students from Singapore University of Technology and Design for 50.033 Foundations of Game Design and Development.
 
-### Group Members  
+**Group Members:**  
 - Tan Le Xuan  
 - Yee Yi Xian  
 - Darren Loh Zhao Ying  
